@@ -488,7 +488,96 @@ navy: {
 6. **Follow the established content structure**
 7. **Use semantic Tailwind classes** from the design system
 
-### 10. File Modification Guidelines
+### 10. Design Planning & Image Strategy
+
+#### Image Placeholder Strategy
+When planning and implementing designs, always consider image placement and use placeholder blocks instead of actual images during development:
+
+**Design Planning Checklist:**
+1. **Identify image locations** - Map out where images will be needed in the layout
+2. **Define image purposes** - Hero images, product photos, testimonials, backgrounds, icons
+3. **Specify dimensions** - Plan exact sizes for different screen breakpoints
+4. **Create placeholder blocks** - Use sized divs with descriptive text instead of `<Image>` components
+
+**Placeholder Block Implementation:**
+```tsx
+// Instead of using Next.js Image component initially
+// <Image src="/hero-image.jpg" alt="Hero" width={800} height={400} />
+
+// Use placeholder blocks with exact dimensions
+<div className="w-full h-96 bg-neutral-200 rounded-card flex items-center justify-center">
+  <span className="text-neutral-600 font-medium">
+    Hero Image - 800x400px
+  </span>
+</div>
+
+// For different image types
+<div className="w-64 h-64 bg-neutral-100 rounded-full flex items-center justify-center">
+  <span className="text-neutral-500 text-sm text-center">
+    Profile Photo<br/>256x256px
+  </span>
+</div>
+
+<div className="aspect-video bg-neutral-200 rounded-lg flex items-center justify-center">
+  <span className="text-neutral-600">
+    Video Thumbnail - 16:9 Aspect Ratio
+  </span>
+</div>
+```
+
+**Placeholder Component Pattern:**
+```tsx
+// Create reusable placeholder component
+interface ImagePlaceholderProps {
+  width?: string
+  height?: string
+  aspectRatio?: string
+  description: string
+  className?: string
+}
+
+const ImagePlaceholder = ({ 
+  width = "w-full", 
+  height = "h-48", 
+  aspectRatio,
+  description,
+  className = ""
+}: ImagePlaceholderProps) => {
+  const classes = aspectRatio 
+    ? `${aspectRatio} ${width}` 
+    : `${width} ${height}`
+    
+  return (
+    <div className={`${classes} bg-neutral-200 rounded-card flex items-center justify-center ${className}`}>
+      <span className="text-neutral-600 font-medium text-center px-4">
+        {description}
+      </span>
+    </div>
+  )
+}
+
+// Usage examples
+<ImagePlaceholder 
+  description="Company Logo - 200x80px" 
+  width="w-50" 
+  height="h-20" 
+/>
+
+<ImagePlaceholder 
+  description="Product Gallery - Square Images" 
+  aspectRatio="aspect-square" 
+  width="w-full" 
+/>
+```
+
+**Benefits of Placeholder Strategy:**
+- **Visual Layout Planning** - See exact spacing and proportions
+- **Content Planning** - Forces thinking about what images are needed
+- **Performance** - No image loading during development
+- **Responsive Design** - Test layouts without image constraints
+- **Client Communication** - Clear visualization of image requirements
+
+### 11. File Modification Guidelines
 
 #### When Adding New Components
 1. Create component in `components/` directory
