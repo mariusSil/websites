@@ -1,5 +1,5 @@
 import { locales } from '@/lib/i18n';
-import { generateAllLocalizedUrls } from '@/lib/page-resolver';
+import { generateAllLocalizedUrls } from '@/content/lib/content-resolver';
 
 export async function GET() {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://example.com';
