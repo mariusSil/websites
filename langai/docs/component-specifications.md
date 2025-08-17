@@ -66,6 +66,11 @@ interface HeroSectionProps {
 - Background: Professional window installer at work
 - Headline: "Expert Window Solutions for Your Home"
 - Trust indicators: "25+ Years Experience", "Licensed & Insured", "Free Estimates"
+- **Primary CTA**: "Get Free Estimate" (red button #DC2626)
+- **Secondary CTA**: "Learn More" (blue outline button)
+- **Emergency CTA**: "Call Now" (prominent phone number)
+- Strategic placement: hero, after value props, footer
+- **CTA Hierarchy**: Red for conversion actions, blue for informational actions
 
 ### 2. Service Card Grid (`ServiceGrid`)
 
@@ -123,8 +128,9 @@ interface ServiceGridProps {
 - Responsive grid layout (2-4 columns)
 - Hover animations and effects
 - Icon + title + description format
-- Optional "Learn More" CTAs
+- Optional "Learn More" CTAs (secondary blue buttons)
 - Featured service highlighting
+- **Key service CTAs**: Red buttons for primary actions
 
 **Window Services**:
 - Window Installation
@@ -189,7 +195,7 @@ interface ValuePropositionProps {
 - Split layout with content and visual
 - Animated benefit list with icons
 - Professional imagery
-- Optional CTA integration
+- Optional CTA integration (red primary button)
 - Mobile-responsive stacking
 
 **Window Company Benefits**:
@@ -474,6 +480,7 @@ interface ContactFormProps {
 - Service type selection
 - Privacy compliance
 - Success/error states
+- **Submit button**: Red primary CTA for maximum conversion
 
 **Window Company Fields**:
 - Name (required)
@@ -684,7 +691,7 @@ interface PricingCalculatorProps {
 - Window type and size selection
 - Add-on options (screens, grids, etc.)
 - Financing options display
-- "Get Exact Quote" CTA
+- **"Get Exact Quote" CTA**: Red primary button for lead generation
 
 ## Design System
 
@@ -700,6 +707,8 @@ interface PricingCalculatorProps {
   --success: #4CAF50;
   --warning: #FF9800;
   --error: #F44336;
+  --cta-primary: #DC2626; /* Red for key CTAs */
+  --cta-secondary: #2196F3; /* Blue for secondary CTAs */
 }
 ```
 

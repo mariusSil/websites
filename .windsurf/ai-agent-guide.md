@@ -57,33 +57,150 @@ template/
 #### Content Architecture
 - **JSON-based**: All content stored in JSON files
 - **Page Content**: `content/pages/{pageId}.json`
-- **Shared Content**: `content/shared/{type}.json`
+- **Shared Content**: `content/shared/{type}.json` (nav, footer, etc.)
 - **Routes**: Centralized in `content/routes.json`
+- **Resolver**: `content/lib/content-resolver.ts`
+
+#### Content Import & Usage Patterns
+
+**In Components - Import Content Resolver:**
+```tsx
+// Import the content resolver functions
+import { 
+  getPageContent, 
+  getSharedContent, 
+  getPageSEO 
+} from '@/content/lib/content-resolver'
+import { Locale } from '@/lib/i18n'
+
+// In component or page
+const MyPage = ({ params }: { params: { locale: Locale } }) => {
+  // Get page content with locale
+  const content = getPageContent('about', params.locale)
+  const seoData = getPageSEO('about', params.locale)
+  
+  // Get shared content (navigation, footer)
+  const navContent = getSharedContent('navigation', params.locale)
+  
+  return (
+    <div>
+      <h1>{content.hero.title}</h1>
+      <p>{content.hero.description}</p>
+    </div>
+  )
+}
+```
+
+**In Layout - SEO Metadata Generation:**
+```tsx
+// app/[locale]/layout.tsx
+import { getPageSEO } from '@/content/lib/content-resolver'
+import { Locale } from '@/lib/i18n'
+
+export async function generateMetadata({
+  params
+}: {
+  params: { locale: Locale }
+}) {
+  const seo = getPageSEO('home', params.locale)
+  
+  return {
+    title: seo.title,
+    description: seo.description,
+    keywords: seo.keywords,
+    openGraph: {
+      title: seo.title,
+      description: seo.description,
+      images: seo.ogImage ? [{
+        url: seo.ogImage,
+        alt: seo.ogImageAlt
+      }] : []
+    }
+  }
+}
+```
 
 #### Content Structure Pattern
 ```json
 {
-  "pageId": "string",
-  "template": "string",
+  "pageId": "about",
+  "template": "default",
   "seo": {
-    "en": { "title": "", "description": "", "keywords": "", "ogImage": "", "ogImageAlt": "" },
-    "lt": { /* localized SEO */ }
+    "en": {
+      "title": "About Us - Company Name",
+      "description": "Learn about our company...",
+      "keywords": "about, company, services",
+      "ogImage": "/images/about-og.jpg",
+      "ogImageAlt": "About us page image"
+    },
+    "lt": {
+      "title": "Apie mus - Įmonės pavadinimas",
+      "description": "Sužinokite apie mūsų įmonę...",
+      "keywords": "apie, įmonė, paslaugos",
+      "ogImage": "/images/about-og-lt.jpg",
+      "ogImageAlt": "Apie mus puslapio nuotrauka"
+    }
   },
   "content": {
-    "en": { /* page content */ },
-    "lt": { /* localized content */ }
+    "en": {
+      "hero": {
+        "title": "About Our Company",
+        "description": "We are a leading provider...",
+        "image": "/images/about-hero.jpg"
+      },
+      "sections": [
+        {
+          "title": "Our Mission",
+          "content": "To provide excellent services..."
+        }
+      ]
+    },
+    "lt": {
+      "hero": {
+        "title": "Apie mūsų įmonę",
+        "description": "Mes esame pirmaujantis teikėjas...",
+        "image": "/images/about-hero.jpg"
+      },
+      "sections": [
+        {
+          "title": "Mūsų misija",
+          "content": "Teikti puikias paslaugas..."
+        }
+      ]
+    }
   },
   "components": [
-    { "type": "ComponentName", "contentKey": "contentSection", "required": true }
+    { "type": "Hero", "contentKey": "hero", "required": true },
+    { "type": "Content", "contentKey": "sections", "required": false }
   ]
 }
 ```
 
-#### Content Resolution
-- **Resolver**: `content/lib/content-resolver.ts`
+#### Content Resolver Functions
+```tsx
+// Available resolver functions from content/lib/content-resolver.ts
+
+// Get page content by pageId and locale
+getPageContent(pageId: string, locale: Locale): any
+
+// Get shared content (nav, footer) by type and locale  
+getSharedContent(type: string, locale: Locale): any
+
+// Get SEO metadata for a page
+getPageSEO(pageId: string, locale: Locale): SEOData
+
+// Get all routes configuration
+getRoutes(): RouteConfig[]
+
+// Get specific route by pageId
+getRoute(pageId: string): RouteConfig | undefined
+```
+
+#### Content Resolution Features
 - **Caching**: In-memory caching for performance
-- **Fallbacks**: Automatic fallback to English content
-- **SEO Generation**: Automatic SEO metadata generation
+- **Fallbacks**: Automatic fallback to English content if locale missing
+- **Type Safety**: TypeScript interfaces for all content structures
+- **SEO Generation**: Automatic SEO metadata generation per locale
 
 ### 5. Component Architecture
 
@@ -103,12 +220,34 @@ template/
 - `Footer` - Site footer
 - `LanguageSwitcher` - Locale switching
 
-#### Component Registration Pattern
+#### Component Import & Registration Patterns
+
+**Component Registration in ComponentRenderer.tsx:**
 ```tsx
+// Import all components at the top
+import Hero from './Hero'
+import Features from './Features'
+import ServiceCards from './ServiceCards'
+import ContactForm from './ContactForm'
+import Content from './Content'
+import PageHeader from './PageHeader'
+// ... other components
+
+// Register in the switch statement
 function SingleComponentRenderer({ type, props }: { type: string; props: any }) {
   switch (type.toLowerCase()) {
-    case 'componentname':
-      return <ComponentName {...props} />
+    case 'hero':
+      return <Hero {...props} />
+    case 'features':
+      return <Features {...props} />
+    case 'servicecards':
+      return <ServiceCards {...props} />
+    case 'contactform':
+      return <ContactForm {...props} />
+    case 'content':
+      return <Content {...props} />
+    case 'pageheader':
+      return <PageHeader {...props} />
     default:
       console.warn(`Unknown component type: ${type}`)
       return null
@@ -116,39 +255,175 @@ function SingleComponentRenderer({ type, props }: { type: string; props: any }) 
 }
 ```
 
-### 6. Styling System
+**Using ComponentRenderer in Pages:**
+```tsx
+// Import ComponentRenderer
+import ComponentRenderer from '@/components/ComponentRenderer'
+import { getPageContent } from '@/content/lib/content-resolver'
+import { Locale } from '@/lib/i18n'
+
+const MyPage = ({ params }: { params: { locale: Locale } }) => {
+  const content = getPageContent('about', params.locale)
+  
+  return (
+    <div>
+      {/* Render components from content definition */}
+      <ComponentRenderer 
+        components={content.components || []} 
+        content={content} 
+      />
+    </div>
+  )
+}
+```
+
+**Direct Component Usage:**
+```tsx
+// Import specific components directly
+import Hero from '@/components/Hero'
+import ServiceCards from '@/components/ServiceCards'
+import { getPageContent } from '@/content/lib/content-resolver'
+
+const HomePage = ({ params }: { params: { locale: Locale } }) => {
+  const content = getPageContent('home', params.locale)
+  
+  return (
+    <div>
+      <Hero {...content.hero} />
+      <ServiceCards services={content.services} />
+    </div>
+  )
+}
+```
+
+### 6. Theme & Styling System
 
 #### Tailwind CSS Configuration
 - **Framework**: Tailwind CSS ^3.3.0
-- **Custom Theme**: Comprehensive design system implemented
-- **Colors**: Professional palette with semantic naming
+- **Config File**: `tailwind.config.js` in project root
+- **Custom Theme**: Comprehensive design system with semantic tokens
+- **Font**: Inter font family with Next.js optimization
 
-#### Color Palette
-```javascript
-primary: '#4caf50' (Green) - Primary brand color
-secondary: '#2196f3' (Blue) - Secondary actions
-accent: '#00bcd4' (Teal) - Accent elements
-neutral: Grayscale palette
-navy: '#1a237e' - Dark navy for contrast
+#### Theme Implementation
+
+**Color System Usage:**
+```tsx
+// Import not needed - Tailwind classes are global
+// Use semantic color classes in components:
+
+// Primary colors (Green palette)
+<button className="bg-primary-500 hover:bg-primary-600 text-white">
+<div className="text-primary-700 border-primary-200">
+
+// Secondary colors (Blue palette)
+<button className="bg-secondary-500 text-white">
+<span className="text-secondary-600">
+
+// Accent colors (Teal palette)
+<div className="bg-accent-50 border-accent-200">
+<button className="bg-accent-500 hover:bg-accent-600">
+
+// Neutral colors (Gray palette)
+<div className="bg-neutral-100 text-neutral-800">
+<p className="text-neutral-600">
+
+// Navy colors (Dark navy palette)
+<footer className="bg-navy-900 text-white">
+<div className="bg-navy-50 text-navy-800">
 ```
 
-#### Typography Scale
-```javascript
-hero: 3rem (48px) - Hero headings
-h1: 2rem (32px) - Main headings
-h2: 1.5rem (24px) - Section headings
-h3: 1.125rem (18px) - Subsection headings
-body: 1rem (16px) - Body text
-cta: 1.125rem (18px) - Call-to-action text
+**Typography Classes:**
+```tsx
+// Hero text (48px, bold)
+<h1 className="text-hero font-bold text-neutral-900">
+
+// Main headings (32px, semibold)
+<h1 className="text-h1 font-semibold text-neutral-900">
+
+// Section headings (24px, semibold)
+<h2 className="text-h2 font-semibold text-neutral-800">
+
+// Subsection headings (18px, medium)
+<h3 className="text-h3 font-medium text-neutral-700">
+
+// Body text (16px, normal)
+<p className="text-body text-neutral-700">
+
+// CTA text (18px, semibold)
+<button className="text-cta font-semibold">
 ```
 
-#### Spacing System
+**Spacing Classes:**
+```tsx
+// Section spacing (80px)
+<section className="py-section">
+<div className="mb-section">
+
+// Large section spacing (120px)
+<section className="py-section-lg">
+
+// Component spacing (48px)
+<div className="space-y-component">
+<div className="mb-component">
+
+// Element spacing (24px)
+<div className="space-y-element">
+<div className="gap-element">
+
+// Tight spacing (8px)
+<div className="space-x-tight">
+<div className="gap-tight">
+```
+
+**Shadow & Border Radius:**
+```tsx
+// Card shadows
+<div className="shadow-card hover:shadow-card-hover">
+
+// Button shadows
+<button className="shadow-button">
+
+// Border radius
+<div className="rounded-card">  // 12px
+<button className="rounded-button">  // 8px
+```
+
+#### Complete Color Palette Reference
 ```javascript
-section: 5rem (80px) - Section spacing
-section-lg: 7.5rem (120px) - Large section spacing
-component: 3rem (48px) - Component spacing
-element: 1.5rem (24px) - Element spacing
-tight: 0.5rem (8px) - Tight spacing
+// Primary (Green) - Brand color
+primary: {
+  50: '#e8f5e8',   100: '#c8e6c9',   200: '#a5d6a7',
+  300: '#81c784',  400: '#66bb6a',   500: '#4caf50', // Main
+  600: '#43a047',  700: '#388e3c',   800: '#2e7d32',  900: '#1b5e20'
+}
+
+// Secondary (Blue) - Secondary actions
+secondary: {
+  50: '#e3f2fd',   100: '#bbdefb',   200: '#90caf9',
+  300: '#64b5f6',  400: '#42a5f5',   500: '#2196f3', // Main
+  600: '#1e88e5',  700: '#1976d2',   800: '#1565c0',  900: '#0d47a1'
+}
+
+// Accent (Teal) - Accent elements
+accent: {
+  50: '#e0f7fa',   100: '#b2ebf2',   200: '#80deea',
+  300: '#4dd0e1',  400: '#26c6da',   500: '#00bcd4', // Main
+  600: '#00acc1',  700: '#0097a7',   800: '#00838f',  900: '#006064'
+}
+
+// Neutral (Gray) - Text and backgrounds
+neutral: {
+  50: '#fafafa',   100: '#f5f5f5',   200: '#eeeeee',
+  300: '#e0e0e0',  400: '#bdbdbd',   500: '#9e9e9e',
+  600: '#757575',  700: '#616161',   800: '#424242',  900: '#212121'
+}
+
+// Navy - Dark contrast elements
+navy: {
+  50: '#e8eaf6',   100: '#c5cae9',   200: '#9fa8da',
+  300: '#7986cb',  400: '#5c6bc0',   500: '#3f51b5',
+  600: '#3949ab',  700: '#303f9f',   800: '#283593',  900: '#1a237e'
+}
 ```
 
 ### 7. Development Workflow
