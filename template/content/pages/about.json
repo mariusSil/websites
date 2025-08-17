@@ -1,0 +1,71 @@
+{
+  "pageId": "about",
+  "template": "standard-page",
+  "seo": {
+    "en": {
+      "title": "About Us - AI Website Template",
+      "description": "Learn about our mission to create exceptional digital experiences with modern AI technology and innovative web solutions.",
+      "keywords": "about us, AI technology, web development, digital experiences, modern solutions",
+      "ogImage": "/images/og/en-about.jpg",
+      "ogImageAlt": "About Us - AI Website Template team and mission"
+    },
+    "lt": {
+      "title": "Apie mus - AI Svetainės Šablonas",
+      "description": "Sužinokite apie mūsų misiją kurti išskirtinius skaitmeninės patirties sprendimus su šiuolaikinėmis AI technologijomis.",
+      "keywords": "apie mus, AI technologijos, svetainių kūrimas, skaitmeninė patirtis, šiuolaikiniai sprendimai",
+      "ogImage": "/images/og/lt-about.jpg",
+      "ogImageAlt": "Apie mus - AI Svetainės Šablono komanda ir misija"
+    },
+    "pl": {
+      "title": "O nas - Szablon Strony AI",
+      "description": "Poznaj naszą misję tworzenia wyjątkowych doświadczeń cyfrowych z nowoczesnymi technologiami AI i innowacyjnymi rozwiązaniami internetowymi.",
+      "keywords": "o nas, technologie AI, tworzenie stron, doświadczenia cyfrowe, nowoczesne rozwiązania",
+      "ogImage": "/images/og/pl-about.jpg",
+      "ogImageAlt": "O nas - zespół i misja Szablonu Strony AI"
+    }
+  },
+  "content": {
+    "en": {
+      "hero": {
+        "title": "About Us",
+        "subtitle": "Learn more about our mission and values"
+      },
+      "content": {
+        "mission": "Our mission is to create exceptional digital experiences that drive business growth and user satisfaction.",
+        "vision": "We envision a world where technology seamlessly enhances human potential and creativity."
+      }
+    },
+    "lt": {
+      "hero": {
+        "title": "Apie mus",
+        "subtitle": "Sužinokite daugiau apie mūsų misiją ir vertybes"
+      },
+      "content": {
+        "mission": "Mūsų misija - kurti išskirtinius skaitmeninės patirties sprendimus, skatinančius verslo augimą ir naudotojų pasitenkinimą.",
+        "vision": "Mes įsivaizduojame pasaulį, kuriame technologijos sklandžiai stiprina žmogaus potencialą ir kūrybiškumą."
+      }
+    },
+    "pl": {
+      "hero": {
+        "title": "O nas",
+        "subtitle": "Dowiedz się więcej o naszej misji i wartościach"
+      },
+      "content": {
+        "mission": "Naszą misją jest tworzenie wyjątkowych doświadczeń cyfrowych, które napędzają rozwój biznesu i satysfakcję użytkowników.",
+        "vision": "Wyobrażamy sobie świat, w którym technologia płynnie wzmacnia ludzki potencjał i kreatywność."
+      }
+    }
+  },
+  "components": [
+    {
+      "type": "PageHeader",
+      "contentKey": "hero",
+      "required": true
+    },
+    {
+      "type": "Content",
+      "contentKey": "content",
+      "required": true
+    }
+  ]
+}

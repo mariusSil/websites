@@ -1,0 +1,83 @@
+{
+  "pageId": "contact",
+  "template": "contact-page",
+  "seo": {
+    "en": {
+      "title": "Contact Us - AI Website Template",
+      "description": "Get in touch with our team. Contact us for questions about AI-powered web solutions and modern website development services.",
+      "keywords": "contact us, get in touch, AI web development, website services, support",
+      "ogImage": "/images/og/en-contact.jpg",
+      "ogImageAlt": "Contact Us - Get in touch with AI Website Template team"
+    },
+    "lt": {
+      "title": "Kontaktai - AI Svetainės Šablonas",
+      "description": "Susisiekite su mūsų komanda. Kreipkitės dėl klausimų apie AI technologijomis paremtus interneto sprendimus ir svetainių kūrimo paslaugas.",
+      "keywords": "kontaktai, susisiekti, AI svetainių kūrimas, interneto paslaugos, pagalba",
+      "ogImage": "/images/og/lt-contact.jpg",
+      "ogImageAlt": "Kontaktai - Susisiekite su AI Svetainės Šablono komanda"
+    },
+    "pl": {
+      "title": "Kontakt - Szablon Strony AI",
+      "description": "Skontaktuj się z naszym zespołem. Napisz do nas z pytaniami o rozwiązania internetowe oparte na AI i usługi tworzenia nowoczesnych stron.",
+      "keywords": "kontakt, skontaktuj się, tworzenie stron AI, usługi internetowe, wsparcie",
+      "ogImage": "/images/og/pl-contact.jpg",
+      "ogImageAlt": "Kontakt - Skontaktuj się z zespołem Szablonu Strony AI"
+    }
+  },
+  "content": {
+    "en": {
+      "hero": {
+        "title": "Contact Us",
+        "subtitle": "Get in touch with our team"
+      },
+      "form": {
+        "nameLabel": "Name",
+        "emailLabel": "Email",
+        "messageLabel": "Message",
+        "submitButton": "Send Message",
+        "successMessage": "Thank you for your message! We'll get back to you soon.",
+        "errorMessage": "Sorry, there was an error sending your message. Please try again."
+      }
+    },
+    "lt": {
+      "hero": {
+        "title": "Susisiekite su mumis",
+        "subtitle": "Susisiekite su mūsų komanda"
+      },
+      "form": {
+        "nameLabel": "Vardas",
+        "emailLabel": "El. paštas",
+        "messageLabel": "Žinutė",
+        "submitButton": "Siųsti žinutę",
+        "successMessage": "Ačiū už jūsų žinutę! Netrukus su jumis susisieksime.",
+        "errorMessage": "Atsiprašome, įvyko klaida siunčiant jūsų žinutę. Bandykite dar kartą."
+      }
+    },
+    "pl": {
+      "hero": {
+        "title": "Skontaktuj się z nami",
+        "subtitle": "Skontaktuj się z naszym zespołem"
+      },
+      "form": {
+        "nameLabel": "Imię",
+        "emailLabel": "Email",
+        "messageLabel": "Wiadomość",
+        "submitButton": "Wyślij wiadomość",
+        "successMessage": "Dziękujemy za wiadomość! Wkrótce się z Tobą skontaktujemy.",
+        "errorMessage": "Przepraszamy, wystąpił błąd podczas wysyłania wiadomości. Spróbuj ponownie."
+      }
+    }
+  },
+  "components": [
+    {
+      "type": "PageHeader",
+      "contentKey": "hero",
+      "required": true
+    },
+    {
+      "type": "ContactForm",
+      "contentKey": "form",
+      "required": true
+    }
+  ]
+}

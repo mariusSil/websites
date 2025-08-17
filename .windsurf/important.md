@@ -1,0 +1,1 @@
+if something from /Users/mariussilenskis/Development/silotech/websites/.windsurf/ai-agent-guide.md changed - update it in the end of the task

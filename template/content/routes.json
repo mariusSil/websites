@@ -1,0 +1,36 @@
+{
+  "routes": [
+    {
+      "pageId": "homepage",
+      "urls": {
+        "en": "",
+        "lt": "",
+        "pl": ""
+      },
+      "priority": 1.0,
+      "changefreq": "weekly"
+    },
+    {
+      "pageId": "about",
+      "urls": {
+        "en": "about",
+        "lt": "apie-mus",
+        "pl": "o-nas"
+      },
+      "priority": 0.8,
+      "changefreq": "monthly"
+    },
+    {
+      "pageId": "contact",
+      "urls": {
+        "en": "contact",
+        "lt": "kontaktai",
+        "pl": "kontakt"
+      },
+      "priority": 0.7,
+      "changefreq": "monthly"
+    }
+  ],
+  "defaultLocale": "en",
+  "supportedLocales": ["en", "lt", "pl"]
+}
