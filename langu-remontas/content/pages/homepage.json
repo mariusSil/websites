@@ -1,0 +1,148 @@
+{
+  "pageId": "homepage",
+  "template": "homepage",
+  "seo": {
+    "en": {
+      "title": "AI Website Template - Modern Web Solutions",
+      "description": "Build amazing websites with our AI-powered template. Modern design, fast performance, and SEO optimization built-in.",
+      "keywords": "AI website template, modern web design, Next.js, React, TypeScript, SEO optimization",
+      "ogImage": "/images/og/en-homepage.jpg",
+      "ogImageAlt": "AI Website Template - Modern web solutions homepage",
+      "structuredData": {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "AI Website Template",
+        "description": "Modern website template built with Next.js and AI",
+        "url": "https://example.com",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://example.com/search?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "AI Website Template Team",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://example.com/images/logo.png"
+          }
+        }
+      }
+    },
+    "lt": {
+      "title": "AI Svetainės Šablonas - Šiuolaikiniai Interneto Sprendimai",
+      "description": "Kurkite nuostabias svetaines su mūsų AI technologijomis paremtu šablonu. Šiuolaikinis dizainas, greitas veikimas ir SEO optimizavimas.",
+      "keywords": "AI svetainės šablonas, šiuolaikinis web dizainas, Next.js, React, TypeScript, SEO optimizavimas",
+      "ogImage": "/images/og/lt-homepage.jpg",
+      "ogImageAlt": "AI Svetainės Šablonas - Šiuolaikiniai interneto sprendimai"
+    },
+    "pl": {
+      "title": "Szablon Strony AI - Nowoczesne Rozwiązania Internetowe",
+      "description": "Twórz niesamowite strony internetowe z naszym szablonem opartym na AI. Nowoczesny design, szybka wydajność i wbudowana optymalizacja SEO.",
+      "keywords": "szablon strony AI, nowoczesny web design, Next.js, React, TypeScript, optymalizacja SEO",
+      "ogImage": "/images/og/pl-homepage.jpg",
+      "ogImageAlt": "Szablon Strony AI - Nowoczesne rozwiązania internetowe"
+    }
+  },
+  "content": {
+    "en": {
+      "hero": {
+        "title": "Welcome to Our Website",
+        "subtitle": "Building amazing experiences with modern technology",
+        "ctaText": "Get Started",
+        "ctaLink": "/contact"
+      },
+      "features": {
+        "title": "Our Features",
+        "subtitle": "Professional solutions built with modern technology",
+        "items": [
+          {
+            "title": "Modern Design",
+            "description": "Clean and responsive design that works on all devices",
+            "features": ["Responsive Layout", "Mobile-First Design", "Cross-Browser Compatible"]
+          },
+          {
+            "title": "Fast Performance",
+            "description": "Optimized for speed and excellent user experience",
+            "features": ["Lightning Fast", "Optimized Assets", "CDN Delivery"]
+          },
+          {
+            "title": "SEO Optimized",
+            "description": "Built with SEO best practices in mind",
+            "features": ["Meta Tags", "Structured Data", "Performance Optimized"]
+          }
+        ]
+      }
+    },
+    "lt": {
+      "hero": {
+        "title": "Sveiki atvykę į mūsų svetainę",
+        "subtitle": "Kuriame nuostabią patirtį su šiuolaikinėmis technologijomis",
+        "ctaText": "Pradėti",
+        "ctaLink": "/kontaktai"
+      },
+      "features": {
+        "title": "Mūsų funkcijos",
+        "subtitle": "Profesionalūs sprendimai sukurti su šiuolaikinėmis technologijomis",
+        "items": [
+          {
+            "title": "Šiuolaikinis dizainas",
+            "description": "Švarus ir prisitaikantis dizainas, veikiantis visuose įrenginiuose",
+            "features": ["Prisitaikantis išdėstymas", "Mobiliesiems pritaikytas", "Suderinamumas su naršyklėmis"]
+          },
+          {
+            "title": "Greitas veikimas",
+            "description": "Optimizuotas greičiui ir puikiai vartotojo patirčiai",
+            "features": ["Žaibiškai greitas", "Optimizuoti failai", "CDN pristatymas"]
+          },
+          {
+            "title": "SEO optimizuotas",
+            "description": "Sukurtas laikantis SEO gerųjų praktikų",
+            "features": ["Meta žymos", "Struktūrizuoti duomenys", "Optimizuotas našumui"]
+          }
+        ]
+      }
+    },
+    "pl": {
+      "hero": {
+        "title": "Witamy na naszej stronie",
+        "subtitle": "Tworzymy niesamowite doświadczenia z nowoczesną technologią",
+        "ctaText": "Rozpocznij",
+        "ctaLink": "/kontakt"
+      },
+      "features": {
+        "title": "Nasze funkcje",
+        "subtitle": "Profesjonalne rozwiązania zbudowane z nowoczesną technologią",
+        "items": [
+          {
+            "title": "Nowoczesny design",
+            "description": "Czysty i responsywny design działający na wszystkich urządzeniach",
+            "features": ["Responsywny układ", "Mobile-first design", "Kompatybilność z przeglądarkami"]
+          },
+          {
+            "title": "Szybka wydajność",
+            "description": "Zoptymalizowane pod kątem szybkości i doskonałego doświadczenia użytkownika",
+            "features": ["Błyskawiczna szybkość", "Zoptymalizowane zasoby", "Dostarczanie CDN"]
+          },
+          {
+            "title": "Zoptymalizowane SEO",
+            "description": "Zbudowane z myślą o najlepszych praktykach SEO",
+            "features": ["Meta tagi", "Dane strukturalne", "Zoptymalizowana wydajność"]
+          }
+        ]
+      }
+    }
+  },
+  "components": [
+    {
+      "type": "Hero",
+      "contentKey": "hero",
+      "required": true
+    },
+    {
+      "type": "ServiceCards",
+      "contentKey": "features",
+      "required": true
+    }
+  ]
+}

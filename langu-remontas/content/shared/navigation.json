@@ -1,0 +1,41 @@
+{
+  "en": {
+    "main": [
+      { "label": "Home", "href": "/", "key": "home" },
+      { "label": "About", "href": "/about", "key": "about" },
+      { "label": "Services", "href": "/services", "key": "services" },
+      { "label": "Contact", "href": "/contact", "key": "contact" }
+    ],
+    "cta": {
+      "text": "Get Started",
+      "href": "/contact",
+      "type": "primary"
+    }
+  },
+  "lt": {
+    "main": [
+      { "label": "Pagrindinis", "href": "/", "key": "home" },
+      { "label": "Apie mus", "href": "/apie-mus", "key": "about" },
+      { "label": "Paslaugos", "href": "/paslaugos", "key": "services" },
+      { "label": "Kontaktai", "href": "/kontaktai", "key": "contact" }
+    ],
+    "cta": {
+      "text": "Pradėti",
+      "href": "/kontaktai",
+      "type": "primary"
+    }
+  },
+  "pl": {
+    "main": [
+      { "label": "Strona główna", "href": "/", "key": "home" },
+      { "label": "O nas", "href": "/o-nas", "key": "about" },
+      { "label": "Usługi", "href": "/uslugi", "key": "services" },
+      { "label": "Kontakt", "href": "/kontakt", "key": "contact" }
+    ],
+    "cta": {
+      "text": "Rozpocznij",
+      "href": "/kontakt",
+      "type": "primary"
+    }
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "en": {
+    "site": {
+      "name": "AI Website Template",
+      "shortName": "AI Template",
+      "description": "Modern website template built with Next.js, React, and AI-powered features for fast, SEO-optimized web development.",
+      "keywords": "website template, Next.js, React, TypeScript, AI, modern web development, SEO optimization"
+    },
+    "buttons": {
+      "learnMore": "Learn More",
+      "getStarted": "Get Started",
+      "readMore": "Read More",
+      "viewAll": "View All",
+      "backToTop": "Back to Top"
+    },
+    "forms": {
+      "required": "Required field",
+      "invalidEmail": "Please enter a valid email address",
+      "loading": "Loading...",
+      "submit": "Submit",
+      "cancel": "Cancel"
+    },
+    "accessibility": {
+      "skipToContent": "Skip to main content",
+      "openMenu": "Open navigation menu",
+      "closeMenu": "Close navigation menu",
+      "toggleTheme": "Toggle theme"
+    }
+  },
+  "lt": {
+    "site": {
+      "name": "AI Svetainės Šablonas",
+      "shortName": "AI Šablonas",
+      "description": "Šiuolaikinis svetainės šablonas sukurtas su Next.js, React ir AI technologijomis greitam, SEO optimizuotam web kūrimui.",
+      "keywords": "svetainės šablonas, Next.js, React, TypeScript, AI, šiuolaikinis web kūrimas, SEO optimizavimas"
+    },
+    "buttons": {
+      "learnMore": "Sužinoti daugiau",
+      "getStarted": "Pradėti",
+      "readMore": "Skaityti daugiau",
+      "viewAll": "Žiūrėti visus",
+      "backToTop": "Grįžti į viršų"
+    },
+    "forms": {
+      "required": "Privalomas laukas",
+      "invalidEmail": "Įveskite galiojantį el. pašto adresą",
+      "loading": "Kraunama...",
+      "submit": "Pateikti",
+      "cancel": "Atšaukti"
+    },
+    "accessibility": {
+      "skipToContent": "Pereiti prie pagrindinio turinio",
+      "openMenu": "Atidaryti navigacijos meniu",
+      "closeMenu": "Uždaryti navigacijos meniu",
+      "toggleTheme": "Perjungti temą"
+    }
+  },
+  "pl": {
+    "site": {
+      "name": "Szablon Strony AI",
+      "shortName": "AI Szablon",
+      "description": "Nowoczesny szablon strony zbudowany z Next.js, React i funkcjami AI dla szybkiego, zoptymalizowanego SEO tworzenia stron.",
+      "keywords": "szablon strony, Next.js, React, TypeScript, AI, nowoczesne tworzenie stron, optymalizacja SEO"
+    },
+    "buttons": {
+      "learnMore": "Dowiedz się więcej",
+      "getStarted": "Rozpocznij",
+      "readMore": "Czytaj więcej",
+      "viewAll": "Zobacz wszystkie",
+      "backToTop": "Powrót na górę"
+    },
+    "forms": {
+      "required": "Pole wymagane",
+      "invalidEmail": "Wprowadź prawidłowy adres email",
+      "loading": "Ładowanie...",
+      "submit": "Wyślij",
+      "cancel": "Anuluj"
+    },
+    "accessibility": {
+      "skipToContent": "Przejdź do głównej treści",
+      "openMenu": "Otwórz menu nawigacji",
+      "closeMenu": "Zamknij menu nawigacji",
+      "toggleTheme": "Przełącz motyw"
+    }
+  }
+}
