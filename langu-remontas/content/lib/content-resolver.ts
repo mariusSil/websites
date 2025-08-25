@@ -30,15 +30,35 @@ export interface SEOData {
   structuredData?: any;
 }
 
+export interface CollectionConfig {
+  basePath: Record<Locale, string>;
+  itemRoute: string;
+  priority: number;
+  changefreq: string;
+}
+
 export interface RoutesConfig {
   routes: RouteConfig[];
+  collections?: Record<string, CollectionConfig>;
   defaultLocale: Locale;
   supportedLocales: Locale[];
+}
+
+export interface CollectionItem {
+  itemId: string;
+  collection: string;
+  template: string;
+  slugs?: Record<Locale, string>;
+  seo: Record<Locale, SEOData>;
+  content: Record<Locale, any>;
+  publishDate?: string;
+  author?: string;
 }
 
 // Cache for loaded configurations
 const routesConfigCache = new Map<string, RoutesConfig>();
 const pageContentCache = new Map<string, PageContent>();
+const collectionItemCache = new Map<string, CollectionItem>();
 const sharedContentCache = new Map<string, any>();
 
 // Load main routes configuration
@@ -96,14 +116,114 @@ export async function loadSharedContent(contentType: string): Promise<any> {
   }
 }
 
-// Resolve page by URL slug
-export async function resolvePageBySlug(locale: Locale, slug: string): Promise<PageContent | null> {
+// Load collection item content
+export async function loadCollectionItem(collection: string, itemId: string): Promise<CollectionItem | null> {
+  const cacheKey = `collection-${collection}-${itemId}`;
+  
+  if (collectionItemCache.has(cacheKey)) {
+    return collectionItemCache.get(cacheKey)!;
+  }
+  
+  try {
+    const { promises: fs } = require('fs');
+    const path = require('path');
+    const filePath = path.join(process.cwd(), 'content', 'collections', collection, `${itemId}.json`);
+    const fileContent = await fs.readFile(filePath, 'utf8');
+    const content = JSON.parse(fileContent);
+    
+    collectionItemCache.set(cacheKey, content);
+    return content;
+  } catch (error) {
+    console.error(`Error loading collection item ${collection}/${itemId}:`, error);
+    return null;
+  }
+}
+
+// Get all collection items for a category
+export async function getCollectionItems(collection: string): Promise<CollectionItem[]> {
+  try {
+    const { promises: fs } = require('fs');
+    const path = require('path');
+    const collectionDir = path.join(process.cwd(), 'content', 'collections', collection);
+    
+    const files = await fs.readdir(collectionDir);
+    const jsonFiles = files.filter((file: string) => file.endsWith('.json'));
+    
+    const items: CollectionItem[] = [];
+    for (const file of jsonFiles) {
+      const filePath = path.join(collectionDir, file);
+      const fileContent = await fs.readFile(filePath, 'utf8');
+      const item = JSON.parse(fileContent);
+      items.push(item);
+    }
+    
+    return items;
+  } catch (error) {
+    console.error(`Error loading collection items for ${collection}:`, error);
+    return [];
+  }
+}
+
+// Find collection item by localized slug
+export async function findCollectionItemBySlug(collection: string, locale: Locale, slug: string): Promise<CollectionItem | null> {
+  const items = await getCollectionItems(collection);
+  
+  for (const item of items) {
+    // Check if item has localized slugs
+    if (item.slugs && item.slugs[locale] === slug) {
+      return item;
+    }
+    // Fallback to itemId if no localized slugs
+    if (!item.slugs && item.itemId === slug) {
+      return item;
+    }
+  }
+  
+  return null;
+}
+
+// Resolve collection item by slug
+export async function resolveCollectionItem(locale: Locale, category: string, slug: string): Promise<CollectionItem | null> {
   const routesConfig = await loadRoutesConfig();
+  
+  if (!routesConfig.collections || !routesConfig.collections[category]) {
+    return null;
+  }
+  
+  const collectionConfig = routesConfig.collections[category];
+  const basePath = collectionConfig.basePath[locale];
+  
+  // Check if the category matches the expected base path
+  if (!basePath) return null;
+  
+  // Find collection item by localized slug
+  return await findCollectionItemBySlug(category, locale, slug);
+}
+
+// Enhanced page resolution that handles both regular pages and collection items
+export async function resolvePageBySlug(locale: Locale, slug: string): Promise<PageContent | CollectionItem | null> {
+  const routesConfig = await loadRoutesConfig();
+  
+  // First, try to resolve as a regular page
   const route = routesConfig.routes.find(r => r.urls[locale] === slug);
+  if (route) {
+    return await loadPageContent(route.pageId);
+  }
   
-  if (!route) return null;
+  // If not a regular page, check if it's a collection item (category/slug format)
+  if (routesConfig.collections && slug.includes('/')) {
+    const [category, itemSlug] = slug.split('/');
+    
+    // Find the collection that matches this category
+    for (const [collectionName, collectionConfig] of Object.entries(routesConfig.collections)) {
+      const basePath = collectionConfig.basePath[locale];
+      if (basePath === category) {
+        return await resolveCollectionItem(locale, collectionName, itemSlug);
+      }
+    }
+  }
   
-  return await loadPageContent(route.pageId);
+  return null;
 }
 
 // Get localized content for a page

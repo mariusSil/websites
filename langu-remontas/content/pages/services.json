@@ -1,0 +1,48 @@
+{
+  "pageId": "services",
+  "template": "services",
+  "seo": {
+    "en": {
+      "title": "Professional Window & Door Repair Services",
+      "description": "Expert window and door repair services with guaranteed quality and fast response times. Serving Warsaw, Łódź, Kraków, Katowice and surrounding areas.",
+      "keywords": "window repair, door repair, window service, door service, professional repair, guaranteed quality",
+      "ogImage": "/images/og/en-services.jpg",
+      "ogImageAlt": "Professional Window & Door Repair Services",
+      "structuredData": {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Window & Door Repair Services",
+        "description": "Professional repair services for windows and doors",
+        "provider": {
+          "@type": "Organization",
+          "name": "Langu Remontas"
+        }
+      }
+    },
+    "lt": {
+      "title": "Profesionalūs langų ir durų remonto darbai",
+      "description": "Ekspertų langų ir durų remonto paslaugos su kokybės garantija ir greitu atsaku.",
+      "keywords": "langų remontas, durų remontas, langų servisas, durų servisas, profesionalus remontas",
+      "ogImage": "/images/og/lt-services.jpg",
+      "ogImageAlt": "Profesionalūs langų ir durų remonto darbai"
+    },
+    "pl": {
+      "title": "Profesjonalny serwis okien i drzwi",
+      "description": "Eksperckie usługi naprawy okien i drzwi z gwarancją jakości i szybkim czasem reakcji.",
+      "keywords": "naprawa okien, naprawa drzwi, serwis okien, serwis drzwi, profesjonalna naprawa",
+      "ogImage": "/images/og/pl-services.jpg",
+      "ogImageAlt": "Profesjonalny serwis okien i drzwi"
+    }
+  },
+  "content": {
+    "en": {
+      "components": []
+    },
+    "lt": {
+      "components": []
+    },
+    "pl": {
+      "components": []
+    }
+  }
+}

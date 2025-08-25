@@ -1,0 +1,44 @@
+{
+  "pageId": "news",
+  "template": "news",
+  "seo": {
+    "en": {
+      "title": "Latest News & Updates - Window & Door Repair Services",
+      "description": "Stay updated with the latest news, tips, and insights about window and door repair services, maintenance advice, and industry updates.",
+      "keywords": "window repair news, door repair updates, maintenance tips, repair insights, home improvement news",
+      "ogImage": "/images/og/en-news.jpg",
+      "ogImageAlt": "Latest News & Updates - Window & Door Repair Services",
+      "structuredData": {
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        "name": "Window & Door Repair News",
+        "description": "Latest news and updates about window and door repair services"
+      }
+    },
+    "lt": {
+      "title": "Naujausi straipsniai ir atnaujinimai - Langų ir durų remontas",
+      "description": "Sekite naujausius straipsnius, patarimus ir įžvalgas apie langų ir durų remonto paslaugas.",
+      "keywords": "langų remonto naujienos, durų remonto atnaujinimai, priežiūros patarimai",
+      "ogImage": "/images/og/lt-news.jpg",
+      "ogImageAlt": "Naujausi straipsniai ir atnaujinimai"
+    },
+    "pl": {
+      "title": "Najnowsze aktualności - Serwis okien i drzwi",
+      "description": "Bądź na bieżąco z najnowszymi aktualnościami, poradami i spostrzeżeniami dotyczącymi usług naprawy okien i drzwi.",
+      "keywords": "aktualności naprawy okien, aktualizacje serwisu drzwi, porady konserwacyjne",
+      "ogImage": "/images/og/pl-news.jpg",
+      "ogImageAlt": "Najnowsze aktualności - Serwis okien i drzwi"
+    }
+  },
+  "content": {
+    "en": {
+      "components": []
+    },
+    "lt": {
+      "components": []
+    },
+    "pl": {
+      "components": []
+    }
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "itemId": "winter-maintenance-tips",
+  "collection": "news",
+  "template": "news-article",
+  "publishDate": "2024-01-15",
+  "author": "Expert Team",
+  "seo": {
+    "en": {
+      "title": "Essential Winter Window Maintenance Tips | Prepare for Cold Weather",
+      "description": "Expert tips for winter window maintenance. Keep your windows in perfect condition during cold months with professional advice.",
+      "keywords": "winter window maintenance, cold weather windows, window winterizing, seasonal maintenance",
+      "ogImage": "/images/og/en-winter-tips.jpg",
+      "ogImageAlt": "Essential Winter Window Maintenance Tips"
+    },
+    "lt": {
+      "title": "Būtiniausi žiemos langų priežiūros patarimai",
+      "description": "Ekspertų patarimai žiemos langų priežiūrai. Palaikykite langus puikiam stovy šaltu laikotarpiu.",
+      "keywords": "žiemos langų priežiūra, šaltų orų langai, langų paruošimas žiemai",
+      "ogImage": "/images/og/lt-winter-tips.jpg",
+      "ogImageAlt": "Žiemos langų priežiūros patarimai"
+    },
+    "pl": {
+      "title": "Niezbędne wskazówki zimowej konserwacji okien",
+      "description": "Porady ekspertów dotyczące zimowej konserwacji okien. Utrzymuj okna w doskonałym stanie w zimne miesiące.",
+      "keywords": "zimowa konserwacja okien, okna w zimne dni, przygotowanie okien na zimę",
+      "ogImage": "/images/og/pl-winter-tips.jpg",
+      "ogImageAlt": "Zimowa konserwacja okien"
+    }
+  },
+  "content": {
+    "en": {
+      "components": []
+    },
+    "lt": {
+      "components": []
+    },
+    "pl": {
+      "components": []
+    }
+  }
+}

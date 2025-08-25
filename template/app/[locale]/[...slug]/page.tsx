@@ -7,14 +7,15 @@ import { notFound } from 'next/navigation';
 interface PageProps {
   params: {
     locale: string;
-    slug: string;
+    slug: string[];
   };
 }
 
 // Generate metadata for dynamic pages
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const locale: Locale = isValidLocale(params.locale) ? params.locale : defaultLocale;
-  const pageContent = await resolvePageBySlug(locale, params.slug);
+  const slugPath = params.slug?.join('/') || '';
+  const pageContent = await resolvePageBySlug(locale, slugPath);
   
   // Use centralized metadata generation with fallback support
   const pageId = pageContent?.pageId || 'unknown';
@@ -54,9 +55,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function DynamicPage({ params }: PageProps) {
   const locale: Locale = isValidLocale(params.locale) ? params.locale : defaultLocale;
+  const slugPath = params.slug?.join('/') || '';
   
   // Resolve page content by slug
-  const pageContent = await resolvePageBySlug(locale, params.slug);
+  const pageContent = await resolvePageBySlug(locale, slugPath);
   
   if (!pageContent) {
     notFound();

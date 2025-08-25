@@ -1,0 +1,44 @@
+{
+  "itemId": "window-repair",
+  "collection": "services",
+  "template": "service-item",
+  "slugs": {
+    "en": "window-repair",
+    "lt": "langu-remontas", 
+    "pl": "naprawa-okien"
+  },
+  "seo": {
+    "en": {
+      "title": "Professional Window Repair Services | Expert Fixes",
+      "description": "Expert window repair services for all window types. Fast diagnosis, quality repairs, and satisfaction guaranteed.",
+      "keywords": "window repair, window fix, broken window, window maintenance, window service",
+      "ogImage": "/images/og/en-window-repair.jpg",
+      "ogImageAlt": "Professional Window Repair Services"
+    },
+    "lt": {
+      "title": "Profesionalus langų remontas | Ekspertų sprendimai",
+      "description": "Ekspertų langų remonto paslaugos visų tipų langams. Greita diagnozė, kokybiški remonto darbai.",
+      "keywords": "langų remontas, langų taisymas, sugedę langai, langų priežiūra",
+      "ogImage": "/images/og/lt-window-repair.jpg",
+      "ogImageAlt": "Profesionalus langų remontas"
+    },
+    "pl": {
+      "title": "Profesjonalna naprawa okien | Eksperci w naprawie",
+      "description": "Eksperckie usługi naprawy okien dla wszystkich typów okien. Szybka diagnoza, wysokiej jakości naprawy.",
+      "keywords": "naprawa okien, naprawianie okien, uszkodzone okna, serwis okien",
+      "ogImage": "/images/og/pl-window-repair.jpg",
+      "ogImageAlt": "Profesjonalna naprawa okien"
+    }
+  },
+  "content": {
+    "en": {
+      "components": []
+    },
+    "lt": {
+      "components": []
+    },
+    "pl": {
+      "components": []
+    }
+  }
+}

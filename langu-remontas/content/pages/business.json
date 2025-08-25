@@ -1,0 +1,48 @@
+{
+  "pageId": "business",
+  "template": "business",
+  "seo": {
+    "en": {
+      "title": "Business & Commercial Window & Door Services",
+      "description": "Professional window and door repair services for businesses, commercial properties, and institutional clients. Bulk services, maintenance contracts, and priority support.",
+      "keywords": "commercial window repair, business door service, commercial property maintenance, institutional window repair, bulk repair services",
+      "ogImage": "/images/og/en-business.jpg",
+      "ogImageAlt": "Business & Commercial Window & Door Services",
+      "structuredData": {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Commercial Window & Door Services",
+        "description": "Professional repair services for commercial and business properties",
+        "provider": {
+          "@type": "Organization",
+          "name": "Langu Remontas"
+        }
+      }
+    },
+    "lt": {
+      "title": "Verslo ir komercinių objektų langų bei durų paslaugos",
+      "description": "Profesionalios langų ir durų remonto paslaugos verslui, komerciniams objektams ir institucijoms.",
+      "keywords": "komercinių langų remontas, verslo durų servisas, komercinių objektų priežiūra",
+      "ogImage": "/images/og/lt-business.jpg",
+      "ogImageAlt": "Verslo ir komercinių objektų paslaugos"
+    },
+    "pl": {
+      "title": "Usługi dla firm i obiektów komercyjnych",
+      "description": "Profesjonalne usługi naprawy okien i drzwi dla firm, obiektów komercyjnych i klientów instytucjonalnych.",
+      "keywords": "naprawa okien komercyjnych, serwis drzwi biznesowych, konserwacja obiektów komercyjnych",
+      "ogImage": "/images/og/pl-business.jpg",
+      "ogImageAlt": "Usługi dla firm i obiektów komercyjnych"
+    }
+  },
+  "content": {
+    "en": {
+      "components": []
+    },
+    "lt": {
+      "components": []
+    },
+    "pl": {
+      "components": []
+    }
+  }
+}
