@@ -42,6 +42,13 @@
       "keywords": "szablon strony AI, nowoczesny web design, Next.js, React, TypeScript, optymalizacja SEO",
       "ogImage": "/images/og/pl-homepage.jpg",
       "ogImageAlt": "Szablon Strony AI - Nowoczesne rozwiązania internetowe"
+    },
+    "uk": {
+      "title": "Шаблон AI Веб-сайту - Сучасні Інтернет Рішення",
+      "description": "Створюйте чудові веб-сайти з нашим шаблоном на основі AI. Сучасний дизайн, швидка продуктивність та вбудована SEO оптимізація.",
+      "keywords": "шаблон AI веб-сайту, сучасний веб дизайн, Next.js, React, TypeScript, SEO оптимізація",
+      "ogImage": "/images/og/uk-homepage.jpg",
+      "ogImageAlt": "Шаблон AI Веб-сайту - Сучасні інтернет рішення"
     }
   },
   "content": {
@@ -128,6 +135,35 @@
             "title": "Zoptymalizowane SEO",
             "description": "Zbudowane z myślą o najlepszych praktykach SEO",
             "features": ["Meta tagi", "Dane strukturalne", "Zoptymalizowana wydajność"]
+          }
+        ]
+      }
+    },
+    "uk": {
+      "hero": {
+        "title": "Ласкаво просимо на наш веб-сайт",
+        "subtitle": "Створюємо неймовірний досвід з сучасними технологіями",
+        "ctaText": "Почати",
+        "ctaLink": "/kontakty"
+      },
+      "features": {
+        "title": "Наші функції",
+        "subtitle": "Професійні рішення створені з сучасними технологіями",
+        "items": [
+          {
+            "title": "Сучасний дизайн",
+            "description": "Чистий та адаптивний дизайн, який працює на всіх пристроях",
+            "features": ["Адаптивна верстка", "Mobile-first дизайн", "Сумісність з браузерами"]
+          },
+          {
+            "title": "Швидка продуктивність",
+            "description": "Оптимізовано для швидкості та чудового користувацького досвіду",
+            "features": ["Блискавична швидкість", "Оптимізовані ресурси", "CDN доставка"]
+          },
+          {
+            "title": "SEO оптимізовано",
+            "description": "Створено з урахуванням найкращих практик SEO",
+            "features": ["Мета теги", "Структуровані дані", "Оптимізована продуктивність"]
           }
         ]
       }

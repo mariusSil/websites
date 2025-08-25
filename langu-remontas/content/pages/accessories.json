@@ -28,6 +28,19 @@
       "keywords": "akcesoria okienne, modernizacje drzwi, premium klamki, zamki bezpieczeństwa",
       "ogImage": "/images/og/pl-accessories.jpg",
       "ogImageAlt": "Premium akcesoria i modernizacje okien i drzwi"
+    },
+    "uk": {
+      "title": "Преміум аксесуари та модернізація вікон та дверей",
+      "description": "Покращте свої вікна та двері з преміум аксесуарами, модернізацією безпеки та сучасними функціями. Якісні ручки, замки, системи вентиляції та багато іншого.",
+      "keywords": "аксесуари для вікон, модернізація дверей, преміум ручки, замки безпеки, системи вентиляції, москітні сітки",
+      "ogImage": "/images/og/uk-accessories.jpg",
+      "ogImageAlt": "Преміум аксесуари та модернізація вікон та дверей",
+      "structuredData": {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": "Аксесуари для вікон та дверей",
+        "description": "Преміум аксесуари та модернізація для вікон та дверей"
+      }
     }
   },
   "content": {
@@ -38,6 +51,9 @@
       "components": []
     },
     "pl": {
+      "components": []
+    },
+    "uk": {
       "components": []
     }
   }

@@ -32,6 +32,23 @@
       "keywords": "naprawa okien komercyjnych, serwis drzwi biznesowych, konserwacja obiektów komercyjnych",
       "ogImage": "/images/og/pl-business.jpg",
       "ogImageAlt": "Usługi dla firm i obiektów komercyjnych"
+    },
+    "uk": {
+      "title": "Бізнес та комерційні послуги вікон та дверей",
+      "description": "Професійні послуги ремонту вікон та дверей для бізнесу, комерційних об'єктів та інституційних клієнтів. Оптові послуги, контракти на обслуговування та пріоритетна підтримка.",
+      "keywords": "ремонт комерційних вікон, сервіс бізнес дверей, обслуговування комерційної нерухомості, ремонт вікон інституцій, оптові послуги ремонту",
+      "ogImage": "/images/og/uk-business.jpg",
+      "ogImageAlt": "Бізнес та комерційні послуги вікон та дверей",
+      "structuredData": {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Комерційні послуги вікон та дверей",
+        "description": "Професійні послуги ремонту для комерційних та бізнес об'єктів",
+        "provider": {
+          "@type": "Organization",
+          "name": "Langu Remontas"
+        }
+      }
     }
   },
   "content": {
@@ -42,6 +59,9 @@
       "components": []
     },
     "pl": {
+      "components": []
+    },
+    "uk": {
       "components": []
     }
   }

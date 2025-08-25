@@ -28,6 +28,19 @@
       "keywords": "aktualności naprawy okien, aktualizacje serwisu drzwi, porady konserwacyjne",
       "ogImage": "/images/og/pl-news.jpg",
       "ogImageAlt": "Najnowsze aktualności - Serwis okien i drzwi"
+    },
+    "uk": {
+      "title": "Останні новини та оновлення - Послуги ремонту вікон та дверей",
+      "description": "Слідкуйте за останніми новинами, порадами та ідеями щодо послуг ремонту вікон та дверей, порадами з обслуговування та оновленнями галузі.",
+      "keywords": "новини ремонту вікон, оновлення ремонту дверей, поради з обслуговування, ідеї ремонту, новини покращення дому",
+      "ogImage": "/images/og/uk-news.jpg",
+      "ogImageAlt": "Останні новини та оновлення - Послуги ремонту вікон та дверей",
+      "structuredData": {
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        "name": "Новини ремонту вікон та дверей",
+        "description": "Останні новини та оновлення про послуги ремонту вікон та дверей"
+      }
     }
   },
   "content": {
@@ -38,6 +51,9 @@
       "components": []
     },
     "pl": {
+      "components": []
+    },
+    "uk": {
       "components": []
     }
   }

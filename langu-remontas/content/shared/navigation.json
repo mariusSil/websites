@@ -37,5 +37,18 @@
       "href": "/kontakt",
       "type": "primary"
     }
+  },
+  "uk": {
+    "main": [
+      { "label": "Головна", "href": "/", "key": "home" },
+      { "label": "Про нас", "href": "/pro-nas", "key": "about" },
+      { "label": "Послуги", "href": "/posluhy", "key": "services" },
+      { "label": "Контакти", "href": "/kontakty", "key": "contact" }
+    ],
+    "cta": {
+      "text": "Почати",
+      "href": "/kontakty",
+      "type": "primary"
+    }
   }
 }

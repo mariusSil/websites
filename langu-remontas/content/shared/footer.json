@@ -28,5 +28,15 @@
       { "label": "Polityka prywatności", "href": "/prywatnosc", "key": "privacy" },
       { "label": "Warunki korzystania", "href": "/warunki", "key": "terms" }
     ]
+  },
+  "uk": {
+    "copyright": "© {year} Шаблон AI Веб-сайту. Усі права захищені.",
+    "privacyPolicy": "Політика конфіденційності",
+    "termsOfService": "Умови використання",
+    "followUs": "Слідкуйте за нами",
+    "links": [
+      { "label": "Політика конфіденційності", "href": "/konfidenijnist", "key": "privacy" },
+      { "label": "Умови використання", "href": "/umovy", "key": "terms" }
+    ]
   }
 }

@@ -5,7 +5,8 @@
   "slugs": {
     "en": "window-repair",
     "lt": "langu-remontas", 
-    "pl": "naprawa-okien"
+    "pl": "naprawa-okien",
+    "uk": "remont-vikon"
   },
   "seo": {
     "en": {
@@ -28,6 +29,13 @@
       "keywords": "naprawa okien, naprawianie okien, uszkodzone okna, serwis okien",
       "ogImage": "/images/og/pl-window-repair.jpg",
       "ogImageAlt": "Profesjonalna naprawa okien"
+    },
+    "uk": {
+      "title": "Професійні послуги ремонту вікон | Експертний ремонт",
+      "description": "Експертні послуги ремонту вікон для всіх типів вікон. Швидка діагностика, якісний ремонт та гарантія задоволення.",
+      "keywords": "ремонт вікон, виправлення вікон, зламані вікна, обслуговування вікон, сервіс вікон",
+      "ogImage": "/images/og/uk-window-repair.jpg",
+      "ogImageAlt": "Професійні послуги ремонту вікон"
     }
   },
   "content": {
@@ -38,6 +46,9 @@
       "components": []
     },
     "pl": {
+      "components": []
+    },
+    "uk": {
       "components": []
     }
   }

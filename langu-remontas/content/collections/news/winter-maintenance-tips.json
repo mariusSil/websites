@@ -25,6 +25,13 @@
       "keywords": "zimowa konserwacja okien, okna w zimne dni, przygotowanie okien na zimę",
       "ogImage": "/images/og/pl-winter-tips.jpg",
       "ogImageAlt": "Zimowa konserwacja okien"
+    },
+    "uk": {
+      "title": "Основні поради з обслуговування вікон взимку | Підготуйтеся до холодної погоди",
+      "description": "Експертні поради з зимового обслуговування вікон. Підтримуйте вікна в ідеальному стані протягом холодних місяців з професійними порадами.",
+      "keywords": "зимове обслуговування вікон, вікна в холодну погоду, підготовка вікон до зими, сезонне обслуговування",
+      "ogImage": "/images/og/uk-winter-tips.jpg",
+      "ogImageAlt": "Основні поради з обслуговування вікон взимку"
     }
   },
   "content": {
@@ -35,6 +42,9 @@
       "components": []
     },
     "pl": {
+      "components": []
+    },
+    "uk": {
       "components": []
     }
   }

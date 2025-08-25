@@ -82,5 +82,33 @@
       "closeMenu": "Zamknij menu nawigacji",
       "toggleTheme": "Przełącz motyw"
     }
+  },
+  "uk": {
+    "site": {
+      "name": "Шаблон AI Веб-сайту",
+      "shortName": "AI Шаблон",
+      "description": "Сучасний шаблон веб-сайту створений з Next.js, React та функціями на основі AI для швидкої, SEO-оптимізованої веб-розробки.",
+      "keywords": "шаблон веб-сайту, Next.js, React, TypeScript, AI, сучасна веб-розробка, SEO оптимізація"
+    },
+    "buttons": {
+      "learnMore": "Дізнатися більше",
+      "getStarted": "Почати",
+      "readMore": "Читати далі",
+      "viewAll": "Переглянути все",
+      "backToTop": "Повернутися до верху"
+    },
+    "forms": {
+      "required": "Обов'язкове поле",
+      "invalidEmail": "Введіть дійсну електронну адресу",
+      "loading": "Завантаження...",
+      "submit": "Надіслати",
+      "cancel": "Скасувати"
+    },
+    "accessibility": {
+      "skipToContent": "Перейти до основного вмісту",
+      "openMenu": "Відкрити меню навігації",
+      "closeMenu": "Закрити меню навігації",
+      "toggleTheme": "Перемкнути тему"
+    }
   }
 }
