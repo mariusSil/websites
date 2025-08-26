@@ -1,8 +1,7 @@
 import type { Metadata } from 'next';
 import { isValidLocale, defaultLocale, type Locale } from '@/lib/i18n';
 import { loadPageContent, getPageSEO, loadSharedContent, getLocalizedSharedContent, generateFallbackSEO } from '@/content/lib/content-resolver';
-import { Header } from '@/components/Header';
-import { Footer } from '@/components/Footer';
+import { ClientLayout } from '@/components/ClientLayout';
 
 interface RootLayoutProps {
   children: React.ReactNode;
@@ -13,6 +12,7 @@ interface RootLayoutProps {
 
 // Static metadata to avoid hydration issues
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'),
   icons: {
     icon: [
       { url: '/favicon.ico', sizes: '32x32' },
@@ -22,6 +22,7 @@ export const metadata: Metadata = {
   },
   manifest: '/manifest.webmanifest',
 };
+
 
 export default async function RootLayout({
   children,
@@ -38,38 +39,23 @@ export default async function RootLayout({
   const navigationContent = await loadSharedContent('navigation');
   const commonContent = await loadSharedContent('common');
   const footerContent = await loadSharedContent('footer');
+  const requestTechnicianModalContent = await loadSharedContent('components/requestTechnicianModal');
   
   const localizedNavigation = getLocalizedSharedContent(navigationContent, validLocale);
   const localizedCommon = getLocalizedSharedContent(commonContent, validLocale);
   const localizedFooter = getLocalizedSharedContent(footerContent, validLocale);
+  const localizedModalContent = getLocalizedSharedContent(requestTechnicianModalContent, validLocale);
 
   return (
-    <>
-      {structuredData && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: structuredData }}
-        />
-      )}
-      <div className="min-h-screen bg-white flex flex-col">
-        <Header 
-          locale={validLocale}
-          translations={{
-            navigation: localizedNavigation || {},
-            common: localizedCommon || {}
-          }}
-        />
-        <main className="flex-1">
-          {children}
-        </main>
-        <Footer 
-          locale={validLocale}
-          translations={{
-            footer: localizedFooter || {},
-            navigation: localizedNavigation || {}
-          }}
-        />
-      </div>
-    </>
+    <ClientLayout
+      validLocale={validLocale}
+      structuredData={structuredData}
+      localizedNavigation={localizedNavigation}
+      localizedCommon={localizedCommon}
+      localizedFooter={localizedFooter}
+      localizedModalContent={localizedModalContent}
+    >
+      {children}
+    </ClientLayout>
   );
 }

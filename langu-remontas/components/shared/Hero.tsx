@@ -1,0 +1,168 @@
+'use client';
+
+import Icon from '@/components/ui/Icon';
+import { RequestTechnicianModal } from './RequestTechnicianModal';
+import Link from 'next/link';
+import { CTAButtons } from './CTAButtons';
+import { Locale } from '@/lib/i18n';
+
+// Icon mapping function to handle string icon names from content
+const getIconByName = (iconName: string) => {
+  const iconMap: { [key: string]: string } = {
+    'Wrench': 'Wrench',
+    'Clock': 'Clock',
+    'ShieldCheck': 'Shield',
+    'Phone': 'Phone',
+    'Info': 'Info',
+    'Tools': 'Wrench',
+    'Shield': 'Shield',
+    'MapMarker': 'MapPin',
+    'Calendar': 'Calendar',
+    'Comments': 'MessageSquare'
+  };
+  
+  return iconMap[iconName] || 'Wrench'; // fallback to wrench icon
+};
+
+interface HeroProps {
+  locale: Locale;
+  translations: {
+    badge: string;
+    subtitle: string;
+    features: Array<{
+      icon: string;
+      title: string;
+      subtitle: string;
+    }>;
+    rating: {
+      stars: number;
+      reviews: string;
+    };
+    image: {
+      src: string;
+      alt: string;
+    };
+    cta: Array<{
+      text: string;
+      link: string;
+      variant: string;
+      icon: string;
+    }>;
+    // Add modal translations for CTAButtons
+    triggerButton?: string;
+    title?: string;
+    nameLabel?: string;
+    namePlaceholder?: string;
+    phoneLabel?: string;
+    phonePlaceholder?: string;
+    cityLabel?: string;
+    cityPlaceholder?: string;
+    emailLabel?: string;
+    emailPlaceholder?: string;
+    serviceLabel?: string;
+    servicePlaceholder?: string;
+    messageLabel?: string;
+    messagePlaceholder?: string;
+    submitButton?: string;
+    successMessage?: string;
+  };
+  backgroundImage?: string;
+  className?: string;
+}
+
+export function Hero({ 
+  locale,
+  translations,
+  backgroundImage = 'https://storage.googleapis.com/uxpilot-auth.appspot.com/d13f0792a2-b2486b2cccf0c1039aa4.png',
+  className = ''
+}: HeroProps) {
+
+  // Add null checks to prevent undefined access errors
+  if (!translations) {
+    console.error('Hero: translations is required but was undefined')
+    return null
+  }
+
+  // Trust indicators with predefined content matching target design
+  const trustIndicators = [
+    { icon: 'X', title: 'FREE Diagnostics', subtitle: 'No hidden costs' },
+    { icon: 'Clock', title: 'Same-Day Service', subtitle: 'Quick response' },
+    { icon: 'Shield', title: 'Work Guarantee', subtitle: 'Quality assured' }
+  ];
+
+  return (
+    <section 
+      className={`relative min-h-[600px] flex items-center text-white py-12 md:py-12 lg:py-16 ${className}`}
+      style={{
+        backgroundImage: `linear-gradient(135deg, rgba(17, 24, 39, 0.9) 0%, rgba(17, 24, 39, 0.6) 100%), url(${backgroundImage})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
+      }}
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div className="max-w-2xl">
+            {/* Badge */}
+            {translations.badge && (
+            <div className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium mb-6 border border-white/20">
+              <Icon name="MapPin" className="w-4 h-4 text-primary" />
+              <span>{translations.badge}</span>
+              </div>
+            )}
+          
+          {/* Main Heading */}
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight lg:leading-[1.1] text-white">
+              {translations.title}
+            </h1>
+                    {/* Subtitle */}
+          <p className="text-sm sm:text-base md:text-lg mb-6 text-gray-300 leading-relaxed">
+              {translations.subtitle}
+            </p>
+          
+          {/* Trust Indicators */}
+          <div className="flex flex-wrap gap-6 mb-6">
+            {trustIndicators.map((indicator, index) => (
+              <div key={index} className="flex items-center space-x-3">
+                <div className="flex-shrink-0 w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center">
+                  <Icon name={indicator.icon as any} className="w-6 h-6 text-primary" />
+                </div>
+                <div>
+                  <p className="font-semibold text-xs sm:text-sm text-white">{indicator.title}</p>
+                  <p className="text-xs text-white">{indicator.subtitle}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* CTA Buttons */}
+          {translations.cta && (
+            <div className="mb-8">
+              <CTAButtons 
+                locale={locale}
+                technicianProps={{ variant: "primary", size: "xl" }}
+                consultationProps={{ variant: "blue", size: "xl" }}
+              />
+            </div>
+          )}
+
+          {/* Rating */}
+          {translations.rating && (
+            <div className="flex items-center space-x-4">
+                <div className="flex items-center text-yellow-400">
+                  {[...Array(Math.floor(translations.rating.stars))].map((_, index) => (
+                    <Icon key={index} name="Star" className="w-5 h-5 fill-current" />
+                  ))}
+                  {translations.rating.stars % 1 !== 0 && (
+                    <Icon name="Star" className="w-5 h-5 opacity-50 fill-current" />
+                  )}
+                <span className="ml-2 text-white font-bold text-sm sm:text-base">{translations.rating.stars}/5 rating</span>
+              </div>
+              <span className="text-gray-400">•</span>
+              <p className="text-gray-300 text-sm sm:text-base" dangerouslySetInnerHTML={{ __html: translations.rating.reviews.replace(/(\d+)/, '<strong>$1</strong>') }} />
+            </div>
+          )}
+        </div>
+      </div>
+    </section>
+  )
+}

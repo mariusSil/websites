@@ -69,6 +69,17 @@
       },
       "priority": 0.7,
       "changefreq": "monthly"
+    },
+    {
+      "pageId": "privacy-policy",
+      "urls": {
+        "en": "privacy-policy",
+        "lt": "privatumo-politika",
+        "pl": "polityka-prywatnosci",
+        "uk": "polityka-konfidentsiynosti"
+      },
+      "priority": 0.3,
+      "changefreq": "yearly"
     }
   ],
   "collections": {
@@ -104,5 +115,5 @@
     }
   },
   "defaultLocale": "en",
-  "supportedLocales": ["en", "lt", "pl"]
+  "supportedLocales": ["en", "lt", "pl", "uk"]
 }

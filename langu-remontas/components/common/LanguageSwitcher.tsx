@@ -12,6 +12,8 @@ interface LanguageSwitcherProps {
 const localeNames: Record<Locale, { name: string; flag: string }> = {
   en: { name: 'English', flag: '🇺🇸' },
   lt: { name: 'Lietuvių', flag: '🇱🇹' },
+  pl: { name: 'Polski', flag: '🇵🇱' },
+  uk: { name: 'Українська', flag: '🇺🇦' },
 };
 
 export function LanguageSwitcher({ currentLocale, className = '' }: LanguageSwitcherProps) {
@@ -52,10 +54,14 @@ export function LanguageSwitcher({ currentLocale, className = '' }: LanguageSwit
         
         // Map common localized slugs
         const slugMapping: Record<string, Record<Locale, string>> = {
-          'about': { en: 'about', lt: 'apie-mus' },
-          'apie-mus': { en: 'about', lt: 'apie-mus' },
-          'contact': { en: 'contact', lt: 'kontaktai' },
-          'kontaktai': { en: 'contact', lt: 'kontaktai' },
+          'about': { en: 'about', lt: 'apie-mus', pl: 'o-nas', uk: 'pro-nas' },
+          'apie-mus': { en: 'about', lt: 'apie-mus', pl: 'o-nas', uk: 'pro-nas' },
+          'o-nas': { en: 'about', lt: 'apie-mus', pl: 'o-nas', uk: 'pro-nas' },
+          'pro-nas': { en: 'about', lt: 'apie-mus', pl: 'o-nas', uk: 'pro-nas' },
+          'contact': { en: 'contact', lt: 'kontaktai', pl: 'kontakt', uk: 'kontakty' },
+          'kontaktai': { en: 'contact', lt: 'kontaktai', pl: 'kontakt', uk: 'kontakty' },
+          'kontakt': { en: 'contact', lt: 'kontaktai', pl: 'kontakt', uk: 'kontakty' },
+          'kontakty': { en: 'contact', lt: 'kontaktai', pl: 'kontakt', uk: 'kontakty' },
         };
 
         // Find the page ID from current slug
@@ -88,7 +94,7 @@ export function LanguageSwitcher({ currentLocale, className = '' }: LanguageSwit
         aria-haspopup="true"
       >
         <span className="text-lg">{localeNames[currentLocale].flag}</span>
-        <span className="hidden sm:block">{localeNames[currentLocale].name}</span>
+        <span className="hidden xl:block">{localeNames[currentLocale].name}</span>
         <svg
           className={`w-4 h-4 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
           fill="none"

@@ -72,55 +72,47 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 export default async function HomePage({ params }: PageProps) {
   const locale: Locale = isValidLocale(params.locale) ? params.locale : defaultLocale;
   
-  // Load page content using new content system
+  // Load page and shared content
   const pageContent = await loadPageContent('homepage');
-  
+  const requestTechnicianModalContent = await loadSharedContent('components/requestTechnicianModal');
+
   if (!pageContent) {
     return <div>Page not found</div>;
   }
-
+  
   // Get localized content for the current locale
-  const localizedContent = getLocalizedContent(pageContent, locale);
+  const localizedPageContent = getLocalizedContent(pageContent, locale);
+  const localizedModalContent = getLocalizedSharedContent(requestTechnicianModalContent, locale);
 
-  // Build component props from content
-  const components = pageContent.components.map(component => {
-    const contentData = localizedContent[component.contentKey] || {};
+  // Build component props from content with shared content resolution
+  const components = await Promise.all(pageContent.components.map(async (component) => {
+    let contentData = localizedPageContent[component.contentKey] || {};
     
-    switch (component.type) {
-      case 'Hero':
-        return {
-          type: 'Hero',
-          props: {
-            title: contentData.title || 'Welcome to Our Website',
-            subtitle: contentData.subtitle || 'Building amazing experiences with modern technology',
-            ctaText: contentData.ctaText || 'Get Started',
-            ctaLink: `/${locale}${contentData.ctaLink || '/contact'}`
-          }
-        };
-      case 'ServiceCards':
-        return {
-          type: 'ServiceCards',
-          props: {
-            title: contentData.title || 'Our Features',
-            subtitle: contentData.subtitle || '',
-            services: (contentData.items || []).map((item: any, index: number) => ({
-              id: `service-${index}`,
-              title: item.title || '',
-              description: item.description || '',
-              icon: <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center">
-                <div className="w-6 h-6 bg-primary-500 rounded"></div>
-              </div>,
-              features: item.features || []
-            }))
-          }
-        };
-      default:
-        return {
-          type: component.type,
-          props: contentData
-        };
+    // Handle shared content references
+    if (typeof contentData === 'string' && contentData.startsWith('shared:')) {
+      const sharedContentKey = contentData.replace('shared:', '');
+      const sharedContent = await loadSharedContent(`components/${sharedContentKey}`);
+      contentData = getLocalizedSharedContent(sharedContent, locale);
     }
-  });
+    
+    let props: { [key: string]: any } = { 
+      translations: contentData, 
+      locale: locale 
+    };
+
+    // Add modal translations to components that need them
+    if (component.type === 'Hero' || component.type === 'FreeDiagnostics' || component.type === 'Features' || component.type === 'Testimonials' || component.type === 'WhyChooseUs') {
+      props.translations = {
+        ...contentData,
+        request_technician_modal: localizedModalContent
+      };
+    }
+
+    return {
+      type: component.type,
+      props: props
+    };
+  }));
 
   return (
     <ComponentRenderer components={components} />

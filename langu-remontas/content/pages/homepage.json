@@ -3,182 +3,98 @@
   "template": "homepage",
   "seo": {
     "en": {
-      "title": "AI Website Template - Modern Web Solutions",
-      "description": "Build amazing websites with our AI-powered template. Modern design, fast performance, and SEO optimization built-in.",
-      "keywords": "AI website template, modern web design, Next.js, React, TypeScript, SEO optimization",
+      "title": "Expert Window & Door Repair Services | Free Diagnostics",
+      "description": "Professional window and door repair services with guaranteed quality and fast response times. Serving Poland & Eastern Europe. Free diagnostics and same-day service available.",
+      "keywords": "window repair, door repair, glass replacement, window adjustment, emergency window service, Poland",
       "ogImage": "/images/og/en-homepage.jpg",
-      "ogImageAlt": "AI Website Template - Modern web solutions homepage",
-      "structuredData": {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "AI Website Template",
-        "description": "Modern website template built with Next.js and AI",
-        "url": "https://example.com",
-        "potentialAction": {
-          "@type": "SearchAction",
-          "target": "https://example.com/search?q={search_term_string}",
-          "query-input": "required name=search_term_string"
-        },
-        "publisher": {
-          "@type": "Organization",
-          "name": "AI Website Template Team",
-          "logo": {
-            "@type": "ImageObject",
-            "url": "https://example.com/images/logo.png"
-          }
-        }
-      }
+      "ogImageAlt": "Technician repairing a window."
     },
     "lt": {
-      "title": "AI Svetainės Šablonas - Šiuolaikiniai Interneto Sprendimai",
-      "description": "Kurkite nuostabias svetaines su mūsų AI technologijomis paremtu šablonu. Šiuolaikinis dizainas, greitas veikimas ir SEO optimizavimas.",
-      "keywords": "AI svetainės šablonas, šiuolaikinis web dizainas, Next.js, React, TypeScript, SEO optimizavimas",
-      "ogImage": "/images/og/lt-homepage.jpg",
-      "ogImageAlt": "AI Svetainės Šablonas - Šiuolaikiniai interneto sprendimai"
+      "title": "Ekspertų langų ir durų remonto paslaugos | Nemokama diagnostika",
+      "description": "Profesionalios langų ir durų remonto paslaugos su garantuota kokybe ir greitu atsakymu. Aptarnaujame Lenkiją ir Rytų Europą. Nemokama diagnostika ir paslauga tą pačią dieną.",
+      "keywords": "langų remontas, durų remontas, stiklo keitimas, langų reguliavimas, skubus langų servisas, Lenkija"
     },
     "pl": {
-      "title": "Szablon Strony AI - Nowoczesne Rozwiązania Internetowe",
-      "description": "Twórz niesamowite strony internetowe z naszym szablonem opartym na AI. Nowoczesny design, szybka wydajność i wbudowana optymalizacja SEO.",
-      "keywords": "szablon strony AI, nowoczesny web design, Next.js, React, TypeScript, optymalizacja SEO",
-      "ogImage": "/images/og/pl-homepage.jpg",
-      "ogImageAlt": "Szablon Strony AI - Nowoczesne rozwiązania internetowe"
+      "title": "Eksperckie Usługi Naprawy Okien i Drzwi | Darmowa Diagnostyka",
+      "description": "Profesjonalne usługi naprawy okien i drzwi z gwarancją jakości i szybkim czasem reakcji. Obsługujemy Polskę i Europę Wschodnią. Dostępna darmowa diagnostyka i serwis tego samego dnia.",
+      "keywords": "naprawa okien, naprawa drzwi, wymiana szyb, regulacja okien, pogotowie okienne, Polska"
     },
     "uk": {
-      "title": "Шаблон AI Веб-сайту - Сучасні Інтернет Рішення",
-      "description": "Створюйте чудові веб-сайти з нашим шаблоном на основі AI. Сучасний дизайн, швидка продуктивність та вбудована SEO оптимізація.",
-      "keywords": "шаблон AI веб-сайту, сучасний веб дизайн, Next.js, React, TypeScript, SEO оптимізація",
-      "ogImage": "/images/og/uk-homepage.jpg",
-      "ogImageAlt": "Шаблон AI Веб-сайту - Сучасні інтернет рішення"
+      "title": "Експертні Послуги з Ремонту Вікон та Дверей | Безкоштовна Діагностика",
+      "description": "Професійні послуги з ремонту вікон та дверей з гарантованою якістю та швидким реагуванням. Обслуговуємо Польщу та Східну Європу. Доступна безкоштовна діагностика та сервіс у той же день.",
+      "keywords": "ремонт вікон, ремонт дверей, заміна скла, регулювання вікон, аварійна віконна служба, Польща"
     }
   },
   "content": {
     "en": {
-      "hero": {
-        "title": "Welcome to Our Website",
-        "subtitle": "Building amazing experiences with modern technology",
-        "ctaText": "Get Started",
-        "ctaLink": "/contact"
-      },
-      "features": {
-        "title": "Our Features",
-        "subtitle": "Professional solutions built with modern technology",
-        "items": [
-          {
-            "title": "Modern Design",
-            "description": "Clean and responsive design that works on all devices",
-            "features": ["Responsive Layout", "Mobile-First Design", "Cross-Browser Compatible"]
-          },
-          {
-            "title": "Fast Performance",
-            "description": "Optimized for speed and excellent user experience",
-            "features": ["Lightning Fast", "Optimized Assets", "CDN Delivery"]
-          },
-          {
-            "title": "SEO Optimized",
-            "description": "Built with SEO best practices in mind",
-            "features": ["Meta Tags", "Structured Data", "Performance Optimized"]
-          }
-        ]
-      }
+      "hero": "shared:hero",
+      "freeDiagnostics": "shared:freediagnostics",
+      "serviceCards": "shared:servicecards",
+      "testimonials": "shared:testimonials",
+      "whyChooseUs": "shared:whychooseus",
+      "partners": "shared:partners",
+      "faq": "shared:faq"
     },
     "lt": {
-      "hero": {
-        "title": "Sveiki atvykę į mūsų svetainę",
-        "subtitle": "Kuriame nuostabią patirtį su šiuolaikinėmis technologijomis",
-        "ctaText": "Pradėti",
-        "ctaLink": "/kontaktai"
-      },
-      "features": {
-        "title": "Mūsų funkcijos",
-        "subtitle": "Profesionalūs sprendimai sukurti su šiuolaikinėmis technologijomis",
-        "items": [
-          {
-            "title": "Šiuolaikinis dizainas",
-            "description": "Švarus ir prisitaikantis dizainas, veikiantis visuose įrenginiuose",
-            "features": ["Prisitaikantis išdėstymas", "Mobiliesiems pritaikytas", "Suderinamumas su naršyklėmis"]
-          },
-          {
-            "title": "Greitas veikimas",
-            "description": "Optimizuotas greičiui ir puikiai vartotojo patirčiai",
-            "features": ["Žaibiškai greitas", "Optimizuoti failai", "CDN pristatymas"]
-          },
-          {
-            "title": "SEO optimizuotas",
-            "description": "Sukurtas laikantis SEO gerųjų praktikų",
-            "features": ["Meta žymos", "Struktūrizuoti duomenys", "Optimizuotas našumui"]
-          }
-        ]
-      }
+      "hero": "shared:hero",
+      "freeDiagnostics": "shared:freediagnostics",
+      "serviceCards": "shared:servicecards",
+      "testimonials": "shared:testimonials",
+      "whyChooseUs": "shared:whychooseus",
+      "partners": "shared:partners",
+      "faq": "shared:faq"
     },
     "pl": {
-      "hero": {
-        "title": "Witamy na naszej stronie",
-        "subtitle": "Tworzymy niesamowite doświadczenia z nowoczesną technologią",
-        "ctaText": "Rozpocznij",
-        "ctaLink": "/kontakt"
-      },
-      "features": {
-        "title": "Nasze funkcje",
-        "subtitle": "Profesjonalne rozwiązania zbudowane z nowoczesną technologią",
-        "items": [
-          {
-            "title": "Nowoczesny design",
-            "description": "Czysty i responsywny design działający na wszystkich urządzeniach",
-            "features": ["Responsywny układ", "Mobile-first design", "Kompatybilność z przeglądarkami"]
-          },
-          {
-            "title": "Szybka wydajność",
-            "description": "Zoptymalizowane pod kątem szybkości i doskonałego doświadczenia użytkownika",
-            "features": ["Błyskawiczna szybkość", "Zoptymalizowane zasoby", "Dostarczanie CDN"]
-          },
-          {
-            "title": "Zoptymalizowane SEO",
-            "description": "Zbudowane z myślą o najlepszych praktykach SEO",
-            "features": ["Meta tagi", "Dane strukturalne", "Zoptymalizowana wydajność"]
-          }
-        ]
-      }
+      "hero": "shared:hero",
+      "freeDiagnostics": "shared:freediagnostics",
+      "serviceCards": "shared:servicecards",
+      "testimonials": "shared:testimonials",
+      "whyChooseUs": "shared:whychooseus",
+      "partners": "shared:partners",
+      "faq": "shared:faq"
     },
     "uk": {
-      "hero": {
-        "title": "Ласкаво просимо на наш веб-сайт",
-        "subtitle": "Створюємо неймовірний досвід з сучасними технологіями",
-        "ctaText": "Почати",
-        "ctaLink": "/kontakty"
-      },
-      "features": {
-        "title": "Наші функції",
-        "subtitle": "Професійні рішення створені з сучасними технологіями",
-        "items": [
-          {
-            "title": "Сучасний дизайн",
-            "description": "Чистий та адаптивний дизайн, який працює на всіх пристроях",
-            "features": ["Адаптивна верстка", "Mobile-first дизайн", "Сумісність з браузерами"]
-          },
-          {
-            "title": "Швидка продуктивність",
-            "description": "Оптимізовано для швидкості та чудового користувацького досвіду",
-            "features": ["Блискавична швидкість", "Оптимізовані ресурси", "CDN доставка"]
-          },
-          {
-            "title": "SEO оптимізовано",
-            "description": "Створено з урахуванням найкращих практик SEO",
-            "features": ["Мета теги", "Структуровані дані", "Оптимізована продуктивність"]
-          }
-        ]
-      }
+      "hero": "shared:hero",
+      "freeDiagnostics": "shared:freediagnostics",
+      "serviceCards": "shared:servicecards",
+      "testimonials": "shared:testimonials",
+      "whyChooseUs": "shared:whychooseus",
+      "partners": "shared:partners",
+      "faq": "shared:faq"
     }
   },
   "components": [
     {
       "type": "Hero",
-      "contentKey": "hero",
-      "required": true
+      "contentKey": "hero"
+    },
+    {
+      "type": "FreeDiagnostics",
+      "contentKey": "freeDiagnostics"
     },
     {
       "type": "ServiceCards",
-      "contentKey": "features",
-      "required": true
+      "contentKey": "serviceCards"
+    },
+    {
+      "type": "AccessoriesGrid",
+      "contentKey": "accessoriesGrid"
+    },
+    {
+      "type": "Testimonials",
+      "contentKey": "testimonials"
+    },
+    {
+      "type": "WhyChooseUs",
+      "contentKey": "whyChooseUs"
+    },
+    {
+      "type": "Partners",
+      "contentKey": "partners"
+    },
+    {
+      "type": "Faq",
+      "contentKey": "faq"
     }
   ]
 }

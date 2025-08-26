@@ -1,54 +1,98 @@
 {
   "en": {
     "main": [
-      { "label": "Home", "href": "/", "key": "home" },
-      { "label": "About", "href": "/about", "key": "about" },
-      { "label": "Services", "href": "/services", "key": "services" },
-      { "label": "Contact", "href": "/contact", "key": "contact" }
+      { "key": "home", "label": "HOME", "href": "/" },
+      { "key": "about", "label": "ABOUT US", "href": "/about" },
+      { "key": "services", "label": "SERVICES", "href": "/services" },
+      { "key": "accessories", "label": "ACCESSORIES", "href": "/accessories" },
+      { "key": "blog", "label": "BLOG", "href": "/blog" },
+      { "key": "business", "label": "BUSINESS CLIENTS", "href": "/business-clients" },
+      { "key": "contact", "label": "CONTACTS", "href": "/contact" }
     ],
-    "cta": {
-      "text": "Get Started",
-      "href": "/contact",
-      "type": "primary"
-    }
+    "about": "About Us",
+    "about_slug": "about",
+    "accessories": "Accessories",
+    "accessories_slug": "accessories",
+    "blog": "Blog",
+    "blog_slug": "blog",
+    "business": "Business Clients",
+    "business_slug": "business-clients",
+    "contact": "Contacts",
+    "contact_slug": "contact",
+    "home": "Home",
+    "services": "Services",
+    "services_slug": "services"
   },
   "lt": {
     "main": [
-      { "label": "Pagrindinis", "href": "/", "key": "home" },
-      { "label": "Apie mus", "href": "/apie-mus", "key": "about" },
-      { "label": "Paslaugos", "href": "/paslaugos", "key": "services" },
-      { "label": "Kontaktai", "href": "/kontaktai", "key": "contact" }
+      { "key": "home", "label": "PAGRINDINIS", "href": "/" },
+      { "key": "about", "label": "APIE MUS", "href": "/apie-mus" },
+      { "key": "services", "label": "PASLAUGOS", "href": "/paslaugos" },
+      { "key": "accessories", "label": "AKSESUARAI", "href": "/aksesuarai" },
+      { "key": "blog", "label": "BLOGAS", "href": "/blogas" },
+      { "key": "business", "label": "VERSLO KLIENTAMS", "href": "/verslo-klientams" },
+      { "key": "contact", "label": "KONTAKTAI", "href": "/kontaktai" }
     ],
-    "cta": {
-      "text": "Pradėti",
-      "href": "/kontaktai",
-      "type": "primary"
-    }
+    "about": "Apie mus",
+    "about_slug": "apie-mus",
+    "accessories": "Aksesuarai",
+    "accessories_slug": "aksesuarai",
+    "blog": "Blogas",
+    "blog_slug": "blogas",
+    "business": "Verslo klientams",
+    "business_slug": "verslo-klientams",
+    "contact": "Kontaktai",
+    "contact_slug": "kontaktai",
+    "home": "Pagrindinis",
+    "services": "Paslaugos",
+    "services_slug": "paslaugos"
   },
   "pl": {
     "main": [
-      { "label": "Strona główna", "href": "/", "key": "home" },
-      { "label": "O nas", "href": "/o-nas", "key": "about" },
-      { "label": "Usługi", "href": "/uslugi", "key": "services" },
-      { "label": "Kontakt", "href": "/kontakt", "key": "contact" }
+      { "key": "home", "label": "STRONA GŁÓWNA", "href": "/" },
+      { "key": "about", "label": "O NAS", "href": "/o-nas" },
+      { "key": "services", "label": "USŁUGI", "href": "/uslugi" },
+      { "key": "accessories", "label": "AKCESORIA", "href": "/akcesoria" },
+      { "key": "blog", "label": "BLOG", "href": "/blog" },
+      { "key": "business", "label": "KLIENCI BIZNESOWI", "href": "/klienci-biznesowi" },
+      { "key": "contact", "label": "KONTAKT", "href": "/kontakt" }
     ],
-    "cta": {
-      "text": "Rozpocznij",
-      "href": "/kontakt",
-      "type": "primary"
-    }
+    "about": "O nas",
+    "about_slug": "o-nas",
+    "accessories": "Akcesoria",
+    "accessories_slug": "akcesoria",
+    "blog": "Blog",
+    "blog_slug": "blog",
+    "business": "Klienci biznesowi",
+    "business_slug": "klienci-biznesowi",
+    "contact": "Kontakt",
+    "contact_slug": "kontakt",
+    "home": "Strona główna",
+    "services": "Usługi",
+    "services_slug": "uslugi"
   },
   "uk": {
     "main": [
-      { "label": "Головна", "href": "/", "key": "home" },
-      { "label": "Про нас", "href": "/pro-nas", "key": "about" },
-      { "label": "Послуги", "href": "/posluhy", "key": "services" },
-      { "label": "Контакти", "href": "/kontakty", "key": "contact" }
+      { "key": "home", "label": "ГОЛОВНА", "href": "/" },
+      { "key": "about", "label": "ПРО НАС", "href": "/pro-nas" },
+      { "key": "services", "label": "ПОСЛУГИ", "href": "/posluhy" },
+      { "key": "accessories", "label": "АКСЕСУАРИ", "href": "/aksesuary" },
+      { "key": "blog", "label": "БЛОГ", "href": "/bloh" },
+      { "key": "business", "label": "БІЗНЕС-КЛІЄНТАМ", "href": "/biznes-kliyentam" },
+      { "key": "contact", "label": "КОНТАКТИ", "href": "/kontakty" }
     ],
-    "cta": {
-      "text": "Почати",
-      "href": "/kontakty",
-      "type": "primary"
-    }
+    "about": "Про нас",
+    "about_slug": "pro-nas",
+    "accessories": "Аксесуари",
+    "accessories_slug": "aksesuary",
+    "blog": "Блог",
+    "blog_slug": "bloh",
+    "business": "Бізнес-клієнтам",
+    "business_slug": "biznes-kliyentam",
+    "contact": "Контакти",
+    "contact_slug": "kontakty",
+    "home": "Головна",
+    "services": "Послуги",
+    "services_slug": "posluhy"
   }
 }

@@ -1,0 +1,42 @@
+{
+  "en": {
+    "title": "Frequently Asked Questions",
+    "items": [
+      { "question": "Is the diagnostics and technician's visit really free?", "answer": "Yes, the initial diagnostics and our technician's visit to assess the work are completely free of charge." },
+      { "question": "How long will the work take?", "answer": "Most standard repairs are completed within 1-2 hours. For more complex issues, we will provide a time estimate after the initial diagnosis." },
+      { "question": "Do you provide a warranty for the work?", "answer": "Absolutely. We provide a warranty for all our repair work and installed parts. The duration of the warranty depends on the type of service." },
+      { "question": "Do you fix all window problems?", "answer": "We handle a wide range of issues, from simple adjustments to complex mechanism replacements and glass package changes. Contact us to discuss your specific problem." },
+      { "question": "How can I order your services?", "answer": "You can order our services by calling us at the number provided on the website, or by filling out the 'REQUEST A TECHNICIAN' form." }
+    ]
+  },
+  "lt": {
+    "title": "Dažniausiai užduodami klausimai",
+    "items": [
+      { "question": "Ar tikrai yra nemokama diagnostika ir meistro atvykimas?", "answer": "Taip, pradinė diagnostika ir mūsų meistro atvykimas įvertinti darbus yra visiškai nemokami." },
+      { "question": "Kiek laiko užtruks darbai?", "answer": "Dauguma standartinių remontų atliekami per 1-2 valandas. Sudėtingesniems atvejams, laiko sąmatą pateiksime po pradinės diagnostikos." },
+      { "question": "Ar suteikiate darbų garantiją?", "answer": "Be abejo. Visiems savo remonto darbams ir sumontuotoms dalims suteikiame garantiją. Garantijos trukmė priklauso nuo paslaugos tipo." },
+      { "question": "Ar tvarkote visas langų problemas?", "answer": "Mes sprendžiame platų problemų spektrą, nuo paprastų reguliavimų iki sudėtingų mechanizmų keitimo ir stiklo paketų keitimo. Susisiekite su mumis ir aptarsime jūsų konkrečią problemą." },
+      { "question": "Kaip galima užsakyti paslaugas?", "answer": "Paslaugas galite užsakyti paskambinę svetainėje nurodytu telefonu, arba užpildę formą 'IŠKVIESTI MEISTRĄ'." }
+    ]
+  },
+  "pl": {
+    "title": "Najczęściej zadawane pytania",
+    "items": [
+      { "question": "Czy diagnostyka i wizyta technika są naprawdę bezpłatne?", "answer": "Tak, wstępna diagnostyka i wizyta naszego technika w celu oceny prac są całkowicie bezpłatne." },
+      { "question": "Jak długo potrwają prace?", "answer": "Większość standardowych napraw jest realizowana w ciągu 1-2 godzin. W przypadku bardziej skomplikowanych problemów, kosztorys czasowy przedstawimy po wstępnej diagnozie." },
+      { "question": "Czy udzielacie gwarancji na wykonane prace?", "answer": "Oczywiście. Udzielamy gwarancji na wszystkie nasze prace naprawcze i zamontowane części. Czas trwania gwarancji zależy od rodzaju usługi." },
+      { "question": "Czy naprawiacie wszystkie problemy z oknami?", "answer": "Zajmujemy się szerokim zakresem problemów, od prostych regulacji po skomplikowane wymiany mechanizmów i pakietów szybowych. Skontaktuj się z nami, aby omówić Twój konkretny problem." },
+      { "question": "Jak mogę zamówić usługi?", "answer": "Usługi można zamówić dzwoniąc pod numer podany na stronie internetowej lub wypełniając formularz 'ZAMÓW TECHNIKA'." }
+    ]
+  },
+  "uk": {
+    "title": "Часті запитання",
+    "items": [
+      { "question": "Чи справді діагностика та візит техніка безкоштовні?", "answer": "Так, початкова діагностика та візит нашого техніка для оцінки робіт є абсолютно безкоштовними." },
+      { "question": "Скільки часу займуть роботи?", "answer": "Більшість стандартних ремонтів виконується протягом 1-2 годин. У разі складніших проблем, ми надамо кошторис часу після початкової діагностики." },
+      { "question": "Чи надаєте ви гарантію на виконані роботи?", "answer": "Звісно. Ми надаємо гарантію на всі наші ремонтні роботи та встановлені деталі. Тривалість гарантії залежить від виду послуги." },
+      { "question": "Чи вирішуєте ви всі проблеми з вікнами?", "answer": "Ми займаємося широким спектром проблем, від простого регулювання до складної заміни механізмів та склопакетів. Зв'яжіться з нами, щоб обговорити вашу конкретну проблему." },
+      { "question": "Як можна замовити послуги?", "answer": "Замовити послуги можна зателефонувавши за номером, вказаним на сайті, або заповнивши форму 'ЗАМОВИТИ ТЕХНІКА'." }
+    ]
+  }
+}

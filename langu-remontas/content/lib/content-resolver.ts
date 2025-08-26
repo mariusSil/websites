@@ -70,7 +70,7 @@ export async function loadRoutesConfig(): Promise<RoutesConfig> {
   }
 
   try {
-    const config = await import('@/content/routes.json');
+    const config = await import('@/content/routes.json') as unknown as { default: RoutesConfig };
     const routesConfig = config.default as RoutesConfig;
     routesConfigCache.set(cacheKey, routesConfig);
     return routesConfig;
@@ -114,6 +114,12 @@ export async function loadSharedContent(contentType: string): Promise<any> {
     console.warn(`Shared content not found: ${contentType}`);
     return {};
   }
+}
+
+// Load form translations
+export async function loadFormTranslations(locale: Locale): Promise<any> {
+  const forms = await loadSharedContent('forms');
+  return getLocalizedSharedContent(forms, locale);
 }
 
 // Load collection item content

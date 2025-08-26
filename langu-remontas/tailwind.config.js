@@ -1,53 +1,77 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    './pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
+    './components/**/*.{js,ts,jsx,tsx,mdx}',
+    './content/**/*.{js,ts,jsx,tsx,mdx,json}',
+  ],
+  safelist: [
+    'border-red-600',
+    'text-red-600',
+    'hover:bg-red-600',
+    'hover:text-white',
+    'border-2',
   ],
   theme: {
     extend: {
       colors: {
-        // Primary brand colors from design analysis
+        border: '#e2e8f0',
+        input: '#cbd5e1',
+        ring: '#DC2626', // Updated to match new primary
+        background: '#ffffff',
+        foreground: '#020817',
         primary: {
-          50: '#e8f5e8',
-          100: '#c8e6c9',
-          200: '#a5d6a7',
-          300: '#81c784',
-          400: '#66bb6a',
-          500: '#4caf50', // Primary Green
-          600: '#43a047',
-          700: '#388e3c',
-          800: '#2e7d32',
-          900: '#1b5e20',
+          DEFAULT: '#DC2626',
+          foreground: '#ffffff',
+          50: '#fef2f2',
+          100: '#fee2e2',
+          200: '#fecaca',
+          300: '#fca5a5',
+          400: '#f87171',
+          500: '#ef4444',
+          600: '#dc2626',
+          700: '#b91c1c',
+          800: '#991b1b',
+          900: '#7f1d1d',
         },
         secondary: {
-          50: '#e3f2fd',
-          100: '#bbdefb',
-          200: '#90caf9',
-          300: '#64b5f6',
-          400: '#42a5f5',
-          500: '#2196f3', // Secondary Blue
-          600: '#1e88e5',
-          700: '#1976d2',
-          800: '#1565c0',
-          900: '#0d47a1',
+          DEFAULT: '#1F2937',
+          50: '#f9fafb',
+          100: '#f3f4f6',
+          200: '#e5e7eb',
+          300: '#d1d5db',
+          400: '#9ca3af',
+          500: '#6b7280',
+          600: '#4b5563',
+          700: '#374151',
+          800: '#1f2937',
+          900: '#111827',
         },
         accent: {
-          50: '#e0f7fa',
-          100: '#b2ebf2',
-          200: '#80deea',
-          300: '#4dd0e1',
-          400: '#26c6da',
-          500: '#00bcd4', // Accent Teal
-          600: '#00acc1',
-          700: '#0097a7',
-          800: '#00838f',
-          900: '#006064',
+          DEFAULT: '#F3F4F6',
+          50: '#f9fafb',
+          100: '#f3f4f6',
+          200: '#e5e7eb',
+          300: '#d1d5db',
+          400: '#9ca3af',
+          500: '#6b7280',
+        },
+        success: {
+          DEFAULT: '#059669',
+          foreground: '#ffffff',
+        },
+        info: '#2563EB',         // New: Blue
+        destructive: {
+          DEFAULT: '#ef4444',
+          foreground: '#ffffff',
+        },
+        muted: {
+          DEFAULT: '#f1f5f9',
+          foreground: '#64748b',
         },
         neutral: {
           50: '#fafafa',
-          100: '#f5f5f5', // Neutral Gray
+          100: '#f5f5f5',
           200: '#eeeeee',
           300: '#e0e0e0',
           400: '#bdbdbd',
@@ -67,7 +91,7 @@ module.exports = {
           600: '#3949ab',
           700: '#303f9f',
           800: '#283593',
-          900: '#1a237e', // Dark Navy
+          900: '#1a237e',
         },
       },
       fontFamily: {

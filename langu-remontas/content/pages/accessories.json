@@ -45,16 +45,39 @@
   },
   "content": {
     "en": {
-      "components": []
+      "pageHeader": {
+        "title": "Premium Accessories & Upgrades",
+        "subtitle": "Enhance your windows and doors with quality accessories for improved functionality and style"
+      }
     },
     "lt": {
-      "components": []
+      "pageHeader": {
+        "title": "Aukščiausios kokybės priedai ir atnaujinimai",
+        "subtitle": "Pagerinkite savo langus ir duris kokybiškomis detalėmis funkcionalumui ir stiliui"
+      }
     },
     "pl": {
-      "components": []
+      "pageHeader": {
+        "title": "Akcesoria i modernizacje premium",
+        "subtitle": "Ulepsz swoje okna i drzwi wysokiej jakości akcesoriami dla lepszej funkcjonalności i stylu"
+      }
     },
     "uk": {
-      "components": []
+      "pageHeader": {
+        "title": "Преміум аксесуари та модернізація",
+        "subtitle": "Покращте свої вікна та двері якісними аксесуарами для кращої функціональності та стилю"
+      }
     }
-  }
+  },
+  "components": [
+    {
+      "type": "PageHeader",
+      "contentKey": "pageHeader",
+      "required": true
+    },
+    {
+      "type": "AccessoriesGrid",
+      "required": true
+    }
+  ]
 }

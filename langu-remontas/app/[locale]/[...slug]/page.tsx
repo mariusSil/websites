@@ -100,13 +100,21 @@ export default async function DynamicPage({ params }: PageProps) {
             props: {
               content: typeof contentData === 'string' 
                 ? contentData 
-                : Object.values(contentData).join('\n\n')
+                : contentData
             }
           };
         case 'ContactForm':
           return {
             type: 'ContactForm',
             props: contentData
+          };
+        case 'PrivacyPolicy':
+          return {
+            type: 'PrivacyPolicy',
+            props: {
+              locale,
+              sections: contentData || []
+            }
           };
         default:
           return {
