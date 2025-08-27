@@ -1,6 +1,13 @@
-# AI Website Template
+# Langu-Remontas
 
-A Next.js website template optimized for AI-powered development with JSON-based content management.
+A professional multilingual website for window and door repair services built with Next.js 14, TypeScript, and a comprehensive internationalization system.
+
+## 🌍 Multilingual Support
+
+- **English** (en) - Primary language
+- **Lithuanian** (lt) - Lietuvių kalba  
+- **Polish** (pl) - Polski
+- **Ukrainian** (uk) - Українська
 
 ## 🚀 Quick Start
 
@@ -14,93 +21,219 @@ npm run dev
 # Build for production
 npm run build
 
-# Export static site
-npm run export
+# Start production server
+npm start
 ```
 
 ## 📁 Project Structure
 
 ```
-template/
-├── app/                  # Next.js App Router pages
-├── components/          # Reusable components
-├── content/            # JSON content files
-│   └── site.json      # Main content configuration
-├── public/             # Static assets
-└── package.json       # Dependencies
+langu-remontas/
+├── app/
+│   ├── [locale]/           # Dynamic locale routing
+│   │   ├── [...slug]/      # Dynamic page routing
+│   │   └── not-found.tsx   # 404 page
+│   ├── api/               # API routes
+│   └── globals.css        # Global styles
+├── components/
+│   ├── ui/                # Reusable UI components
+│   ├── common/            # CTA buttons, modals
+│   ├── shared/            # Default page components
+│   ├── pages/             # Page-specific components
+│   └── layouts/           # Layout components
+├── content/
+│   ├── pages/             # Page content JSON files
+│   ├── shared/            # Shared content & components
+│   ├── collections/       # Dynamic content (news, services)
+│   └── routes.json        # URL routing configuration
+├── lib/                   # Utility functions
+├── contexts/              # React contexts
+└── public/               # Static assets
 ```
 
-## 🎨 Customizing Content
+## 🎯 Key Features
 
-Edit `content/site.json` to update your website content:
+### 🏗️ Architecture
+- **Next.js 14** with App Router
+- **TypeScript** for type safety
+- **Tailwind CSS** for styling
+- **Dynamic routing** via `[...slug]` pattern
+- **Component-driven** architecture with central renderer
 
+### 🌐 Internationalization
+- **4 locales** with proper URL routing
+- **Content resolver** system for translations
+- **SEO optimization** per locale
+- **Fallback system** for missing translations
+
+### 🎨 Design System
+- **Professional color palette** (Red primary, Green success)
+- **Typography hierarchy** (Hero, H1-H3, Body, CTA)
+- **Consistent spacing** system
+- **Responsive design** patterns
+- **Accessibility** compliance (WCAG 2.1 AA)
+
+### 📱 Components
+- **Default components system** - 9 components auto-included on every page
+- **Override system** for customization
+- **CTA button system** with standardized modals
+- **UI component library** with Radix UI integration
+
+## 🔧 Content Management
+
+### Page Structure
 ```json
 {
-  "site": {
-    "name": "Your Website Name",
-    "description": "Your website description"
+  "pageId": "homepage",
+  "seo": {
+    "en": {"title": "...", "description": "..."},
+    "lt": {"title": "...", "description": "..."}
   },
-  "pages": {
-    "/": {
-      "title": "Home Page Title",
-      "components": [
-        {
-          "type": "hero",
-          "data": {
-            "title": "Your Hero Title",
-            "subtitle": "Your subtitle"
-          }
-        }
-      ]
+  "content": {
+    "en": {"hero": {...}},
+    "lt": {"hero": {...}}
+  },
+  "components": [
+    {"type": "Hero", "contentKey": "hero"}
+  ],
+  "componentOverrides": {
+    "Faq": {"contentKey": "shared:homepage-faq"}
+  }
+}
+```
+
+### Default Components (Auto-included)
+1. **ServiceCards** - Service offerings grid
+2. **AccessoriesGrid** - Product accessories
+3. **Testimonials** - Customer reviews
+4. **WhyChooseUs** - Value propositions
+5. **TechnicianTeam** - Team showcase
+6. **Partners** - Partner logos
+7. **Transformations** - Before/after gallery
+8. **PropertyTypes** - Property type grid
+9. **Faq** - Frequently asked questions
+
+### Content Override Patterns
+```json
+// Use shared content
+"componentOverrides": {
+  "Faq": {"contentKey": "shared:maintenance-faq"}
+}
+
+// Use page content
+"componentOverrides": {
+  "WhyChooseUs": {"contentKey": "whyChooseUs"}
+}
+
+// Disable component
+"componentOverrides": {
+  "Partners": {"disabled": true}
+}
+
+// Custom inline content
+"componentOverrides": {
+  "Faq": {
+    "customContent": {
+      "en": {"title": "Custom FAQ", "items": [...]},
+      "lt": {"title": "Pritaikytas DUK", "items": [...]}
     }
   }
 }
 ```
 
-## 🤖 AI-Powered Development
+## 🎨 UI Components
 
-This template is optimized for use with AI coding assistants like Windsurf and Cursor:
+### Button System
+```tsx
+import { Button } from '@/components/ui/button';
 
-### Ask AI to create components:
+// Variants
+<Button variant="default">Primary (Red)</Button>
+<Button variant="outline-red">Secondary (Red Outline)</Button>
+<Button variant="success" showIcon={true}>Success with Check</Button>
 
-- "Create a testimonials section with customer quotes"
-- "Build a pricing table with 3 tiers"
-- "Add a newsletter signup form"
+// Sizes
+<Button size="sm">Header CTAs</Button>
+<Button size="default">Standard</Button>
+<Button size="lg">Hero CTAs</Button>
+```
 
-### AI understands the structure:
+### CTA Button System
+```tsx
+import { CTAButtons } from '@/components/common/CTAButtons';
 
-- JSON-based content system
-- Component-driven architecture
-- TypeScript for type safety
-- Tailwind for styling
+<CTAButtons
+  locale={locale}
+  translations={translations}
+  technicianProps={{ size: "sm" }}
+  consultationProps={{ size: "sm" }}
+/>
+```
 
-## 📦 Available Components
+### Icon System
+```tsx
+import Icon from '@/components/ui/Icon';
 
-- `hero` - Hero section with title, subtitle, CTA
-- `features` - Feature grid with icons and descriptions
-- `page-header` - Page header with title and subtitle
-- `content` - Simple text content blocks
-- `contact-form` - Contact form with configurable fields
+<Icon name="Phone" className="w-5 h-5" />
+<Icon name="MessageSquare" className="w-5 h-5" />
+```
 
-## 🔍 SEO Features
+## 🔍 SEO & Performance
 
-- ✅ Automatic sitemap generation (`/sitemap.xml`)
-- ✅ Robots.txt generation (`/robots.txt`)
-- ✅ Meta tags and Open Graph
-- ✅ Structured data ready
-- ✅ Performance optimized
-- ✅ Static export support
+- **Dynamic metadata** generation per locale
+- **Structured data** (JSON-LD) support
+- **Sitemap generation** with hreflang
+- **Core Web Vitals** optimization
+- **Image optimization** with Next.js Image
+- **Static export** support
 
-## 🛠 Adding New Components
+## 🛠️ Development Guidelines
 
-1. Create component in `components/` folder
-2. Add to `ComponentRenderer.tsx`
-3. Update your JSON content to use the new component
+### Adding New Pages
+1. Create content file in `/content/pages/[pageId].json`
+2. Add route to `/content/routes.json`
+3. Content automatically available at locale-specific URLs
 
-## 📱 Responsive Design
+### Creating Components
+1. Create component in appropriate folder
+2. Register in `ComponentRenderer.tsx`
+3. Add TypeScript interfaces
+4. Follow design system patterns
 
-All components are mobile-first and responsive using Tailwind CSS utility classes.
+### Content Translation
+- Use content resolver functions
+- Never import JSON directly
+- Provide fallbacks for missing translations
+- Support all 4 locales
+
+## 📋 Available Scripts
+
+```bash
+npm run dev          # Development server
+npm run build        # Production build
+npm run start        # Production server
+npm run lint         # ESLint checking
+npm run export       # Static export
+```
+
+## 🔒 License
+
+This project is licensed under a **Non-Commercial License**. See the [LICENSE](./LICENSE) file for details.
+
+**Commercial use is prohibited** without explicit permission from the project maintainers.
+
+## 🏢 About
+
+Langu-Remontas is a professional window and door repair service website featuring:
+
+- **Expert technician services** for residential and commercial properties
+- **Free diagnostics** and consultation services  
+- **Emergency repair** capabilities
+- **Quality guarantee** on all work
+- **Multilingual support** for diverse customer base
+
+Built with modern web technologies and optimized for conversion and user experience.
 
 ---
 
-Built for AI-first web development with Next.js 14+ and TypeScript.
+**Tech Stack:** Next.js 14 • TypeScript • Tailwind CSS • Radix UI • Lucide React
