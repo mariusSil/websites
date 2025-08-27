@@ -1,10 +1,9 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Button } from '@/components/ui/Button';
 import { RequestTechnicianModal } from './RequestTechnicianModal';
 import { getButtonText } from '@/lib/button-constants';
-import { loadSharedContent, getLocalizedSharedContent } from '@/content/lib/content-resolver';
 import { type Locale } from '@/lib/i18n';
 
 interface ConsultationButtonProps {
@@ -14,6 +13,11 @@ interface ConsultationButtonProps {
   prefillMessage?: string;
   locale: Locale;
   showIcon?: boolean;
+  translations?: {
+    consultation?: {
+      prefillMessage?: string;
+    };
+  };
 }
 
 export function ConsultationButton({ 
@@ -22,29 +26,14 @@ export function ConsultationButton({
   className = "",
   prefillMessage,
   locale,
-  showIcon = false
+  showIcon = false,
+  translations
 }: ConsultationButtonProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [formsContent, setFormsContent] = useState<any>(null);
-
-  useEffect(() => {
-    const loadContent = async () => {
-      try {
-        const content = await loadSharedContent('forms');
-        if (content) {
-          const localizedContent = getLocalizedSharedContent(content, locale);
-          setFormsContent(localizedContent);
-        }
-      } catch (error) {
-        console.error('Failed to load forms content:', error);
-      }
-    };
-    loadContent();
-  }, [locale]);
 
   // Use prefillMessage from translations if available, otherwise fall back to prop or default
-  const defaultPrefillMessage = "I would like to schedule a free consultation to discuss my window/door needs.";
-  const finalPrefillMessage = formsContent?.consultation?.prefillMessage || prefillMessage || defaultPrefillMessage;
+  const defaultPrefillMessage = "";
+  const finalPrefillMessage = translations?.consultation?.prefillMessage || prefillMessage || defaultPrefillMessage;
 
   return (
     <>

@@ -13,6 +13,12 @@ export const BUTTON_TEXTS = {
     lt: "KONSULTACIJA",
     pl: "KONSULTACJA", 
     uk: "КОНСУЛЬТАЦІЯ"
+  },
+  LEARN_MORE: {
+    en: "LEARN MORE",
+    lt: "SUŽINOTI DAUGIAU",
+    pl: "DOWIEDZ SIĘ WIĘCEJ",
+    uk: "ДІЗНАТИСЯ БІЛЬШЕ"
   }
 } as const;
 

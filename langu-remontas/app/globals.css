@@ -182,4 +182,27 @@
   .text-gradient {
     @apply bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent;
   }
+
+  /* Parallax performance optimizations */
+  .parallax-container {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+
+  .parallax-element {
+    will-change: transform;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .parallax-element {
+    transform: none !important;
+  }
+  
+  html {
+    scroll-behavior: auto;
+  }
 }

@@ -1,33 +1,31 @@
 'use client';
 
 import { type Locale } from '@/lib/i18n';
-import { 
-  parseCollectionURL, 
-  getLocalizedCollectionURL, 
-  getLocalizedStaticPageURL 
-} from '@/content/lib/content-resolver';
 
 export class URLTranslator {
   /**
-   * Translate URL from current locale to target locale
+   * Translate URL from current locale to target locale using API endpoint
    * Handles both collection items and static pages
    */
   static async translateURL(currentURL: string, targetLocale: Locale): Promise<string | null> {
     try {
-      // First, try to parse as collection URL
-      const collectionMatch = await parseCollectionURL(currentURL);
-      
-      if (collectionMatch) {
-        // It's a collection item - get localized URL
-        return await getLocalizedCollectionURL(
-          collectionMatch.collection,
-          collectionMatch.itemId,
+      const response = await fetch('/api/translate-url', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          currentURL,
           targetLocale
-        );
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error(`Translation API error: ${response.status}`);
       }
 
-      // Not a collection item - try static page translation
-      return await getLocalizedStaticPageURL(currentURL, targetLocale);
+      const data = await response.json();
+      return data.translatedURL || null;
     } catch (error) {
       console.error('Error translating URL:', error);
       return null;
@@ -35,42 +33,14 @@ export class URLTranslator {
   }
 
   /**
-   * Get canonical item ID from any localized URL
-   * Returns null if not a collection item
-   */
-  static async getCanonicalItemId(url: string): Promise<string | null> {
-    try {
-      const collectionMatch = await parseCollectionURL(url);
-      return collectionMatch?.itemId || null;
-    } catch (error) {
-      console.error('Error getting canonical item ID:', error);
-      return null;
-    }
-  }
-
-  /**
-   * Build localized URL from canonical data
-   */
-  static async buildLocalizedURL(
-    collection: string, 
-    itemId: string, 
-    locale: Locale
-  ): Promise<string | null> {
-    try {
-      return await getLocalizedCollectionURL(collection, itemId, locale);
-    } catch (error) {
-      console.error('Error building localized URL:', error);
-      return null;
-    }
-  }
-
-  /**
-   * Check if URL is a collection item URL
+   * Check if URL is a collection item URL by making API call
    */
   static async isCollectionURL(url: string): Promise<boolean> {
     try {
-      const collectionMatch = await parseCollectionURL(url);
-      return collectionMatch !== null;
+      // We can determine this by trying to translate the URL
+      // If it successfully translates, it's likely a valid URL structure
+      const result = await this.translateURL(url, 'en'); // Use 'en' as test locale
+      return result !== null;
     } catch (error) {
       return false;
     }

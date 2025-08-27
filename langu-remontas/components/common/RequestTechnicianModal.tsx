@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import Link from 'next/link'
 import { Button } from '@/components/ui/Button'
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/Dialog'
@@ -9,7 +9,23 @@ import { Textarea } from '@/components/ui/Textarea'
 import { Checkbox } from '@/components/ui/Checkbox'
 import { Label } from '@/components/ui/Label'
 import { type Locale } from '@/lib/i18n'
-import { loadFormTranslations } from '@/content/lib/content-resolver'
+
+interface FormTranslations {
+  title: string;
+  nameLabel: string;
+  namePlaceholder: string;
+  phoneLabel: string;
+  phonePlaceholder: string;
+  cityLabel: string;
+  cityPlaceholder: string;
+  emailLabel: string;
+  emailPlaceholder: string;
+  messageLabel: string;
+  messagePlaceholder: string;
+  privacyPolicyText: string;
+  privacyPolicyLink: string;
+  submitButton: string;
+}
 
 interface RequestTechnicianModalProps {
   isOpen: boolean;
@@ -17,6 +33,7 @@ interface RequestTechnicianModalProps {
   locale: Locale;
   triggerType: 'technician' | 'consultation' | 'learnMore' | null;
   prefillMessage?: string;
+  translations?: FormTranslations;
 }
 
 // Helper function to get privacy policy URL by locale
@@ -30,19 +47,35 @@ const getPrivacyPolicyUrl = (locale: Locale): string => {
   return urls[locale] || urls.en
 }
 
-export function RequestTechnicianModal({ isOpen, onClose, locale, triggerType, prefillMessage }: RequestTechnicianModalProps) {
+export function RequestTechnicianModal({ 
+  isOpen, 
+  onClose, 
+  locale, 
+  triggerType, 
+  prefillMessage,
+  translations 
+}: RequestTechnicianModalProps) {
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [translations, setTranslations] = useState<any>(null)
 
-  useEffect(() => {
-    loadFormTranslations(locale).then(formTranslations => {
-      setTranslations(formTranslations.requestTechnician)
-    })
-  }, [locale])
+  // Fallback translations if not provided
+  const defaultTranslations: FormTranslations = {
+    title: locale === 'lt' ? 'Kviesti meistrą' : locale === 'pl' ? 'Wezwać technika' : locale === 'uk' ? 'Викликати техніка' : 'Request Technician',
+    nameLabel: locale === 'lt' ? 'Vardas' : locale === 'pl' ? 'Imię' : locale === 'uk' ? 'Ім\'я' : 'Name',
+    namePlaceholder: locale === 'lt' ? 'Jūsų vardas' : locale === 'pl' ? 'Twoje imię' : locale === 'uk' ? 'Ваше ім\'я' : 'Your name',
+    phoneLabel: locale === 'lt' ? 'Telefonas' : locale === 'pl' ? 'Telefon' : locale === 'uk' ? 'Телефон' : 'Phone',
+    phonePlaceholder: locale === 'lt' ? 'Jūsų telefonas' : locale === 'pl' ? 'Twój telefon' : locale === 'uk' ? 'Ваш телефон' : 'Your phone',
+    cityLabel: locale === 'lt' ? 'Miestas' : locale === 'pl' ? 'Miasto' : locale === 'uk' ? 'Місто' : 'City',
+    cityPlaceholder: locale === 'lt' ? 'Jūsų miestas' : locale === 'pl' ? 'Twoje miasto' : locale === 'uk' ? 'Ваше місто' : 'Your city',
+    emailLabel: locale === 'lt' ? 'El. paštas' : locale === 'pl' ? 'E-mail' : locale === 'uk' ? 'Електронна пошта' : 'Email',
+    emailPlaceholder: locale === 'lt' ? 'Jūsų el. paštas' : locale === 'pl' ? 'Twój e-mail' : locale === 'uk' ? 'Ваша електронна пошта' : 'Your email',
+    messageLabel: locale === 'lt' ? 'Žinutė' : locale === 'pl' ? 'Wiadomość' : locale === 'uk' ? 'Повідомлення' : 'Message',
+    messagePlaceholder: locale === 'lt' ? 'Aprašykite savo poreikius...' : locale === 'pl' ? 'Opisz swoje potrzeby...' : locale === 'uk' ? 'Опишіть ваші потреби...' : 'Describe your needs...',
+    privacyPolicyText: locale === 'lt' ? 'Sutinku su privatumo politika' : locale === 'pl' ? 'Zgadzam się z polityką prywatności' : locale === 'uk' ? 'Погоджуюся з політикою конфіденційності' : 'I agree to the privacy policy',
+    privacyPolicyLink: locale === 'lt' ? 'privatumo politika' : locale === 'pl' ? 'polityka prywatności' : locale === 'uk' ? 'політика конфіденційності' : 'privacy policy',
+    submitButton: locale === 'lt' ? 'Siųsti užklausą' : locale === 'pl' ? 'Wyślij zapytanie' : locale === 'uk' ? 'Надіслати запит' : 'Send Request'
+  };
 
-  if (!translations) {
-    return null // Loading state
-  }
+  const finalTranslations = translations || defaultTranslations;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -81,53 +114,61 @@ export function RequestTechnicianModal({ isOpen, onClose, locale, triggerType, p
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>{translations.title}</DialogTitle>
+          <DialogTitle>{finalTranslations.title}</DialogTitle>
         </DialogHeader>
-        <form onSubmit={handleSubmit} className="grid gap-4 py-4">
-          <div className="grid gap-2">
-            <Label htmlFor="name">{translations.nameLabel} *</Label>
-            <Input id="name" name="name" placeholder={translations.namePlaceholder} required />
+        
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div>
+            <Label htmlFor="name">{finalTranslations.nameLabel}</Label>
+            <Input id="name" name="name" placeholder={finalTranslations.namePlaceholder} required />
           </div>
-          <div className="grid gap-2">
-            <Label htmlFor="phone">{translations.phoneLabel} *</Label>
-            <Input id="phone" name="phone" type="tel" placeholder={translations.phonePlaceholder} required />
+          
+          <div>
+            <Label htmlFor="phone">{finalTranslations.phoneLabel}</Label>
+            <Input id="phone" name="phone" type="tel" placeholder={finalTranslations.phonePlaceholder} required />
           </div>
-          <div className="grid gap-2">
-            <Label htmlFor="city">{translations.cityLabel}</Label>
-            <Input id="city" name="city" placeholder={translations.cityPlaceholder} />
+          
+          <div>
+            <Label htmlFor="city">{finalTranslations.cityLabel}</Label>
+            <Input id="city" name="city" placeholder={finalTranslations.cityPlaceholder} />
           </div>
-          <div className="grid gap-2">
-            <Label htmlFor="email">{translations.emailLabel}</Label>
-            <Input id="email" name="email" type="email" placeholder={translations.emailPlaceholder} />
+          
+          <div>
+            <Label htmlFor="email">{finalTranslations.emailLabel}</Label>
+            <Input id="email" name="email" type="email" placeholder={finalTranslations.emailPlaceholder} />
           </div>
-          <div className="grid gap-2">
-            <Label htmlFor="message">{translations.messageLabel}</Label>
+          
+          <div>
+            <Label htmlFor="message">{finalTranslations.messageLabel}</Label>
             <Textarea 
               id="message" 
               name="message" 
-              placeholder={translations.messagePlaceholder}
+              placeholder={finalTranslations.messagePlaceholder}
               defaultValue={prefillMessage || ''}
+              rows={4}
             />
           </div>
-          <div className="flex items-start space-x-2">
-            <Checkbox id="privacy" name="privacy" required className="mt-0.5" />
-            <label
-              htmlFor="privacy"
-              className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-            >
-              {translations.privacyPolicyText}{' '}
+          
+          <div className="flex items-center space-x-2">
+            <Checkbox id="privacy" name="privacy" required />
+            <Label htmlFor="privacy" className="text-sm">
+              {finalTranslations.privacyPolicyText}{' '}
               <Link 
                 href={`/${locale}/${getPrivacyPolicyUrl(locale)}`}
+                className="text-primary hover:underline"
                 target="_blank"
-                rel="noopener noreferrer"
-                className="text-primary underline hover:no-underline"
               >
-                {translations.privacyPolicyLink}
+                {finalTranslations.privacyPolicyLink}
               </Link>
-            </label>
+            </Label>
           </div>
-          <Button type="submit" disabled={isSubmitting}>
-            {isSubmitting ? 'Submitting...' : translations.submitButton}
+          
+          <Button 
+            type="submit" 
+            className="w-full" 
+            disabled={isSubmitting}
+          >
+            {isSubmitting ? 'Sending...' : finalTranslations.submitButton}
           </Button>
         </form>
       </DialogContent>

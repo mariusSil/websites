@@ -1,10 +1,9 @@
 'use client';
 
 import Icon from '@/components/ui/Icon';
-import { RequestTechnicianModal } from '../common/RequestTechnicianModal';
-import Link from 'next/link';
 import { CTAButtons } from '../common/CTAButtons';
 import { Locale } from '@/lib/i18n';
+import { useParallax } from '@/hooks/useParallax';
 
 // Icon mapping function to handle string icon names from content
 const getIconByName = (iconName: string) => {
@@ -68,14 +67,23 @@ interface HeroProps {
   };
   backgroundImage?: string;
   className?: string;
+  parallaxSpeed?: number;
+  enableParallax?: boolean;
 }
 
 export function Hero({ 
   locale,
   translations,
   backgroundImage = 'https://storage.googleapis.com/uxpilot-auth.appspot.com/d13f0792a2-b2486b2cccf0c1039aa4.png',
-  className = ''
+  className = '',
+  parallaxSpeed = 0.12,
+  enableParallax = true
 }: HeroProps) {
+
+  const { elementRef, transform } = useParallax({ 
+    speed: parallaxSpeed, 
+    disabled: !enableParallax 
+  });
 
   // Add null checks to prevent undefined access errors
   if (!translations) {
@@ -88,15 +96,32 @@ export function Hero({
 
   return (
     <section 
-      className={`relative min-h-[600px] flex items-center text-white py-12 md:py-12 lg:py-16 ${className}`}
-      style={{
-        backgroundImage: `linear-gradient(135deg, rgba(17, 24, 39, 0.9) 0%, rgba(17, 24, 39, 0.6) 100%), url(${backgroundImage})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat'
-      }}
+      ref={elementRef}
+      className={`relative min-h-[600px] flex items-center text-white py-12 md:py-12 lg:py-16 overflow-hidden ${className}`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+      {/* Parallax Background Layer */}
+      <div 
+        className="absolute inset-0 w-full h-[120%] -top-[10%] parallax-element"
+        style={{
+          backgroundImage: `url(${backgroundImage})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          transform: transform,
+          willChange: 'transform'
+        }}
+      />
+      
+      {/* Gradient Overlay */}
+      <div 
+        className="absolute inset-0 w-full h-full"
+        style={{
+          background: 'linear-gradient(135deg, rgba(17, 24, 39, 0.9) 0%, rgba(17, 24, 39, 0.6) 100%)'
+        }}
+      />
+
+      {/* Content Layer */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div>
             {/* Badge */}
             {translations.badge && (

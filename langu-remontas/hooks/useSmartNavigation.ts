@@ -3,7 +3,7 @@
 import { usePathname, useRouter } from 'next/navigation';
 import { useCallback } from 'react';
 import { type Locale } from '@/lib/i18n';
-import { getLocalizedUrl } from '@/content/lib/content-resolver';
+// Remove the problematic import - we'll handle this differently
 
 interface UseSmartNavigationReturn {
   handleNavigation: (key: string, href: string) => void;
@@ -41,17 +41,9 @@ export function useSmartNavigation(locale: Locale): UseSmartNavigationReturn {
   }, []);
 
   // Main navigation handler
-  const handleNavigation = useCallback(async (key: string, href: string) => {
-    // Get the localized URL for the page
-    let targetUrl = href;
-    try {
-      const localizedUrl = await getLocalizedUrl(key, locale);
-      if (localizedUrl) {
-        targetUrl = `/${locale}/${localizedUrl}`;
-      }
-    } catch (error) {
-      console.warn(`Could not get localized URL for ${key}, using fallback:`, href);
-    }
+  const handleNavigation = useCallback((key: string, href: string) => {
+    // Use the provided href directly since it should already be localized
+    const targetUrl = href;
 
     // Check if we're already on the target page
     if (pathname === targetUrl || pathname === `${targetUrl}/`) {
@@ -68,7 +60,7 @@ export function useSmartNavigation(locale: Locale): UseSmartNavigationReturn {
         scrollToSection(targetSection);
       }, 100); // Small delay to ensure page has loaded
     }
-  }, [pathname, router, scrollToSection, locale]);
+  }, [pathname, router, scrollToSection]);
 
   return {
     handleNavigation

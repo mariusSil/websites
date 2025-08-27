@@ -13,6 +13,11 @@ interface RequestTechnicianButtonProps {
   prefillMessage?: string;
   locale: Locale;
   showIcon?: boolean;
+  translations?: {
+    technician?: {
+      prefillMessage?: string;
+    };
+  };
 }
 
 export function RequestTechnicianButton({ 
@@ -21,7 +26,8 @@ export function RequestTechnicianButton({
   className = "",
   prefillMessage = "",
   locale,
-  showIcon = false
+  showIcon = false,
+  translations
 }: RequestTechnicianButtonProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -42,7 +48,7 @@ export function RequestTechnicianButton({
         onClose={() => setIsModalOpen(false)}
         locale={locale}
         triggerType="technician"
-        prefillMessage={prefillMessage}
+        prefillMessage={translations?.technician?.prefillMessage || prefillMessage}
       />
     </>
   );

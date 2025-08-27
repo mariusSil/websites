@@ -1,10 +1,9 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Button } from '@/components/ui/Button';
 import { RequestTechnicianModal } from './RequestTechnicianModal';
 import { getButtonText } from '@/lib/button-constants';
-import { loadSharedContent, getLocalizedSharedContent } from '@/content/lib/content-resolver';
 import { type Locale } from '@/lib/i18n';
 
 interface LearnMoreButtonProps {
@@ -15,6 +14,14 @@ interface LearnMoreButtonProps {
   locale: Locale;
   showIcon?: boolean;
   customText?: string; // Allow custom text override
+  translations?: {
+    buttons?: {
+      learnMore?: string;
+    };
+    learnMore?: {
+      prefillMessage?: string;
+    };
+  };
 }
 
 export function LearnMoreButton({ 
@@ -24,42 +31,17 @@ export function LearnMoreButton({
   prefillMessage,
   locale,
   showIcon = false,
-  customText
+  customText,
+  translations
 }: LearnMoreButtonProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [formsContent, setFormsContent] = useState<any>(null);
-  const [commonContent, setCommonContent] = useState<any>(null);
 
-  useEffect(() => {
-    const loadContent = async () => {
-      try {
-        const [forms, common] = await Promise.all([
-          loadSharedContent('forms'),
-          loadSharedContent('common')
-        ]);
-        
-        if (forms) {
-          const localizedForms = getLocalizedSharedContent(forms, locale);
-          setFormsContent(localizedForms);
-        }
-        
-        if (common) {
-          const localizedCommon = getLocalizedSharedContent(common, locale);
-          setCommonContent(localizedCommon);
-        }
-      } catch (error) {
-        console.error('Failed to load content:', error);
-      }
-    };
-    loadContent();
-  }, [locale]);
-
-  // Use custom text if provided, otherwise use "Learn More" from common content
-  const buttonText = customText || commonContent?.buttons?.learnMore || 'Learn More';
+  // Use custom text if provided, otherwise use "Learn More" from translations or fallback
+  const buttonText = customText || translations?.buttons?.learnMore || getButtonText('LEARN_MORE', locale);
   
   // Default prefill message for learn more inquiries
   const defaultPrefillMessage = "I would like to learn more about your services and get additional information.";
-  const finalPrefillMessage = formsContent?.learnMore?.prefillMessage || prefillMessage || defaultPrefillMessage;
+  const finalPrefillMessage = translations?.learnMore?.prefillMessage || prefillMessage || defaultPrefillMessage;
 
   return (
     <>

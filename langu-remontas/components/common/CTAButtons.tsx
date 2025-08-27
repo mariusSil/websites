@@ -1,3 +1,5 @@
+'use client';
+
 import { RequestTechnicianButton } from './RequestTechnicianButton';
 import { ConsultationButton } from './ConsultationButton';
 import { type Locale } from '@/lib/i18n';
@@ -22,6 +24,14 @@ interface CTAButtonsProps {
   locale: Locale;
   className?: string;
   layout?: 'horizontal' | 'vertical';
+  translations?: {
+    technician?: {
+      prefillMessage?: string;
+    };
+    consultation?: {
+      prefillMessage?: string;
+    };
+  };
 }
 
 export function CTAButtons({
@@ -31,7 +41,8 @@ export function CTAButtons({
   consultationProps = {},
   locale,
   className = "",
-  layout = 'horizontal'
+  layout = 'horizontal',
+  translations
 }: CTAButtonsProps) {
   const containerClasses = layout === 'horizontal' 
     ? `flex flex-col sm:flex-row gap-3 ${className}`
@@ -42,12 +53,14 @@ export function CTAButtons({
       {showTechnician && (
         <RequestTechnicianButton
           locale={locale}
+          translations={translations}
           {...technicianProps}
         />
       )}
       {showConsultation && (
         <ConsultationButton
           locale={locale}
+          translations={translations}
           {...consultationProps}
         />
       )}

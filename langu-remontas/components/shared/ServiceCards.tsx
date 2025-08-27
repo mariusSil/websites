@@ -1,8 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { RequestTechnicianButton } from '../common/RequestTechnicianButton';
-import { loadSharedContent, getLocalizedSharedContent } from '@/content/lib/content-resolver';
-import { isValidLocale, type Locale } from '@/lib/i18n';
+import { type Locale } from '@/lib/i18n';
 import ContentLoader from '../common/ContentLoader';
 
 interface ServiceCard {
