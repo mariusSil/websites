@@ -188,6 +188,7 @@ export default function ProductHeader({ translations, locale }: ProductHeaderPro
             <div className="pt-6">
               <CTAButtons
                 locale={locale}
+                translations={{}}
                 technicianProps={{ variant: "default", size: "lg" }}
                 consultationProps={{ variant: "outline-red", size: "lg" }}
                 layout="vertical"

@@ -34,30 +34,6 @@
       "closeMenu": "Close navigation menu",
       "toggleTheme": "Toggle theme"
     },
-    "notFound": {
-      "title": "Page Not Found",
-      "subtitle": "404 Error",
-      "description": "The page you're looking for doesn't exist or has been moved.",
-      "suggestions": {
-        "title": "What can you do?",
-        "items": [
-          "Check the URL for typos",
-          "Go back to the previous page",
-          "Visit our homepage",
-          "Contact us for assistance"
-        ]
-      },
-      "navigation": {
-        "homepage": "Go to Homepage",
-        "services": "Our Services",
-        "contact": "Contact Us",
-        "goBack": "Go Back"
-      },
-      "search": {
-        "placeholder": "Search our website...",
-        "button": "Search"
-      }
-    },
     "phone": "+370 644 45403",
     "telegram": "your-telegram-username",
     "whatsapp": "37064445403",
@@ -308,30 +284,6 @@
       "openMenu": "Atidaryti navigacijos meniu",
       "closeMenu": "Uždaryti navigacijos meniu",
       "toggleTheme": "Perjungti temą"
-    },
-    "notFound": {
-      "title": "Puslapis Nerastas",
-      "subtitle": "404 Klaida",
-      "description": "Ieškomas puslapis neegzistuoja arba buvo perkeltas.",
-      "suggestions": {
-        "title": "Ką galite daryti?",
-        "items": [
-          "Patikrinkite URL adreso klaidas",
-          "Grįžkite į ankstesnį puslapį",
-          "Aplankykite mūsų pagrindinį puslapį",
-          "Susisiekite su mumis dėl pagalbos"
-        ]
-      },
-      "navigation": {
-        "homepage": "Į Pagrindinį",
-        "services": "Mūsų Paslaugos",
-        "contact": "Kontaktai",
-        "goBack": "Grįžti"
-      },
-      "search": {
-        "placeholder": "Ieškoti mūsų svetainėje...",
-        "button": "Ieškoti"
-      }
     },
     "phone": "+370 644 45403",
     "telegram": "your-telegram-username",
@@ -584,30 +536,6 @@
       "closeMenu": "Zamknij menu nawigacji",
       "toggleTheme": "Zmień motyw"
     },
-    "notFound": {
-      "title": "Strona Nie Znaleziona",
-      "subtitle": "Błąd 404",
-      "description": "Strona, której szukasz, nie istnieje lub została przeniesiona.",
-      "suggestions": {
-        "title": "Co możesz zrobić?",
-        "items": [
-          "Sprawdź URL pod kątem błędów",
-          "Wróć do poprzedniej strony",
-          "Odwiedź naszą stronę główną",
-          "Skontaktuj się z nami o pomoc"
-        ]
-      },
-      "navigation": {
-        "homepage": "Strona Główna",
-        "services": "Nasze Usługi",
-        "contact": "Kontakt",
-        "goBack": "Wróć"
-      },
-      "search": {
-        "placeholder": "Szukaj na naszej stronie...",
-        "button": "Szukaj"
-      }
-    },
     "phone": "+370 644 45403",
     "telegram": "your-telegram-username",
     "whatsapp": "37064445403",
@@ -858,30 +786,6 @@
       "openMenu": "Відкрити меню навігації",
       "closeMenu": "Закрити меню навігації",
       "toggleTheme": "Змінити тему"
-    },
-    "notFound": {
-      "title": "Сторінка Не Знайдена",
-      "subtitle": "Помилка 404",
-      "description": "Сторінка, яку ви шукаєте, не існує або була переміщена.",
-      "suggestions": {
-        "title": "Що ви можете зробити?",
-        "items": [
-          "Перевірте URL на помилки",
-          "Поверніться на попередню сторінку",
-          "Відвідайте нашу головну сторінку",
-          "Зв'яжіться з нами для допомоги"
-        ]
-      },
-      "navigation": {
-        "homepage": "На Головну",
-        "services": "Наші Послуги",
-        "contact": "Контакти",
-        "goBack": "Повернутися"
-      },
-      "search": {
-        "placeholder": "Пошук на нашому сайті...",
-        "button": "Пошук"
-      }
     },
     "phone": "+370 644 45403",
     "telegram": "your-telegram-username",

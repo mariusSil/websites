@@ -1,32 +1,35 @@
-import { Metadata } from 'next';
+'use client';
+
+import { usePathname } from 'next/navigation';
 import Link from 'next/link';
-import { type Locale } from '@/lib/i18n';
-import { loadSharedContent, getLocalizedSharedContent, getFinalPageComponents } from '@/content/lib/content-resolver';
-import { Button } from '@/components/ui/Button';
+import { type Locale, isValidLocale, defaultLocale } from '@/lib/i18n';
+import { getButtonText } from '@/lib/button-constants';
 import Icon from '@/components/ui/Icon';
 import { CTAButtons } from '@/components/common/CTAButtons';
 import { GoBackButton } from '@/components/common/GoBackButton';
-import { ComponentRenderer } from '@/components/ComponentRenderer';
-import { detectLocaleForNotFound } from '@/lib/locale-detection';
 
-// SEO metadata for 404 page
-export const metadata: Metadata = {
-  title: '404 - Page Not Found',
-  description: 'The page you are looking for could not be found.',
-  robots: 'noindex, nofollow',
-};
+interface NotFoundContent {
+  title: string;
+  subtitle: string;
+  description: string;
+  suggestions: {
+    title: string;
+    items: string[];
+  };
+  navigation: {
+    homepage: string;
+    services: string;
+    contact: string;
+    goBack: string;
+  };
+  ctaSection: {
+    title: string;
+    description: string;
+  };
+}
 
-export default async function NotFound() {
-  // Detect locale using multiple strategies (referrer, headers, etc.)
-  const locale: Locale = await detectLocaleForNotFound();
-  
-  // Load shared content for 404 translations
-  const commonContent = await loadSharedContent('common');
-  const localizedContent = getLocalizedSharedContent(commonContent, locale);
-  const notFoundContent = localizedContent?.notFound;
-
-  // Fallback content if translations are missing
-  const fallbackContent = {
+const notFoundTranslations: Record<Locale, NotFoundContent> = {
+  en: {
     title: 'Page Not Found',
     subtitle: '404 Error',
     description: "The page you're looking for doesn't exist or has been moved.",
@@ -44,54 +47,106 @@ export default async function NotFound() {
       services: 'Our Services',
       contact: 'Contact Us',
       goBack: 'Go Back'
-    }
-  };
-
-  const content = notFoundContent || fallbackContent;
-
-  // Create mock page content for shared components integration
-  const mock404PageContent = {
-    pageId: 'not-found',
-    template: 'default',
-    seo: {
-      en: { title: '404 - Page Not Found', description: 'The page you are looking for could not be found.', keywords: '404, not found', ogImage: '', ogImageAlt: '' },
-      lt: { title: '404 - Puslapis nerastas', description: 'Ieškomas puslapis nerastas.', keywords: '404, nerasta', ogImage: '', ogImageAlt: '' },
-      pl: { title: '404 - Strona nie znaleziona', description: 'Strona której szukasz nie została znaleziona.', keywords: '404, nie znaleziono', ogImage: '', ogImageAlt: '' },
-      uk: { title: '404 - Сторінка не знайдена', description: 'Сторінка, яку ви шукаєте, не знайдена.', keywords: '404, не знайдено', ogImage: '', ogImageAlt: '' }
     },
-    content: { en: {}, lt: {}, pl: {}, uk: {} },
-    components: [],
-    componentOverrides: {
-      'ServiceCards': { contentKey: 'shared:servicecards' },
-      'Testimonials': { contentKey: 'shared:testimonials' },
-      'Faq': { contentKey: 'shared:faq' },
-      'Partners': { disabled: true }, // Disable partners on 404
-      'TechnicianTeam': { disabled: true } // Disable team on 404
+    ctaSection: {
+      title: 'Need Help Finding What You\'re Looking For?',
+      description: 'Our expert team is here to help. Get in touch for immediate assistance with your window and door needs.'
+    }
+  },
+  lt: {
+    title: 'Puslapis Nerastas',
+    subtitle: '404 Klaida',
+    description: 'Ieškomas puslapis neegzistuoja arba buvo perkeltas.',
+    suggestions: {
+      title: 'Ką galite daryti?',
+      items: [
+        'Patikrinkite URL klaidų',
+        'Grįžkite į ankstesnį puslapį',
+        'Apsilankykite mūsų pagrindiniame puslapyje',
+        'Susisiekite su mumis pagalbos'
+      ]
+    },
+    navigation: {
+      homepage: 'Eiti į Pagrindinį',
+      services: 'Mūsų Paslaugos',
+      contact: 'Susisiekti',
+      goBack: 'Grįžti'
+    },
+    ctaSection: {
+      title: 'Reikia Pagalbos Rasti Tai, Ko Ieškote?',
+      description: 'Mūsų ekspertų komanda pasiruošusi padėti. Susisiekite dėl skubios pagalbos su langų ir durų poreikiais.'
+    }
+  },
+  pl: {
+    title: 'Strona Nie Znaleziona',
+    subtitle: 'Błąd 404',
+    description: 'Strona, której szukasz, nie istnieje lub została przeniesiona.',
+    suggestions: {
+      title: 'Co możesz zrobić?',
+      items: [
+        'Sprawdź URL pod kątem błędów',
+        'Wróć do poprzedniej strony',
+        'Odwiedź naszą stronę główną',
+        'Skontaktuj się z nami o pomoc'
+      ]
+    },
+    navigation: {
+      homepage: 'Idź do Strony Głównej',
+      services: 'Nasze Usługi',
+      contact: 'Kontakt',
+      goBack: 'Wróć'
+    },
+    ctaSection: {
+      title: 'Potrzebujesz Pomocy w Znalezieniu Tego, Czego Szukasz?',
+      description: 'Nasz zespół ekspertów jest tutaj, aby pomóc. Skontaktuj się z nami w celu natychmiastowej pomocy z potrzebami okien i drzwi.'
+    }
+  },
+  uk: {
+    title: 'Сторінка Не Знайдена',
+    subtitle: 'Помилка 404',
+    description: 'Сторінка, яку ви шукаєте, не існує або була переміщена.',
+    suggestions: {
+      title: 'Що ви можете зробити?',
+      items: [
+        'Перевірте URL на помилки',
+        'Поверніться на попередню сторінку',
+        'Відвідайте нашу головну сторінку',
+        'Зв\'яжіться з нами за допомогою'
+      ]
+    },
+    navigation: {
+      homepage: 'Перейти на Головну',
+      services: 'Наші Послуги',
+      contact: 'Контакти',
+      goBack: 'Назад'
+    },
+    ctaSection: {
+      title: 'Потрібна Допомога у Пошуку Того, Що Шукаєте?',
+      description: 'Наша команда експертів тут, щоб допомогти. Зв\'яжіться з нами для негайної допомоги з потребами вікон та дверей.'
+    }
+  }
+};
+
+export default function NotFound() {
+  const pathname = usePathname();
+  
+  // Extract locale from pathname
+  const segments = pathname.split('/').filter(Boolean);
+  const detectedLocale = segments[0];
+  const locale: Locale = isValidLocale(detectedLocale) ? detectedLocale : defaultLocale;
+  
+  // Get translations for current locale
+  const content = notFoundTranslations[locale];
+  
+  // Create minimal translations for CTA buttons
+  const minimalTranslations = {
+    technician: {
+      prefillMessage: `I need help with window and door services. I found your contact through your 404 page.`
+    },
+    consultation: {
+      prefillMessage: `I would like a free consultation for window and door services.`
     }
   };
-
-  // Get final components with defaults
-  const finalComponents = getFinalPageComponents(mock404PageContent);
-  
-  // Build component props from content with shared content resolution
-  const components = await Promise.all(finalComponents.map(async (component) => {
-    let contentData = {};
-    
-    // Handle shared content references
-    if (typeof component.contentKey === 'string' && component.contentKey.startsWith('shared:')) {
-      const sharedContentKey = component.contentKey.replace('shared:', '');
-      const sharedContent = await loadSharedContent(`components/${sharedContentKey}`);
-      contentData = getLocalizedSharedContent(sharedContent, locale);
-    }
-    
-    return {
-      type: component.type,
-      props: { 
-        translations: contentData, 
-        locale: locale 
-      }
-    };
-  }));
 
   return (
     <div className="min-h-screen bg-neutral-50">
@@ -100,26 +155,25 @@ export default async function NotFound() {
         <div className="container-custom max-w-4xl mx-auto text-center">
           {/* 404 Icon and Error Message */}
           <div className="mb-12">
-          <div className="w-24 h-24 bg-red-600 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-            <Icon name="X" className="w-12 h-12 text-white" />
+            <div className="w-24 h-24 bg-red-600 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+              <Icon name="X" className="w-12 h-12 text-white" />
+            </div>
+            
+            <h1 className="text-6xl font-bold text-red-600 mb-2">
+              {content.subtitle}
+            </h1>
+            
+            <h2 className="text-h1 text-secondary mb-4">
+              {content.title}
+            </h2>
+            
+            <p className="text-body text-neutral-600 max-w-2xl mx-auto mb-8">
+              {content.description}
+            </p>
           </div>
-          
-          <h1 className="text-6xl font-bold text-red-600 mb-2">
-            {content.subtitle || '404'}
-          </h1>
-          
-          <h2 className="text-h1 text-secondary mb-4">
-            {content.title}
-          </h2>
-          
-          <p className="text-body text-neutral-600 max-w-2xl mx-auto mb-8">
-            {content.description}
-          </p>
-        </div>
 
           {/* Suggestions Section */}
-          {content.suggestions && (
-            <div className="mb-12">
+          <div className="mb-12">
             <h3 className="text-h2 text-secondary mb-6">
               {content.suggestions.title}
             </h3>
@@ -133,43 +187,32 @@ export default async function NotFound() {
               ))}
             </div>
           </div>
-        )}
-
-          {/* Navigation Buttons */}
-          <div className="mb-12">
-          
-
-          {/* Go Back Button - Client-side only */}
-          <div className="text-center">
-            <GoBackButton text={content.navigation?.goBack || 'Go Back'} />
+          {/* Go Back Button */}
+          <div className="text-center mb-12">
+            <GoBackButton text={content.navigation.goBack} />
           </div>
-        </div>
 
           {/* CTA Section */}
           <div className="bg-white rounded-lg shadow-sm p-8 max-w-2xl mx-auto mb-12">
-          <h3 className="text-h2 text-secondary mb-4">
-            Need Help Finding What You're Looking For?
-          </h3>
-          <p className="text-body text-neutral-600 mb-6">
-            Our expert team is here to help. Get in touch for immediate assistance with your window and door needs.
-          </p>
-          
-          {/* CTA Buttons with proper translations */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <CTAButtons
-            locale={locale}
-            translations={localizedContent}
-            technicianProps={{ variant: "default", size: "default" }}
-            consultationProps={{ variant: "outline-red", size: "default" }}
-            layout="horizontal"
-          />
-          </div>
+            <h3 className="text-h2 text-secondary mb-4">
+              {content.ctaSection.title}
+            </h3>
+            <p className="text-body text-neutral-600 mb-6">
+              {content.ctaSection.description}
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <CTAButtons
+                locale={locale}
+                translations={minimalTranslations}
+                technicianProps={{ variant: "default", size: "default" }}
+                consultationProps={{ variant: "outline-red", size: "default" }}
+                layout="horizontal"
+              />
+            </div>
           </div>
         </div>
       </section>
-
-      {/* Shared Components */}
-      <ComponentRenderer components={components} />
     </div>
   );
 }

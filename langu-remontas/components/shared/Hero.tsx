@@ -164,6 +164,7 @@ export function Hero({
             <div className="mb-8">
               <CTAButtons 
                 locale={locale}
+                translations={{}}
                 technicianProps={{ variant: "primary", size: "xl" }}
                 consultationProps={{ variant: "blue", size: "xl" }}
               />

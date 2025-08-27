@@ -85,6 +85,7 @@ const Testimonials = ({ locale, translations, className = '' }: TestimonialsProp
         <div className="flex justify-center">
           <CTAButtons
             locale={locale}
+            translations={{}}
             technicianProps={{ 
               variant: "primary", 
               size: "lg" 

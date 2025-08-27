@@ -11,3 +11,4 @@ always generate plans as PROMPTS for AI agent with detailed explanation how to f
 when creating plan always explain which places and how to update with reasoning why these changes needs to be updated in logic
 never estimate times while creating rules
 if asked to plan feature or bug edit - first chech if you haven't missed related files in project (like old implementations, etc) which are connected to changes you are asked to plan
+never run yarn dev command your self. 

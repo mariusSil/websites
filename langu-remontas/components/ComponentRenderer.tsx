@@ -22,6 +22,9 @@ import ArticleHeader from './pages/ArticleHeader';
 import ArticleContent from './pages/ArticleContent';
 import ProductHeader from './pages/ProductHeader';
 import ProductSpecs from './pages/ProductSpecs';
+import BusinessIntro from './pages/BusinessIntro';
+import CommercialServices from './pages/CommercialServices';
+import LargeCustomers from './pages/LargeCustomers';
 
 interface Component {
   type: string;
@@ -83,6 +86,12 @@ function SingleComponentRenderer({ type, props }: { type: string; props: any }) 
       return <PropertyTypes {...props} />;
     case 'privacypolicy':
       return <PrivacyPolicy {...props} />;
+    case 'businessintro':
+      return <BusinessIntro {...props} />;
+    case 'commercialservices':
+      return <CommercialServices {...props} />;
+    case 'largecustomers':
+      return <LargeCustomers {...props} />;
     default:
       console.warn(`Unknown component type: ${type}`)
       return null

@@ -70,6 +70,7 @@ const WhyChooseUs = React.memo(({ translations, locale }: WhyChooseUsProps) => {
           <div className="mt-12 flex justify-center">
             <CTAButtons
               locale={locale}
+              translations={{}}
               technicianProps={{ 
                 variant: "default", 
                 size: "lg" 

@@ -222,6 +222,11 @@
       "type": "PageHeader",
       "contentKey": "hero",
       "required": true
+    },
+    {
+      "type": "WhyChooseUs",
+      "contentKey": "whyChooseUs",
+      "required": true
     }
   ],
   "componentOverrides": {

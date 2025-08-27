@@ -71,7 +71,7 @@ export default function ServiceHero({ translations, locale }: ServiceHeroProps) 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
             <CTAButtons
               locale={locale}
-              translations={translations}
+              translations={{}}
               technicianProps={{ variant: "default", size: "lg" }}
               consultationProps={{ variant: "outline-red", size: "lg" }}
               layout="horizontal"
