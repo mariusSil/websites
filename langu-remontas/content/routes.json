@@ -5,7 +5,8 @@
       "urls": {
         "en": "",
         "lt": "",
-        "pl": ""
+        "pl": "",
+        "uk": ""
       },
       "priority": 1.0,
       "changefreq": "weekly"
@@ -15,7 +16,8 @@
       "urls": {
         "en": "about",
         "lt": "apie-mus",
-        "pl": "o-nas"
+        "pl": "o-nas",
+        "uk": "pro-nas"
       },
       "priority": 0.8,
       "changefreq": "monthly"
@@ -25,7 +27,8 @@
       "urls": {
         "en": "services",
         "lt": "paslaugos",
-        "pl": "uslugi"
+        "pl": "uslugi",
+        "uk": "poslugy"
       },
       "priority": 0.9,
       "changefreq": "weekly"
@@ -35,7 +38,8 @@
       "urls": {
         "en": "accessories",
         "lt": "priedai",
-        "pl": "akcesoria"
+        "pl": "akcesoria",
+        "uk": "aksesuary"
       },
       "priority": 0.7,
       "changefreq": "monthly"
@@ -45,7 +49,8 @@
       "urls": {
         "en": "news",
         "lt": "naujienos",
-        "pl": "aktualnosci"
+        "pl": "aktualnosci",
+        "uk": "novyny"
       },
       "priority": 0.6,
       "changefreq": "weekly"
@@ -55,7 +60,8 @@
       "urls": {
         "en": "business-clients",
         "lt": "verslo-klientui",
-        "pl": "klienci-biznesowi"
+        "pl": "klienci-biznesowi",
+        "uk": "biznes-klienty"
       },
       "priority": 0.8,
       "changefreq": "monthly"
@@ -65,7 +71,8 @@
       "urls": {
         "en": "contact",
         "lt": "kontaktai",
-        "pl": "kontakt"
+        "pl": "kontakt",
+        "uk": "kontakty"
       },
       "priority": 0.7,
       "changefreq": "monthly"
@@ -87,7 +94,8 @@
       "basePath": {
         "en": "services",
         "lt": "paslaugos", 
-        "pl": "uslugi"
+        "pl": "uslugi",
+        "uk": "poslugy"
       },
       "itemRoute": "{basePath}/{slug}",
       "priority": 0.8,
@@ -97,17 +105,30 @@
       "basePath": {
         "en": "news",
         "lt": "naujienos",
-        "pl": "aktualnosci"
+        "pl": "aktualnosci",
+        "uk": "novyny"
       },
       "itemRoute": "{basePath}/{slug}",
       "priority": 0.6,
       "changefreq": "weekly"
     },
+    "accessories": {
+      "basePath": {
+        "en": "accessories",
+        "lt": "priedai",
+        "pl": "akcesoria",
+        "uk": "aksesuary"
+      },
+      "itemRoute": "{basePath}/{slug}",
+      "priority": 0.7,
+      "changefreq": "monthly"
+    },
     "business": {
       "basePath": {
         "en": "business-clients",
         "lt": "verslo-klientui", 
-        "pl": "klienci-biznesowi"
+        "pl": "klienci-biznesowi",
+        "uk": "biznes-klienty"
       },
       "itemRoute": "{basePath}/{slug}",
       "priority": 0.7,

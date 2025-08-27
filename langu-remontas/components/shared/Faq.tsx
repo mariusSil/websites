@@ -25,6 +25,7 @@ interface FaqProps {
     searchPlaceholder?: string;
     items?: FaqItem[];
     questions?: FaqItem[];
+    loadMoreText?: string;
     cta?: {
       title: string;
       description: string;
@@ -37,7 +38,7 @@ interface FaqProps {
   maxInitialItems?: number;
 }
 
-const Faq = ({ translations, locale, showSearch = false, showCategories = false, maxInitialItems }: FaqProps) => {
+const Faq = ({ translations, locale, showSearch = false, showCategories = false, maxInitialItems = 5 }: FaqProps) => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<FaqCategory | 'all'>('all');
@@ -82,18 +83,14 @@ const Faq = ({ translations, locale, showSearch = false, showCategories = false,
     return matchesSearch && matchesCategory;
   });
 
-  // Limit items if maxInitialItems is set and showAll is false
-  const displayItems = maxInitialItems && !showAll 
-    ? filteredItems.slice(0, maxInitialItems)
-    : filteredItems;
-
-  const hasMoreItems = maxInitialItems && filteredItems.length > maxInitialItems && !showAll;
+  // Always show all items in DOM for SEO, but control visibility with CSS
+  const hasMoreItems = filteredItems.length > maxInitialItems;
 
   // Generate Schema.org FAQPage structured data
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "mainEntity": displayItems.map(item => ({
+    "mainEntity": filteredItems.map((item: FaqItem) => ({
       "@type": "Question",
       "name": item.question,
       "acceptedAnswer": {
@@ -171,58 +168,73 @@ const Faq = ({ translations, locale, showSearch = false, showCategories = false,
         
         <div className="mt-12 mx-auto max-w-4xl">
           <div className="divide-y divide-gray-200">
-            {displayItems.map((item: FaqItem, index: number) => (
-              <div key={index} className="py-6 group">
-                <dt>
-                  <button
-                    onClick={() => toggleFaq(index)}
-                    className="flex w-full items-start justify-between text-left text-gray-900 hover:text-primary transition-colors"
-                  >
-                    <div className="flex items-start gap-3">
-                      {item.category && (
-                        <div className="flex-shrink-0 mt-1">
-                          <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
-                            <Icon name={categoryIcons[item.category] as any} className="h-4 w-4 text-primary" />
+            {filteredItems.map((item: FaqItem, index: number) => {
+              const isVisible = showAll || index < maxInitialItems;
+              return (
+                <div 
+                  key={index} 
+                  className={`py-6 group transition-all duration-500 ease-in-out ${
+                    isVisible 
+                      ? 'opacity-100 max-h-none' 
+                      : 'opacity-0 max-h-0 overflow-hidden py-0'
+                  }`}
+                  style={{
+                    maxHeight: isVisible ? 'none' : '0px',
+                    paddingTop: isVisible ? '1.5rem' : '0px',
+                    paddingBottom: isVisible ? '1.5rem' : '0px'
+                  }}
+                >
+                  <dt>
+                    <button
+                      onClick={() => toggleFaq(index)}
+                      className="flex w-full items-start justify-between text-left text-gray-900 hover:text-primary transition-colors"
+                    >
+                      <div className="flex items-start gap-3">
+                        {item.category && (
+                          <div className="flex-shrink-0 mt-1">
+                            <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
+                              <Icon name={categoryIcons[item.category] as any} className="h-4 w-4 text-primary" />
+                            </div>
                           </div>
-                        </div>
-                      )}
-                      <div>
-                        <span className="text-base font-semibold leading-7">{item.question}</span>
-                        {item.priority === 'high' && (
-                          <span className="ml-2 inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-red-100 text-red-800">
-                            Popular
-                          </span>
                         )}
+                        <div>
+                          <span className="text-base font-semibold leading-7">{item.question}</span>
+                          {item.priority === 'high' && (
+                            <span className="ml-2 inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-red-100 text-red-800">
+                              Popular
+                            </span>
+                          )}
+                        </div>
                       </div>
-                    </div>
-                    <span className="ml-6 flex h-7 items-center flex-shrink-0">
-                      <Icon 
-                        name={openIndex === index ? 'Minus' : 'Plus'} 
-                        className="h-6 w-6 transition-transform duration-200 group-hover:scale-110" 
-                      />
-                    </span>
-                  </button>
-                </dt>
-                {openIndex === index && (
-                  <dd className="mt-4 pr-12 animate-in slide-in-from-top-2 duration-200">
-                    <div className="space-y-4">
-                      <p className="text-base leading-7 text-gray-600">{item.answer}</p>
-                    </div>
-                  </dd>
-                )}
-              </div>
-            ))}
+                      <span className="ml-6 flex h-7 items-center flex-shrink-0">
+                        <Icon 
+                          name={openIndex === index ? 'Minus' : 'Plus'} 
+                          className="h-6 w-6 transition-transform duration-200 group-hover:scale-110" 
+                        />
+                      </span>
+                    </button>
+                  </dt>
+                  {openIndex === index && (
+                    <dd className="mt-4 pr-12 animate-in slide-in-from-top-2 duration-200">
+                      <div className="space-y-4">
+                        <p className="text-base leading-7 text-gray-600">{item.answer}</p>
+                      </div>
+                    </dd>
+                  )}
+                </div>
+              );
+            })}
           </div>
           
-          {hasMoreItems && (
-            <div className="text-center mt-8">
+          {hasMoreItems && !showAll && (
+            <div className="flex justify-center mt-2">
               <Button
                 variant="outline"
                 onClick={() => setShowAll(true)}
-                className="flex items-center gap-2"
+                className="flex items-center gap-2 mx-auto"
               >
                 <Icon name="ChevronDown" className="h-4 w-4" />
-                Show More Questions ({filteredItems.length - maxInitialItems!} more)
+                {translations.loadMoreText || 'Show More Questions'} ({filteredItems.length - maxInitialItems} more)
               </Button>
             </div>
           )}

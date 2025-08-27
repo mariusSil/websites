@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import { locales, type Locale } from '@/lib/i18n';
+import { URLTranslator } from '@/lib/url-translator';
 
 interface LanguageSwitcherProps {
   currentLocale: Locale;
@@ -34,54 +35,32 @@ export function LanguageSwitcher({ currentLocale, className = '' }: LanguageSwit
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  const switchLanguage = (newLocale: Locale) => {
+  const switchLanguage = async (newLocale: Locale) => {
     if (newLocale === currentLocale) {
       setIsOpen(false);
       return;
     }
 
-    // Extract the current path without locale
-    const pathWithoutLocale = pathname.replace(`/${currentLocale}`, '') || '';
-    
-    // Map current path to new locale path
-    let newPath = `/${newLocale}${pathWithoutLocale}`;
-    
-    // Handle localized URLs mapping
-    if (pathWithoutLocale) {
-      const pathSegments = pathWithoutLocale.split('/').filter(Boolean);
-      if (pathSegments.length > 0) {
-        const currentSlug = pathSegments[0];
-        
-        // Map common localized slugs
-        const slugMapping: Record<string, Record<Locale, string>> = {
-          'about': { en: 'about', lt: 'apie-mus', pl: 'o-nas', uk: 'pro-nas' },
-          'apie-mus': { en: 'about', lt: 'apie-mus', pl: 'o-nas', uk: 'pro-nas' },
-          'o-nas': { en: 'about', lt: 'apie-mus', pl: 'o-nas', uk: 'pro-nas' },
-          'pro-nas': { en: 'about', lt: 'apie-mus', pl: 'o-nas', uk: 'pro-nas' },
-          'contact': { en: 'contact', lt: 'kontaktai', pl: 'kontakt', uk: 'kontakty' },
-          'kontaktai': { en: 'contact', lt: 'kontaktai', pl: 'kontakt', uk: 'kontakty' },
-          'kontakt': { en: 'contact', lt: 'kontaktai', pl: 'kontakt', uk: 'kontakty' },
-          'kontakty': { en: 'contact', lt: 'kontaktai', pl: 'kontakt', uk: 'kontakty' },
-        };
-
-        // Find the page ID from current slug
-        let pageId = currentSlug;
-        for (const [id, mapping] of Object.entries(slugMapping)) {
-          if (Object.values(mapping).includes(currentSlug as any)) {
-            pageId = id;
-            break;
-          }
-        }
-
-        // Get the new slug for target locale
-        const mapping = slugMapping[pageId];
-        if (mapping && mapping[newLocale]) {
-          newPath = `/${newLocale}/${mapping[newLocale]}`;
-        }
+    try {
+      // Use URLTranslator to get the correct localized URL
+      const translatedURL = await URLTranslator.translateURL(pathname, newLocale);
+      
+      if (translatedURL) {
+        router.push(translatedURL);
+      } else {
+        // Fallback: simple locale replacement for homepage and unknown pages
+        const pathWithoutLocale = pathname.replace(`/${currentLocale}`, '') || '';
+        const fallbackPath = `/${newLocale}${pathWithoutLocale}`;
+        router.push(fallbackPath);
       }
+    } catch (error) {
+      console.error('Error switching language:', error);
+      // Fallback to simple replacement
+      const pathWithoutLocale = pathname.replace(`/${currentLocale}`, '') || '';
+      const fallbackPath = `/${newLocale}${pathWithoutLocale}`;
+      router.push(fallbackPath);
     }
 
-    router.push(newPath);
     setIsOpen(false);
   };
 

@@ -3,6 +3,7 @@
 import { usePathname, useRouter } from 'next/navigation';
 import { useCallback } from 'react';
 import { type Locale } from '@/lib/i18n';
+import { getLocalizedUrl } from '@/content/lib/content-resolver';
 
 interface UseSmartNavigationReturn {
   handleNavigation: (key: string, href: string) => void;
@@ -40,44 +41,34 @@ export function useSmartNavigation(locale: Locale): UseSmartNavigationReturn {
   }, []);
 
   // Main navigation handler
-  const handleNavigation = useCallback((key: string, href: string) => {
-    // Define which navigation items should use smart scrolling
-    const smartNavItems = ['services', 'accessories'];
-    
-    if (!smartNavItems.includes(key)) {
-      // For non-smart nav items, use standard navigation
-      router.push(href);
-      return;
-    }
-
-    // If we're on homepage, try to scroll to section
-
-      let sectionId = '';
-      
-      switch (key) {
-        case 'services':
-          sectionId = 'services';
-          break;
-        case 'accessories':
-          sectionId = 'accessories';
-          break;
-        default:
-          break;
+  const handleNavigation = useCallback(async (key: string, href: string) => {
+    // Get the localized URL for the page
+    let targetUrl = href;
+    try {
+      const localizedUrl = await getLocalizedUrl(key, locale);
+      if (localizedUrl) {
+        targetUrl = `/${locale}/${localizedUrl}`;
       }
-
-      if (sectionId) {
-        // Try to scroll to section, fallback to page navigation if section not found
-        const scrollSuccess = scrollToSection(sectionId);
-        if (!scrollSuccess) {
-          // Section not found, navigate to dedicated page
-          router.push(href);
-        }
-     
-    } else {
-      // Not on homepage, navigate to dedicated page
-      router.push(href);
+    } catch (error) {
+      console.warn(`Could not get localized URL for ${key}, using fallback:`, href);
     }
-  }, [router, scrollToSection]);
+
+    // Check if we're already on the target page
+    if (pathname === targetUrl || pathname === `${targetUrl}/`) {
+      // If on the same page, scroll to the relevant section
+      const targetSection = key === 'services' ? 'services' : 'accessories';
+      scrollToSection(targetSection);
+    } else {
+      // Navigate to the page first, then scroll after a short delay
+      router.push(targetUrl);
+      
+      // Set a timeout to scroll after navigation completes
+      setTimeout(() => {
+        const targetSection = key === 'services' ? 'services' : 'accessories';
+        scrollToSection(targetSection);
+      }, 100); // Small delay to ensure page has loaded
+    }
+  }, [pathname, router, scrollToSection, locale]);
 
   return {
     handleNavigation

@@ -24,7 +24,8 @@
       "title": "Still have questions?",
       "description": "Our experts are ready to help with any window or door concerns you may have.",
       "buttonText": "Get Free Consultation"
-    }
+    },
+    "loadMoreText": "Show More Questions"
   },
   "lt": {
     "title": "Dažniausiai užduodami klausimai",
@@ -51,7 +52,8 @@
       "title": "Dar turite klausimų?",
       "description": "Mūsų ekspertai pasirengę padėti su bet kokiais langų ar durų rūpesčiais.",
       "buttonText": "Gauti nemokamą konsultaciją"
-    }
+    },
+    "loadMoreText": "Rodyti daugiau klausimų"
   },
   "pl": {
     "title": "Najczęściej zadawane pytania",
@@ -78,7 +80,8 @@
       "title": "Masz jeszcze pytania?",
       "description": "Nasi eksperci są gotowi pomóc z wszelkimi problemami dotyczącymi okien lub drzwi.",
       "buttonText": "Uzyskaj bezpłatną konsultację"
-    }
+    },
+    "loadMoreText": "Pokaż więcej pytań"
   },
   "uk": {
     "title": "Часті запитання",
@@ -105,6 +108,7 @@
       "title": "Ще маєте запитання?",
       "description": "Наші експерти готові допомогти з будь-якими проблемами вікон або дверей.",
       "buttonText": "Отримати безкоштовну консультацію"
-    }
+    },
+    "loadMoreText": "Показати більше запитань"
   }
 }

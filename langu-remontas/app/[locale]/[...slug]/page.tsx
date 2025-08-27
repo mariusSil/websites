@@ -153,29 +153,70 @@ export default async function DynamicPage({ params }: PageProps) {
   } 
   
   if (isCollectionItem(content)) {
-    // Collection item (service, news article, etc.)
+    // Collection item (service, news article, etc.) - use full component system
     const localizedContent = content.content[locale] || content.content.en || {};
     
-    // For collection items, create a simple page structure
-    const components = [
-      {
-        type: 'PageHeader',
-        props: {
-          title: content.seo[locale]?.title || content.seo.en?.title || 'Article',
-          subtitle: content.seo[locale]?.description || content.seo.en?.description || ''
-        }
-      },
-      {
-        type: 'Content',
-        props: {
-          content: localizedContent.components ? 
-            localizedContent.components.map((comp: any) => comp.content || '').join('\n\n') :
-            'Content coming soon...'
-        }
-      }
-    ];
+    // Import collection-specific functions
+    const { getFinalCollectionComponents } = await import('@/content/lib/content-resolver');
+    const finalComponents = getFinalCollectionComponents(content);
 
-    return <ComponentRenderer components={components} />;
+    // Process components similar to regular pages
+    const components = await Promise.all(finalComponents.map(async (component: any) => {
+      let contentData = localizedContent[component.contentKey] || {};
+      
+      // Handle custom content from overrides
+      if (component.customContent) {
+        const customContent = component.customContent;
+        contentData = customContent[locale] || customContent.en || customContent;
+      }
+      // Handle shared content references
+      else if (typeof contentData === 'string' && contentData.startsWith('shared:')) {
+        const sharedContentKey = contentData.replace('shared:', '');
+        const sharedContent = await loadSharedContent(`components/${sharedContentKey}`);
+        contentData = getLocalizedSharedContent(sharedContent, locale);
+      }
+      // Handle direct shared content references in contentKey
+      else if (typeof component.contentKey === 'string' && component.contentKey.startsWith('shared:')) {
+        const sharedContentKey = component.contentKey.replace('shared:', '');
+        const sharedContent = await loadSharedContent(`components/${sharedContentKey}`);
+        contentData = getLocalizedSharedContent(sharedContent, locale);
+      }
+      
+      return {
+        type: component.type,
+        props: {
+          translations: contentData,
+          locale: locale
+        }
+      };
+    }));
+
+    // Add structured data for collection items
+    const structuredData = content.collection === 'services' ? {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": localizedContent.hero?.title || content.seo[locale]?.title,
+      "description": localizedContent.hero?.subtitle || content.seo[locale]?.description,
+      "provider": {
+        "@type": "Organization",
+        "name": "Langu Remontas",
+        "url": process.env.NEXT_PUBLIC_BASE_URL || 'https://langu-remontas.com'
+      }
+    } : null;
+
+    return (
+      <>
+        {structuredData && (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(structuredData),
+            }}
+          />
+        )}
+        <ComponentRenderer components={components} />
+      </>
+    );
   }
 
   // Fallback

@@ -31,7 +31,7 @@ export function Navigation({ locale, translations, onMobileMenuToggle, className
   
   const navItems = translations.navigation.main.map(item => ({
     ...item,
-    href: `/${locale}${item.href === '/' ? '' : item.href}`
+    href: item.href.startsWith('/') ? `/${locale}${item.href === '/' ? '' : item.href}` : `/${locale}/${item.href}`
   }));
 
   const isActiveLink = (href: string) => {

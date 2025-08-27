@@ -1,4 +1,4 @@
-import { type Locale } from '@/lib/i18n';
+import { type Locale, isValidLocale } from '@/lib/i18n';
 
 export interface RouteConfig {
   pageId: string;
@@ -62,6 +62,9 @@ export interface CollectionItem {
   content: Record<Locale, any>;
   publishDate?: string;
   author?: string;
+  components?: ComponentConfig[];
+  componentOverrides?: Record<string, ComponentOverride>;
+  defaultComponentsDisabled?: boolean;
 }
 
 // Default component configuration
@@ -270,6 +273,11 @@ export async function resolvePageBySlug(locale: Locale, slug: string): Promise<P
 // Get localized content for a page
 export function getLocalizedContent(pageContent: PageContent, locale: Locale): any {
   return pageContent.content[locale] || pageContent.content.en || {};
+}
+
+// Get localized content for a collection item
+export function getLocalizedCollectionContent(collectionItem: CollectionItem, locale: Locale): any {
+  return collectionItem.content[locale] || collectionItem.content.en || {};
 }
 
 // Get SEO data for a page with fallback support
@@ -524,7 +532,181 @@ export function getFinalPageComponents(
   );
 }
 
+// Get final components for a collection item (with defaults and overrides)
+export function getFinalCollectionComponents(
+  collectionItem: CollectionItem
+): ComponentConfig[] {
+  // If default components are explicitly disabled, use only item components
+  if (collectionItem.defaultComponentsDisabled) {
+    return collectionItem.components || [];
+  }
+  
+  // Otherwise, merge with defaults
+  return mergeWithDefaultComponents(
+    collectionItem.components,
+    collectionItem.componentOverrides
+  );
+}
+
 // Get default shared components (for reference)
 export function getDefaultSharedComponents(): ComponentConfig[] {
   return [...DEFAULT_SHARED_COMPONENTS];
+}
+
+// URL Translation Functions for Language Switching
+
+// Get localized collection URL for specific item and locale
+export async function getLocalizedCollectionURL(
+  collection: string,
+  itemId: string,
+  targetLocale: Locale
+): Promise<string | null> {
+  try {
+    const routesConfig = await loadRoutesConfig();
+    const collectionConfig = routesConfig.collections?.[collection];
+    
+    if (!collectionConfig) {
+      return null;
+    }
+
+    // Load the collection item to get its localized slug
+    const collectionItem = await loadCollectionItem(collection, itemId);
+    if (!collectionItem) {
+      return null;
+    }
+
+    const basePath = collectionConfig.basePath[targetLocale];
+    const localizedSlug = collectionItem.slugs?.[targetLocale];
+    
+    if (!basePath || !localizedSlug) {
+      return null;
+    }
+
+    return `/${targetLocale}/${basePath}/${localizedSlug}`;
+  } catch (error) {
+    console.error('Error getting localized collection URL:', error);
+    return null;
+  }
+}
+
+// Parse collection URL to extract collection, itemId, and locale
+export async function parseCollectionURL(
+  url: string
+): Promise<{ collection: string; itemId: string; locale: Locale } | null> {
+  try {
+    const routesConfig = await loadRoutesConfig();
+    
+    // Remove leading slash and split path
+    const pathParts = url.replace(/^\//, '').split('/');
+    
+    if (pathParts.length < 3) {
+      return null;
+    }
+
+    const [locale, basePath, slug] = pathParts;
+    
+    if (!isValidLocale(locale)) {
+      return null;
+    }
+
+    // Find matching collection by basePath
+    for (const [collectionName, config] of Object.entries(routesConfig.collections || {})) {
+      if (config.basePath[locale as Locale] === basePath) {
+        // Find item by slug in this collection
+        const itemId = await findItemIdBySlug(collectionName, slug, locale as Locale);
+        if (itemId) {
+          return {
+            collection: collectionName,
+            itemId,
+            locale: locale as Locale
+          };
+        }
+      }
+    }
+
+    return null;
+  } catch (error) {
+    console.error('Error parsing collection URL:', error);
+    return null;
+  }
+}
+
+// Find item ID by slug and locale
+async function findItemIdBySlug(
+  collection: string,
+  slug: string,
+  locale: Locale
+): Promise<string | null> {
+  try {
+    const fs = await import('fs');
+    const path = await import('path');
+    
+    const collectionDir = path.join(process.cwd(), 'content', 'collections', collection);
+    
+    if (!fs.existsSync(collectionDir)) {
+      return null;
+    }
+
+    const files = fs.readdirSync(collectionDir).filter(file => file.endsWith('.json'));
+    
+    for (const file of files) {
+      const filePath = path.join(collectionDir, file);
+      const content = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
+      
+      if (content.slugs && content.slugs[locale] === slug) {
+        return content.itemId;
+      }
+    }
+
+    return null;
+  } catch (error) {
+    console.error('Error finding item by slug:', error);
+    return null;
+  }
+}
+
+// Get all URL variants for a collection item
+export async function getAllURLVariants(
+  collection: string,
+  itemId: string
+): Promise<Record<Locale, string>> {
+  const variants: Record<string, string> = {};
+  const locales: Locale[] = ['en', 'lt', 'pl', 'uk'];
+
+  for (const locale of locales) {
+    const url = await getLocalizedCollectionURL(collection, itemId, locale);
+    if (url) {
+      variants[locale] = url;
+    }
+  }
+
+  return variants as Record<Locale, string>;
+}
+
+// Get localized static page URL
+export async function getLocalizedStaticPageURL(
+  currentPath: string,
+  targetLocale: Locale
+): Promise<string | null> {
+  try {
+    const routesConfig = await loadRoutesConfig();
+    
+    // Remove locale prefix from current path
+    const pathWithoutLocale = currentPath.replace(/^\/[a-z]{2}\//, '/').replace(/^\//, '');
+    
+    // Find matching route by URL in any locale
+    for (const route of routesConfig.routes) {
+      for (const [locale, url] of Object.entries(route.urls)) {
+        if (url === pathWithoutLocale) {
+          const targetUrl = route.urls[targetLocale];
+          return targetUrl ? `/${targetLocale}/${targetUrl}`.replace(/\/+/g, '/').replace(/\/$/, '') || `/${targetLocale}` : null;
+        }
+      }
+    }
+
+    return null;
+  } catch (error) {
+    console.error('Error getting localized static page URL:', error);
+    return null;
+  }
 }

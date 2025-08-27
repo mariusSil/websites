@@ -73,7 +73,7 @@ export function MobileNavigationMenu({
 
   const navItems = translations.navigation.main.map(item => ({
     ...item,
-    href: `/${locale}${item.href === '/' ? '' : item.href}`
+    href: item.href.startsWith('/') ? `/${locale}${item.href === '/' ? '' : item.href}` : `/${locale}/${item.href}`
   }));
 
   const handleLinkClick = () => {
