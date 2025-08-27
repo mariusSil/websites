@@ -7,12 +7,21 @@ export interface RouteConfig {
   changefreq: string;
 }
 
+export interface ComponentOverride {
+  contentKey?: string;
+  customContent?: any;
+  disabled?: boolean;
+  position?: number; // For reordering
+}
+
 export interface PageContent {
   pageId: string;
   template: string;
   seo: Record<Locale, SEOData>;
   content: Record<Locale, any>;
-  components: ComponentConfig[];
+  components?: ComponentConfig[]; // Now optional
+  componentOverrides?: Record<string, ComponentOverride>; // New
+  defaultComponentsDisabled?: boolean; // Option to disable all defaults
 }
 
 export interface ComponentConfig {
@@ -55,11 +64,25 @@ export interface CollectionItem {
   author?: string;
 }
 
+// Default component configuration
+const DEFAULT_SHARED_COMPONENTS: ComponentConfig[] = [
+  { type: 'ServiceCards', contentKey: 'shared:servicecards', required: true },
+  { type: 'AccessoriesGrid', contentKey: 'shared:accessoriesgrid', required: true },
+  { type: 'Testimonials', contentKey: 'shared:testimonials', required: true },
+  { type: 'WhyChooseUs', contentKey: 'whyChooseUs', required: true },
+  { type: 'TechnicianTeam', contentKey: 'shared:technicianteam', required: true },
+  { type: 'Partners', contentKey: 'shared:partners', required: true },
+  { type: 'Transformations', contentKey: 'shared:transformations', required: true },
+  { type: 'PropertyTypes', contentKey: 'shared:propertytypes', required: true },
+  { type: 'Faq', contentKey: 'shared:faq', required: true }
+];
+
 // Cache for loaded configurations
 const routesConfigCache = new Map<string, RoutesConfig>();
 const pageContentCache = new Map<string, PageContent>();
 const collectionItemCache = new Map<string, CollectionItem>();
 const sharedContentCache = new Map<string, any>();
+const mergedComponentsCache = new Map<string, ComponentConfig[]>();
 
 // Load main routes configuration
 export async function loadRoutesConfig(): Promise<RoutesConfig> {
@@ -122,8 +145,14 @@ export async function loadFormTranslations(locale: Locale): Promise<any> {
   return getLocalizedSharedContent(forms, locale);
 }
 
-// Load collection item content
+// Load collection item content (server-side only)
 export async function loadCollectionItem(collection: string, itemId: string): Promise<CollectionItem | null> {
+  // Only run on server-side
+  if (typeof window !== 'undefined') {
+    console.warn('loadCollectionItem should only be called on server-side');
+    return null;
+  }
+
   const cacheKey = `collection-${collection}-${itemId}`;
   
   if (collectionItemCache.has(cacheKey)) {
@@ -145,8 +174,14 @@ export async function loadCollectionItem(collection: string, itemId: string): Pr
   }
 }
 
-// Get all collection items for a category
+// Get all collection items for a category (server-side only)
 export async function getCollectionItems(collection: string): Promise<CollectionItem[]> {
+  // Only run on server-side
+  if (typeof window !== 'undefined') {
+    console.warn('getCollectionItems should only be called on server-side');
+    return [];
+  }
+
   try {
     const { promises: fs } = require('fs');
     const path = require('path');
@@ -389,4 +424,107 @@ export async function resolvePageIdFromPath(locale: Locale, path: string): Promi
   const route = routesConfig.routes.find(r => r.urls[locale] === cleanPath);
   
   return route?.pageId || null;
+}
+
+// Apply component overrides to default components
+export function applyComponentOverrides(
+  defaultComponents: ComponentConfig[],
+  overrides: Record<string, ComponentOverride>
+): ComponentConfig[] {
+  const result: ComponentConfig[] = [];
+  const positionMap = new Map<number, ComponentConfig>();
+  
+  // Process each default component
+  for (const component of defaultComponents) {
+    const override = overrides[component.type];
+    
+    // Skip if disabled
+    if (override?.disabled) {
+      continue;
+    }
+    
+    // Create component with potential overrides
+    const finalComponent: ComponentConfig = {
+      type: component.type,
+      contentKey: override?.contentKey || component.contentKey,
+      required: component.required
+    };
+    
+    // Add custom content if provided
+    if (override?.customContent) {
+      (finalComponent as any).customContent = override.customContent;
+    }
+    
+    // Handle positioning
+    if (override?.position !== undefined) {
+      positionMap.set(override.position, finalComponent);
+    } else {
+      result.push(finalComponent);
+    }
+  }
+  
+  // Insert positioned components at their specified positions
+  const sortedPositions = Array.from(positionMap.keys()).sort((a, b) => a - b);
+  for (const position of sortedPositions) {
+    const component = positionMap.get(position)!;
+    if (position >= result.length) {
+      result.push(component);
+    } else {
+      result.splice(position, 0, component);
+    }
+  }
+  
+  return result;
+}
+
+// Merge page components with defaults
+export function mergeWithDefaultComponents(
+  pageComponents: ComponentConfig[] = [],
+  componentOverrides?: Record<string, ComponentOverride>
+): ComponentConfig[] {
+  const cacheKey = `${JSON.stringify(pageComponents)}-${JSON.stringify(componentOverrides || {})}`;
+  
+  if (mergedComponentsCache.has(cacheKey)) {
+    return mergedComponentsCache.get(cacheKey)!;
+  }
+  
+  // Start with page-specific components
+  let result = [...pageComponents];
+  
+  // Apply overrides to default components
+  const processedDefaults = componentOverrides 
+    ? applyComponentOverrides(DEFAULT_SHARED_COMPONENTS, componentOverrides)
+    : [...DEFAULT_SHARED_COMPONENTS];
+  
+  // Add default components that aren't already in page components
+  for (const defaultComponent of processedDefaults) {
+    const existsInPage = result.some(comp => comp.type === defaultComponent.type);
+    if (!existsInPage) {
+      result.push(defaultComponent);
+    }
+  }
+  
+  mergedComponentsCache.set(cacheKey, result);
+  return result;
+}
+
+// Get final components for a page (with defaults and overrides)
+export function getFinalPageComponents(
+  pageContent: PageContent
+): ComponentConfig[] {
+  // If default components are explicitly disabled, use only page components
+  if (pageContent.defaultComponentsDisabled) {
+    return pageContent.components || [];
+  }
+  
+  // Otherwise, merge with defaults
+  return mergeWithDefaultComponents(
+    pageContent.components,
+    pageContent.componentOverrides
+  );
+}
+
+// Get default shared components (for reference)
+export function getDefaultSharedComponents(): ComponentConfig[] {
+  return [...DEFAULT_SHARED_COMPONENTS];
 }

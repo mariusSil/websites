@@ -6,6 +6,7 @@ import { LanguageSwitcher } from '@/components/common/LanguageSwitcher';
 import Icon from '@/components/ui/Icon';
 import { type Locale } from '@/lib/i18n';
 import { cn } from '@/lib/utils';
+import { useSmartNavigation } from '@/hooks/useSmartNavigation';
 
 interface NavigationItem {
   key: string;
@@ -26,6 +27,7 @@ interface NavigationProps {
 
 export function Navigation({ locale, translations, onMobileMenuToggle, className = '' }: NavigationProps) {
   const pathname = usePathname();
+  const { handleNavigation } = useSmartNavigation(locale);
   
   const navItems = translations.navigation.main.map(item => ({
     ...item,
@@ -44,20 +46,40 @@ export function Navigation({ locale, translations, onMobileMenuToggle, className
     <nav className={cn("bg-accent border-b border-gray-200 sticky top-16 z-40", className)}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center justify-between h-12">
+        <div className="hidden lg:flex items-center justify-between h-12">
           <div className="flex space-x-8">
-            {navItems.map((item) => (
-              <Link
-                key={item.key}
-                href={item.href}
-                className={cn(
-                  "text-sm font-medium transition-colors hover:text-primary",
-                  isActiveLink(item.href) ? "text-secondary" : "text-gray-600"
-                )}
-              >
-                {item.label.toUpperCase()}
-              </Link>
-            ))}
+            {navItems.map((item) => {
+              const isSmartNavItem = ['services', 'accessories'].includes(item.key);
+              
+              if (isSmartNavItem) {
+                return (
+                  <button
+                    key={item.key}
+                    onClick={() => handleNavigation(item.key, item.href)}
+                    className={cn(
+                      "text-sm font-medium transition-colors hover:text-primary cursor-pointer",
+                      isActiveLink(item.href) ? "text-secondary" : "text-gray-600"
+                    )}
+                    aria-label={`Navigate to ${item.label}`}
+                  >
+                    {item.label.toUpperCase()}
+                  </button>
+                );
+              }
+              
+              return (
+                <Link
+                  key={item.key}
+                  href={item.href}
+                  className={cn(
+                    "text-sm font-medium transition-colors hover:text-primary",
+                    isActiveLink(item.href) ? "text-secondary" : "text-gray-600"
+                  )}
+                >
+                  {item.label.toUpperCase()}
+                </Link>
+              );
+            })}
           </div>
           
           <div className="flex items-center">
@@ -66,7 +88,7 @@ export function Navigation({ locale, translations, onMobileMenuToggle, className
         </div>
 
         {/* Mobile Navigation */}
-        <div className="md:hidden">
+        <div className="lg:hidden">
           <div className="flex items-center justify-between h-12">
             {/* Language Switcher - Left */}
             <div className="flex items-center">

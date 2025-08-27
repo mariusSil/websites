@@ -1,9 +1,9 @@
 'use client';
 
 import Icon from '@/components/ui/Icon';
-import { RequestTechnicianModal } from './RequestTechnicianModal';
+import { RequestTechnicianModal } from '../common/RequestTechnicianModal';
 import Link from 'next/link';
-import { CTAButtons } from './CTAButtons';
+import { CTAButtons } from '../common/CTAButtons';
 import { Locale } from '@/lib/i18n';
 
 // Icon mapping function to handle string icon names from content
@@ -11,11 +11,11 @@ const getIconByName = (iconName: string) => {
   const iconMap: { [key: string]: string } = {
     'Wrench': 'Wrench',
     'Clock': 'Clock',
-    'ShieldCheck': 'Shield',
+    'ShieldCheck': 'ShieldCheck',
+    'Shield': 'ShieldCheck',
     'Phone': 'Phone',
     'Info': 'Info',
     'Tools': 'Wrench',
-    'Shield': 'Shield',
     'MapMarker': 'MapPin',
     'Calendar': 'Calendar',
     'Comments': 'MessageSquare'
@@ -83,12 +83,8 @@ export function Hero({
     return null
   }
 
-  // Trust indicators with predefined content matching target design
-  const trustIndicators = [
-    { icon: 'X', title: 'FREE Diagnostics', subtitle: 'No hidden costs' },
-    { icon: 'Clock', title: 'Same-Day Service', subtitle: 'Quick response' },
-    { icon: 'Shield', title: 'Work Guarantee', subtitle: 'Quality assured' }
-  ];
+  // Use translations.features from content instead of hardcoded values
+  const trustIndicators = translations.features || [];
 
   return (
     <section 
@@ -101,7 +97,7 @@ export function Hero({
       }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="max-w-2xl">
+        <div>
             {/* Badge */}
             {translations.badge && (
             <div className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium mb-6 border border-white/20">
@@ -111,24 +107,28 @@ export function Hero({
             )}
           
           {/* Main Heading */}
+          <div className="max-w-2xl">
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight lg:leading-[1.1] text-white">
               {translations.title}
             </h1>
+          </div>
                     {/* Subtitle */}
-          <p className="text-sm sm:text-base md:text-lg mb-6 text-gray-300 leading-relaxed">
+          <div className="max-w-2xl">
+           <p className="text-sm sm:text-base md:text-lg mb-6 text-gray-300 leading-relaxed">
               {translations.subtitle}
             </p>
+            </div>
           
           {/* Trust Indicators */}
           <div className="flex flex-wrap gap-6 mb-6">
-            {trustIndicators.map((indicator, index) => (
+            {trustIndicators.map((feature, index) => (
               <div key={index} className="flex items-center space-x-3">
                 <div className="flex-shrink-0 w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center">
-                  <Icon name={indicator.icon as any} className="w-6 h-6 text-primary" />
+                  <Icon name={getIconByName(feature.icon) as any} className="w-6 h-6 text-primary" />
                 </div>
                 <div>
-                  <p className="font-semibold text-xs sm:text-sm text-white">{indicator.title}</p>
-                  <p className="text-xs text-white">{indicator.subtitle}</p>
+                  <p className="font-semibold text-xs sm:text-sm text-white">{feature.title}</p>
+                  <p className="text-xs text-white">{feature.subtitle}</p>
                 </div>
               </div>
             ))}

@@ -2,381 +2,237 @@
 trigger: always_on
 ---
 
-# AI Agent Project Guide - Langu-Remontas
+# AI Agent Guide - Langu-Remontas (12K Limit)
 
 ## Project Overview
-Next.js 14 template with TypeScript, i18n, content-driven architecture for multilingual websites.
+Next.js 14 + TypeScript + i18n + automatic default components system for multilingual websites.
 
-## 🚨 CRITICAL RULES - NEVER VIOLATE
+## 🚨 CRITICAL RULES
 
 ### Framework & Versions
-- **Next.js**: 14.0.3 (App Router)
-- **React**: ^18, **TypeScript**: ^5
-- **Package Manager**: npm (yarn also supported)
+- **Next.js**: 14.0.3 (App Router), **React**: ^18, **TypeScript**: ^5, **Package**: npm/yarn
 
 ### Project Structure
 ```
 app/[locale]/          # Dynamic locale routing
-components/            # React components  
-├── ui/               # Reusable UI components
-content/              # Content management
-├── lib/              # Content utilities
-├── pages/            # Page definitions
+components/
+├── ui/               # UI components (Button, Dialog, Input)
+├── common/           # CTAs, modals (RequestTechnicianButton, ConsultationButton)
+├── shared/           # Page components (ServiceCards, Testimonials, Faq)
+content/
+├── pages/            # Page JSON files
 ├── shared/           # Shared content
-└── routes.json       # Route config
-lib/                  # Utilities
-docs/                 # Documentation
-public/               # Static assets
+├── collections/      # Dynamic content
+└── routes.json       # URL routing
 ```
 
 ### Internationalization
-**Supported Locales**: `['en', 'pl', 'lt', 'uk']`
-**Primary**: `en` (default), **Secondary**: `pl`, `lt`, `uk`
+**Locales**: `['en', 'pl', 'lt', 'uk']` (en = primary/fallback)
 
-**MANDATORY LOCALE VALIDATION:**
 ```typescript
 import { isValidLocale, type Locale } from '@/lib/i18n';
-// ALWAYS validate
 if (isValidLocale(locale)) { /* proceed */ }
-```
 
-**TRANSLATION LOADING - NEVER IMPORT JSON DIRECTLY:**
-```typescript
-// ✅ CORRECT
+// ✅ CORRECT - Never import JSON directly
 import { loadSharedContent, getLocalizedSharedContent } from '@/content/lib/content-resolver';
 const content = await loadSharedContent('common');
 const localized = getLocalizedSharedContent(content, locale);
-
-// ❌ NEVER DO THIS
-import commonData from '@/content/shared/common.json';
 ```
 
-### Content Management System
-**JSON-based content** in `content/` directory
+### Default Components System
+**9 components auto-included on every page:**
+1. ServiceCards, 2. AccessoriesGrid, 3. Testimonials, 4. WhyChooseUs, 5. TechnicianTeam, 6. Partners, 7. Transformations, 8. PropertyTypes, 9. Faq
 
-**MANDATORY PAGE LOADING PATTERN:**
+**Page Structure (70% less JSON):**
+```json
+{
+  "pageId": "about",
+  "seo": { "en": {"title": "...", "description": "..."}, "lt": {...}, "pl": {...}, "uk": {...} },
+  "content": { "en": {"pageHeader": {...}}, "lt": {...}, "pl": {...}, "uk": {...} },
+  "components": [
+    { "type": "PageHeader", "contentKey": "pageHeader", "required": true }
+  ],
+  "componentOverrides": {
+    "WhyChooseUs": { "contentKey": "whyChooseUs" },
+    "Partners": { "disabled": true },
+    "Faq": { "position": 2 }
+  }
+}
+```
+
+**Override Patterns:**
+```json
+// Page content: "contentKey": "whyChooseUs"
+// Shared content: "contentKey": "shared:homepage-testimonials"  
+// Disable: "disabled": true
+// Reorder: "position": 2
+// Inline: "customContent": {"en": {...}, "lt": {...}}
+```
+
+### Page Loading Pattern
 ```typescript
+import { getFinalPageComponents, loadPageContent, getLocalizedContent } from '@/content/lib/content-resolver';
+
 export default async function Page({ params }: { params: { locale: Locale } }) {
   const { locale } = params;
   if (!isValidLocale(locale)) notFound();
   
   const pageContent = await loadPageContent('homepage');
-  const commonContent = await loadSharedContent('common');
-  
   if (!pageContent) return <div>Page not found</div>;
   
   const localizedContent = getLocalizedContent(pageContent, locale);
-  const localizedCommon = getLocalizedSharedContent(commonContent, locale);
+  const finalComponents = getFinalPageComponents(pageContent); // NEW: includes defaults + overrides
   
-  return (
-    <>
-      <Header translations={localizedCommon} />
-      <ComponentRenderer components={localizedContent.components} />
-      <Footer translations={localizedCommon} />
-    </>
-  );
-}
-```
-
-**MANDATORY CONTENT STRUCTURE:**
-```json
-{
-  "pageId": "about",
-  "seo": {
-    "en": {
-      "title": "Page Title",
-      "description": "Description...",
-      "keywords": "keywords",
-      "ogImage": "/image.jpg"
+  const components = await Promise.all(finalComponents.map(async (component) => {
+    let contentData = localizedContent[component.contentKey] || {};
+    
+    if ((component as any).customContent) {
+      contentData = (component as any).customContent[locale] || (component as any).customContent.en;
     }
-    // All locales: lt, pl, uk
-  },
-  "content": {
-    "en": { /* content */ }
-    // All locales
-  },
-  "components": [
-    { "type": "Hero", "contentKey": "hero", "required": true }
-  ]
+    else if (typeof contentData === 'string' && contentData.startsWith('shared:')) {
+      const sharedContent = await loadSharedContent(`components/${contentData.replace('shared:', '')}`);
+      contentData = getLocalizedSharedContent(sharedContent, locale);
+    }
+    
+    return { type: component.type, props: { translations: contentData, locale } };
+  }));
+  
+  return <ComponentRenderer components={components} />;
 }
 ```
 
-### Component Architecture
-**ComponentRenderer.tsx** - Central dispatcher, ALL components must be registered
-
-**COMPONENT REGISTRATION:**
+### CTA Button System
+**Standardized components in `/components/common/`:**
 ```typescript
-// Import components
-import Hero from './Hero'
-import Features from './Features'
+// Primary CTA (red solid) - opens RequestTechnicianModal
+import { RequestTechnicianButton } from '@/components/common/RequestTechnicianButton';
 
-// Register in switch
-function SingleComponentRenderer({ type, props }) {
-  switch (type.toLowerCase()) {
-    case 'hero': return <Hero {...props} />
-    case 'features': return <Features {...props} />
-    default: return null
-  }
-}
+// Secondary CTA (red outline) - opens same modal
+import { ConsultationButton } from '@/components/common/ConsultationButton';
+
+// Combined CTAs
+import { CTAButtons } from '@/components/common/CTAButtons';
+<CTAButtons locale={locale} translations={translations} 
+  technicianProps={{ size: "sm" }} consultationProps={{ size: "sm" }} />
+
+// NEVER hardcode button text - use constants
+import { getButtonText } from '@/lib/button-constants';
+getButtonText('CALL_TECHNICIAN', locale) // "CALL A TECHNICIAN"/"KVIESTI MEISTRĄ"/etc
+getButtonText('CONSULTATION', locale)    // "CONSULTATION"/"KONSULTACIJA"/etc
 ```
 
-**Available Components**: Hero, Features, ServiceCards, PageHeader, Content, ContactForm, Header, Footer, LanguageSwitcher, ValueProposition, ProcessSteps, Testimonials, WhyChooseUs, Partners, Faq, CtaBanner
-
-### UI Component System
-**ALWAYS lowercase imports for UI components:**
+### UI Components
+**Import paths (uppercase file names):**
 ```typescript
 // ✅ CORRECT
-import { Button } from '@/components/ui/button';
-import { Dialog, DialogContent } from '@/components/ui/dialog';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-
-// ❌ INCORRECT
 import { Button } from '@/components/ui/Button';
-```
-
-**Available UI Components:**
-- Button (with variants: default, primary, destructive, outline, secondary, success, green, ghost, link, accent)
-- Input, Label, Textarea
-- Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger
-- Select, SelectContent, SelectItem, SelectTrigger, SelectValue
-- Checkbox
-- Icon (unified Lucide icons component)
-
-### Button Component Variants & Sizes
-```typescript
-// Button variants
-variant: {
-  default: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
-  primary: "bg-primary text-primary-foreground hover:bg-primary/90",
-  destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
-  outline: "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
-  secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
-  success: "bg-success text-white hover:bg-success/90",
-  green: "bg-success text-success-foreground hover:bg-success/90",
-  ghost: "hover:bg-accent hover:text-accent-foreground",
-  link: "text-primary underline-offset-4 hover:underline",
-  accent: "bg-accent text-accent-foreground hover:bg-accent/90",
-}
-
-// Button sizes
-size: {
-  default: "h-10 px-4 py-2",     // 40px height
-  sm: "h-9 rounded-md px-3",     // 36px height  
-  lg: "h-11 rounded-md px-8",    // 44px height
-  icon: "h-10 w-10",             // Square 40px
-}
-
-// Success variant with optional check icon
-<Button variant="success" showIcon={true}>Completed</Button>
-```
-
-### Theme System
-**COLOR HIERARCHY:**
-- **primary**: `#DC2626` (Red) - Main CTAs
-- **secondary**: `#1F2937` (Dark Gray) - Secondary elements  
-- **success**: `#059669` (Green) - Success states, positive actions
-- **info**: `#2563EB` (Blue) - Information
-- **accent**: `#F3F4F6` (Light Gray) - Subtle backgrounds
-- **navy**: `#1A237E` - Professional elements
-- **neutral**: Gray scale 50-900
-
-**TYPOGRAPHY SCALE:**
-```css
-text-hero    /* 3rem, bold */
-text-h1      /* 2rem, semibold */
-text-h2      /* 1.5rem, semibold */
-text-h3      /* 1.125rem, medium */
-text-body    /* 1rem, normal */
-text-cta     /* 1.125rem, semibold */
-```
-
-**SPACING SYSTEM:**
-```css
-space-section     /* 5rem - Between sections */
-space-section-lg  /* 7.5rem - Large gaps */
-space-component   /* 3rem - Around components */
-space-element     /* 1.5rem - Between elements */
-space-tight       /* 0.5rem - Tight spacing */
-```
-
-### Responsive Design Patterns
-**Breakpoint Usage:**
-- `sm:` - 640px and up
-- `md:` - 768px and up  
-- `lg:` - 1024px and up
-- `xl:` - 1280px and up (1200px+ equivalent)
-
-**Common Responsive Patterns:**
-```typescript
-// Hide phone number on screens < 1200px
-<span className="ml-2 hidden xl:inline text-sm">{phone}</span>
-
-// Show only flag on screens < 1200px
-<span className="hidden xl:block">{languageName}</span>
-
-// Mobile menu toggle
-<div className="md:hidden">Mobile content</div>
-<div className="hidden md:flex">Desktop content</div>
-```
-
-### SEO & Metadata
-**SEO Generation in Layout:**
-```tsx
-export async function generateMetadata({ params }: { params: { locale: Locale } }) {
-  const seo = getPageSEO('home', params.locale)
-  return {
-    title: seo.title,
-    description: seo.description,
-    openGraph: {
-      title: seo.title,
-      description: seo.description,
-      images: seo.ogImage ? [{ url: seo.ogImage }] : []
-    }
-  }
-}
-```
-
-### Content Resolver Functions
-```typescript
-// Available from content/lib/content-resolver.ts
-getPageContent(pageId: string, locale: Locale): any
-getSharedContent(type: string, locale: Locale): any  
-getPageSEO(pageId: string, locale: Locale): SEOData
-getRoutes(): RouteConfig[]
-getRoute(pageId: string): RouteConfig | undefined
-```
-
-### TypeScript Requirements
-**NEVER use `any`** - Always define proper interfaces:
-```typescript
-interface ComponentProps {
-  locale: Locale;
-  translations: {
-    title: string;
-    description: string;
-  };
-  onSubmit: (data: FormData) => Promise<void>;
-}
-```
-
-### Modal Component Pattern
-```typescript
-interface ModalProps {
-  customTrigger?: React.ReactElement;
-  translations: { title: string; triggerButton: string; /* ... */ };
-}
-
-export function ComponentModal({ customTrigger, translations }: ModalProps) {
-  const [isOpen, setIsOpen] = useState(false);
-  return (
-    <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <DialogTrigger asChild>
-        {customTrigger || <Button size="sm">{translations.triggerButton}</Button>}
-      </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px]">
-        <DialogHeader>
-          <DialogTitle>{translations.title}</DialogTitle>
-        </DialogHeader>
-        {/* Form content */}
-      </DialogContent>
-    </Dialog>
-  );
-}
-```
-
-### Icon System
-**Use unified Icon component:**
-```typescript
+import { Dialog, DialogContent } from '@/components/ui/Dialog';
 import Icon from '@/components/ui/Icon';
 
-// Available icons (Lucide React)
+// Button variants & sizes
+<Button variant="default" size="sm">Primary CTA</Button>      // Red solid, header
+<Button variant="outline-red" size="default">Secondary</Button> // Red outline, content
+<Button variant="primary" size="lg">Success Action</Button>    // Green, hero
+
+// Icons (Lucide React)
 <Icon name="Phone" className="w-5 h-5" />
 <Icon name="Send" className="w-5 h-5" />        // Telegram
 <Icon name="MessageSquare" className="w-5 h-5" /> // WhatsApp
-<Icon name="MapPin" className="w-5 h-5" />
-<Icon name="Check" className="w-4 h-4" />       // Success indicator
 ```
 
-### Image Placeholder Strategy
-**Use placeholder blocks during development:**
-```tsx
-// Instead of <Image> components initially
-<div className="w-full h-96 bg-neutral-200 rounded-card flex items-center justify-center">
-  <span className="text-neutral-600 font-medium">Hero Image - 800x400px</span>
-</div>
+### Component Registration
+```typescript
+// ComponentRenderer.tsx - ALL components must be registered
+import Hero from './shared/Hero';
+import ServiceCards from './shared/ServiceCards';
 
-// Reusable placeholder
-const ImagePlaceholder = ({ width = "w-full", height = "h-48", description }) => (
-  <div className={`${width} ${height} bg-neutral-200 rounded-card flex items-center justify-center`}>
-    <span className="text-neutral-600 font-medium text-center px-4">{description}</span>
-  </div>
-)
-```
-
-## ⚠️ CRITICAL DON'Ts
-1. **DON'T** hardcode locale strings
-2. **DON'T** import JSON files directly  
-3. **DON'T** bypass ComponentRenderer
-4. **DON'T** create pages outside `[locale]` structure
-5. **DON'T** use `any` types
-6. **DON'T** use uppercase UI component imports
-7. **DON'T** mix button sizes without consistency
-8. **DON'T** forget to restart dev server after Tailwind config changes
-
-## ✅ MANDATORY PRACTICES
-1. **USE** content resolver functions for all content
-2. **VALIDATE** locales with `isValidLocale()`
-3. **FOLLOW** component registration pattern
-4. **USE** TypeScript interfaces for all props
-5. **PROVIDE** fallback content for missing translations
-6. **USE** semantic Tailwind classes from design system
-7. **HANDLE** loading and error states
-8. **ENSURE** button size consistency (use `size="sm"` for header CTAs)
-9. **RESTART** dev server after Tailwind configuration changes
-
-## Dependencies
-```json
-{
-  "next": "14.0.3",
-  "react": "^18",
-  "typescript": "^5",
-  "tailwindcss": "^3.3.0",
-  "lucide-react": "^0.541.0",
-  "@radix-ui/react-*": "Latest",
-  "class-variance-authority": "^0.7.1",
-  "eslint": "^8",
-  "prettier": "^3.6.2"
+function SingleComponentRenderer({ type, props }) {
+  switch (type.toLowerCase()) {
+    case 'hero': return <Hero {...props} />;
+    case 'servicecards': return <ServiceCards {...props} />;
+    case 'freediagnostics': return <FreeDiagnostics {...props} />;
+    default: return null;
+  }
 }
 ```
 
-## Quick Commands
-```bash
-npm run dev      # Development (or yarn dev)
-npm run build    # Production build  
-npm run lint     # Linting
+### Content Resolver API
+```typescript
+// Core functions
+loadPageContent(pageId: string): Promise<PageContent | null>
+loadSharedContent(contentType: string): Promise<any>
+getLocalizedContent(pageContent: PageContent, locale: Locale): any
+getLocalizedSharedContent(sharedContent: any, locale: Locale): any
+
+// Default components system
+getFinalPageComponents(pageContent: PageContent): ComponentConfig[]
+mergeWithDefaultComponents(pageComponents: ComponentConfig[], overrides?: Record<string, ComponentOverride>): ComponentConfig[]
+getDefaultSharedComponents(): ComponentConfig[]
+
+// SEO & routing
+getPageSEO(pageContent: PageContent, locale: Locale): SEOData
+getRouteByPageId(pageId: string): Promise<RouteConfig | null>
 ```
 
-## Emergency Debugging
-1. **i18n Issues**: Check `lib/i18n.ts` locale validation
-2. **Content Not Loading**: Check `content-resolver.ts` cache
-3. **Component Not Rendering**: Verify `ComponentRenderer.tsx` registration
-4. **Build Errors**: Check TypeScript interfaces
-5. **SEO Problems**: Verify content structure and metadata
-6. **Button Styling Issues**: Restart dev server after Tailwind changes
-7. **Size Inconsistencies**: Ensure all buttons use same size variant
+### Theme System
+**Colors**: primary=#DC2626 (red), success=#059669 (green), secondary=#1F2937 (dark gray)
+**Typography**: text-hero (3rem), text-h1 (2rem), text-h2 (1.5rem), text-body (1rem)
+**Spacing**: space-section (5rem), space-component (3rem), space-element (1.5rem)
+**Responsive**: sm:640px, md:768px, lg:1024px, xl:1280px
 
-## Priority Guidelines
-**HIGH**: Locale validation, content resolver usage, component registration, type safety, button consistency
-**MEDIUM**: Theme consistency, performance, SEO metadata, responsive design
-**LOW**: Minor styling, non-critical features
+### TypeScript Interfaces
+```typescript
+interface ComponentOverride {
+  contentKey?: string;
+  customContent?: any;
+  disabled?: boolean;
+  position?: number;
+}
 
-## Recent Updates
-- Added Button component variants (success, green) with optional check icon
-- Implemented responsive design patterns for header elements
-- Updated Tailwind config with proper success color structure
-- Added comprehensive UI component documentation
-- Enhanced modal patterns with consistent sizing
+interface PageContent {
+  pageId: string;
+  seo: Record<Locale, SEOData>;
+  content: Record<Locale, any>;
+  components?: ComponentConfig[];
+  componentOverrides?: Record<string, ComponentOverride>;
+  defaultComponentsDisabled?: boolean;
+}
+```
+
+## ⚠️ CRITICAL DON'Ts
+1. **DON'T** hardcode locales/button text
+2. **DON'T** import JSON directly  
+3. **DON'T** bypass ComponentRenderer
+4. **DON'T** use `any` types
+5. **DON'T** use lowercase UI imports
+6. **DON'T** manually declare default components
+7. **DON'T** create separate CTA modals
+
+## ✅ MANDATORY PRACTICES
+1. **USE** content resolver functions
+2. **VALIDATE** locales with `isValidLocale()`
+3. **USE** `getFinalPageComponents()` for pages
+4. **USE** `componentOverrides` for customization
+5. **USE** standardized CTA components
+6. **USE** `getButtonText()` for labels
+7. **PROVIDE** fallback content (en locale)
+8. **RESTART** dev server after Tailwind changes
+
+## Quick Reference
+**Page Creation**: Create `/content/pages/{id}.json` + add to `routes.json`
+**Override Component**: `"componentOverrides": {"WhyChooseUs": {"contentKey": "custom"}}`
+**Disable Component**: `"componentOverrides": {"Partners": {"disabled": true}}`
+**CTA Buttons**: Use `CTAButtons` component with proper size props
+**Content Keys**: `"hero"` = page content, `"shared:servicecards"` = shared content
+
+## Emergency Debug
+1. **Content missing**: Check file paths, locale fallbacks
+2. **Component not rendering**: Verify ComponentRenderer registration
+3. **Defaults missing**: Check `getFinalPageComponents()` usage
+4. **Build errors**: Check TypeScript interfaces, import paths
+5. **CTA issues**: Verify button constants, modal integration
+
+**Dependencies**: Next.js 14.0.3, React ^18, TypeScript ^5, Tailwind ^3.3.0, Lucide React ^0.541.0
 
 ---
-**Follow this guide strictly. Deviations cause system failures. Always refer when making decisions.**
+**Follow strictly. Deviations cause failures. Current implementation with default components system.**

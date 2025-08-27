@@ -1,0 +1,379 @@
+<html><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script> window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    
+    <style>
+        ::-webkit-scrollbar { display: none;}
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+    <script>tailwind.config = {
+  "theme": {
+    "extend": {
+      "colors": {
+        "primary": "#DC2626",
+        "secondary": "#1F2937"
+      },
+      "fontFamily": {
+        "sans": [
+          "Inter",
+          "sans-serif"
+        ]
+      }
+    }
+  }
+};</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"><style>
+  .highlighted-section {
+    outline: 2px solid #3F20FB;
+    background-color: rgba(63, 32, 251, 0.1);
+  }
+
+  .edit-button {
+    position: absolute;
+    z-index: 1000;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  html, body {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  </style></head>
+<body class="bg-white">
+
+<header id="header" class="fixed top-0 w-full bg-white shadow-lg z-50">
+    <div class="container mx-auto px-4">
+        <div class="flex items-center justify-between h-16">
+            <div class="flex items-center space-x-8">
+                <div class="text-xl font-bold text-gray-800">Professional Window &amp; Door Repair Services</div>
+                <nav class="hidden lg:flex items-center space-x-6">
+                    <span class="text-gray-700 hover:text-primary transition-colors cursor-pointer">HOME</span>
+                    <span class="text-gray-700 hover:text-primary transition-colors cursor-pointer">ABOUT US</span>
+                    <span class="text-gray-700 hover:text-primary transition-colors cursor-pointer">SERVICES</span>
+                    <span class="text-gray-700 hover:text-primary transition-colors cursor-pointer">ACCESSORIES</span>
+                    <span class="text-gray-700 hover:text-primary transition-colors cursor-pointer">BLOG</span>
+                    <span class="text-gray-700 hover:text-primary transition-colors cursor-pointer">BUSINESS CLIENTS</span>
+                    <span class="text-gray-700 hover:text-primary transition-colors cursor-pointer">CONTACTS</span>
+                </nav>
+            </div>
+            <div class="flex items-center space-x-4">
+                <div class="flex items-center space-x-2">
+                    <i class="fab fa-telegram text-blue-500"></i>
+                    <i class="fab fa-whatsapp text-green-500"></i>
+                    <span class="text-gray-700 font-semibold">+37064445403</span>
+                </div>
+                <button class="bg-primary text-white px-4 py-2 rounded-lg font-semibold hover:bg-red-700 transition-colors">REQUEST A TECHNICIAN</button>
+                <button class="border border-primary text-primary px-4 py-2 rounded-lg font-semibold hover:bg-primary hover:text-white transition-colors">FREE CONSULTATION</button>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main class="pt-16">
+    <section id="team-hero" class="relative h-[500px] bg-gradient-to-r from-gray-900 to-gray-700 flex items-center">
+        <img class="absolute inset-0 w-full h-full object-cover opacity-40" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/8350ce1494-6f9003f08601d6a4a546.png" alt="professional technicians working on windows, team of skilled workers, modern workshop environment">
+        <div class="relative container mx-auto px-4">
+            <div class="max-w-3xl">
+                <h1 class="text-5xl font-bold text-white mb-6">Meet Our Skilled Technicians</h1>
+                <p class="text-xl text-gray-200 mb-8">Experienced professionals with years of expertise in window and door repairs, committed to delivering exceptional quality service</p>
+                <div class="flex space-x-4">
+                    <button class="bg-primary text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-red-700 transition-colors">REQUEST A TECHNICIAN</button>
+                    <button class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-gray-900 transition-colors">VIEW OUR SERVICES</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="team-stats" class="py-16 bg-primary">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8 text-center text-white">
+                <div>
+                    <div class="text-4xl font-bold mb-2">15+</div>
+                    <div class="text-red-100">Years Experience</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-bold mb-2">8</div>
+                    <div class="text-red-100">Expert Technicians</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-bold mb-2">2500+</div>
+                    <div class="text-red-100">Repairs Completed</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-bold mb-2">100%</div>
+                    <div class="text-red-100">Customer Satisfaction</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="team-profiles" class="py-20">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Our Expert Team</h2>
+                <p class="text-xl text-gray-600">Certified professionals with extensive experience in window and door repair services</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div id="technician-1" class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <img class="w-full h-64 object-cover" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="Marek Kowalski">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Marek Kowalski</h3>
+                        <p class="text-primary font-semibold mb-2">Senior Technician</p>
+                        <p class="text-gray-600 mb-3">12 years experience</p>
+                        <div class="flex items-center mb-3">
+                            <div class="flex text-yellow-400 mr-2">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="text-gray-600 text-sm">5.0 rating</span>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="flex items-center text-sm text-gray-600">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                <span>Window Mechanisms</span>
+                            </div>
+                            <div class="flex items-center text-sm text-gray-600">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                <span>Glass Replacement</span>
+                            </div>
+                            <div class="flex items-center text-sm text-gray-600">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                <span>Emergency Repairs</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="technician-2" class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <img class="w-full h-64 object-cover" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-3.jpg" alt="Piotr Nowak">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Piotr Nowak</h3>
+                        <p class="text-primary font-semibold mb-2">Lock Specialist</p>
+                        <p class="text-gray-600 mb-3">9 years experience</p>
+                        <div class="flex items-center mb-3">
+                            <div class="flex text-yellow-400 mr-2">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="text-gray-600 text-sm">4.9 rating</span>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="flex items-center text-sm text-gray-600">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                <span>Security Systems</span>
+                            </div>
+                            <div class="flex items-center text-sm text-gray-600">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                <span>Door Locks</span>
+                            </div>
+                            <div class="flex items-center text-sm text-gray-600">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                <span>Handle Repair</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="technician-3" class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <img class="w-full h-64 object-cover" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="Tomasz Wiśniewski">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Tomasz Wiśniewski</h3>
+                        <p class="text-primary font-semibold mb-2">Installation Expert</p>
+                        <p class="text-gray-600 mb-3">15 years experience</p>
+                        <div class="flex items-center mb-3">
+                            <div class="flex text-yellow-400 mr-2">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="text-gray-600 text-sm">5.0 rating</span>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="flex items-center text-sm text-gray-600">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                <span>New Installations</span>
+                            </div>
+                            <div class="flex items-center text-sm text-gray-600">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                <span>Window Fitting</span>
+                            </div>
+                            <div class="flex items-center text-sm text-gray-600">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                <span>Sealing Work</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="technician-4" class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <img class="w-full h-64 object-cover" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-8.jpg" alt="Jakub Zieliński">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Jakub Zieliński</h3>
+                        <p class="text-primary font-semibold mb-2">Maintenance Specialist</p>
+                        <p class="text-gray-600 mb-3">7 years experience</p>
+                        <div class="flex items-center mb-3">
+                            <div class="flex text-yellow-400 mr-2">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="text-gray-600 text-sm">4.8 rating</span>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="flex items-center text-sm text-gray-600">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                <span>Regular Maintenance</span>
+                            </div>
+                            <div class="flex items-center text-sm text-gray-600">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                <span>Adjustments</span>
+                            </div>
+                            <div class="flex items-center text-sm text-gray-600">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                <span>Preventive Care</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="technician-5" class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <img class="w-full h-64 object-cover" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-9.jpg" alt="Michał Dąbrowski">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Michał Dąbrowski</h3>
+                        <p class="text-primary font-semibold mb-2">Glass Specialist</p>
+                        <p class="text-gray-600 mb-3">11 years experience</p>
+                        <div class="flex items-center mb-3">
+                            <div class="flex text-yellow-400 mr-2">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="text-gray-600 text-sm">4.9 rating</span>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="flex items-center text-sm text-gray-600">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                <span>Glass Cutting</span>
+                            </div>
+                            <div class="flex items-center text-sm text-gray-600">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                <span>Double Glazing</span>
+                            </div>
+                            <div class="flex items-center text-sm text-gray-600">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                <span>Safety Glass</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="technician-6" class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <img class="w-full h-64 object-cover" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-1.jpg" alt="Anna Kowalczyk">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Anna Kowalczyk</h3>
+                        <p class="text-primary font-semibold mb-2">Customer Relations</p>
+                        <p class="text-gray-600 mb-3">8 years experience</p>
+                        <div class="flex items-center mb-3">
+                            <div class="flex text-yellow-400 mr-2">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="text-gray-600 text-sm">5.0 rating</span>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="flex items-center text-sm text-gray-600">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                <span>Quality Inspection</span>
+                            </div>
+                            <div class="flex items-center text-sm text-gray-600">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                <span>Customer Support</span>
+                            </div>
+                            <div class="flex items-center text-sm text-gray-600">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                <span>Project Coordination</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="technician-7" class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <img class="w-full h-64 object-cover" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg" alt="Katarzyna Lewandowska">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Katarzyna Lewandowska</h3>
+                        <p class="text-primary font-semibold mb-2">Accessories Expert</p>
+                        <p class="text-gray-600 mb-3">6 years experience</p>
+                        <div class="flex items-center mb-3">
+                            <div class="flex text-yellow-400 mr-2">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="text-gray-600 text-sm">4.9 rating</span>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="flex items-center text-sm text-gray-600">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                <span>Hardware Installation</span>
+                            </div>
+                            <div class="flex items-center text-sm text-gray-600">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                <span>Mosquito Nets</span>
+                            </div>
+                            <div class="flex items-center text-sm text-gray-600">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                <span>Ventilation Systems</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="technician-8" class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <img class="w-full h-64 object-cover" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-6.jpg" alt="Magdalena Wójcik">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Magdalena Wójcik</h3>
+                        <p class="text-primary font-semibold mb-2">Diagnostic Specialist</p>
+                        <p class="text-gray-600 mb-3">10 years experience</p>
+                        <div class="flex items-center mb-3">
+                            <div class="flex text-yellow-400 mr-2">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="text-gray-600 text-sm">5.0 rating</span>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="flex items-center text-sm text-gray-600">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                <span>Problem Assessment</span>
+                            </div>
+                            <div class="flex items-center text-sm text-gray-600">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                </div></div></div></div></div></div></section></main></body></html>

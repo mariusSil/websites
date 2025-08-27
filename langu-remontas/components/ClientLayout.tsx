@@ -14,7 +14,6 @@ interface ClientLayoutProps {
   localizedNavigation: any;
   localizedCommon: any;
   localizedFooter: any;
-  localizedModalContent: any;
 }
 
 
@@ -24,8 +23,7 @@ export function ClientLayout({
   structuredData, 
   localizedNavigation, 
   localizedCommon, 
-  localizedFooter, 
-  localizedModalContent 
+  localizedFooter
 }: ClientLayoutProps) {
   const { isOpen, toggleMenu, closeMenu } = useMobileMenu();
 
@@ -41,8 +39,7 @@ export function ClientLayout({
         <Header 
           locale={validLocale}
           translations={{
-            common: localizedCommon || {},
-            request_technician_modal: localizedModalContent || {}
+            common: localizedCommon || {}
           }}
         />
         <Navigation
@@ -56,6 +53,7 @@ export function ClientLayout({
           {children}
         </main>
         <Footer 
+          locale={validLocale}
           translations={{
             redesign: localizedCommon?.redesign || { footer: {} },
             navigation: { items: localizedNavigation?.main || [] },
@@ -68,8 +66,7 @@ export function ClientLayout({
           locale={validLocale}
           translations={{
             navigation: localizedNavigation || { main: [] },
-            common: localizedCommon || {},
-            request_technician_modal: localizedModalContent || {}
+            common: localizedCommon || {}
           }}
         />
       </div>

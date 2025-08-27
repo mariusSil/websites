@@ -16,6 +16,11 @@
       "request_technician": "CALL A TECHNICIAN",
       "free_consultation": "CONSULTATION"
     },
+    "prefillTemplates": {
+      "interestedIn": "I'm interested in: {itemName}",
+      "inquiryAbout": "I have an inquiry about: {itemName}",
+      "requestQuote": "I would like a quote for: {itemName}"
+    },
     "forms": {
       "required": "Required field",
       "invalidEmail": "Please enter a valid email address",
@@ -159,12 +164,46 @@
         "navigationTitle": "Navigation",
         "servicesTitle": "Our Services",
         "contactTitle": "Contact Us",
+        "legalTitle": "Legal Information",
         "copyright": " Langu Remontas. All rights reserved.",
         "contactInfo": {
           "address": "123 Window Repair St, Warsaw, Poland",
           "phone": "+48 123 456 789",
-          "email": "contact@languremontas.com"
+          "email": "contact@languremontas.com",
+          "telegram": "languremontas",
+          "whatsapp": "48123456789"
         },
+        "workingHours": {
+          "title": "Working Hours",
+          "schedule": "Mon-Fri: 8:00-18:00, Sat: 9:00-15:00",
+          "emergency": "24/7 Emergency Service Available"
+        },
+        "trustBadges": {
+          "certified": "Certified Technicians",
+          "sameDay": "Same-Day Service"
+        },
+        "legal": {
+          "privacyPolicy": "Privacy Policy",
+          "termsOfService": "Terms of Service",
+          "cookiePolicy": "Cookie Policy"
+        },
+        "business": {
+          "title": "Business Information",
+          "companyName": "Langu Remontas UAB",
+          "registrationNumber": "Company Code: 123456789",
+          "vatNumber": "VAT: LT123456789012",
+          "registeredAddress": "Business Address, Vilnius, Lithuania"
+        },
+        "certifications": [
+          {
+            "name": "ISO 9001",
+            "icon": "Award"
+          },
+          {
+            "name": "Licensed",
+            "icon": "ShieldCheck"
+          }
+        ],
         "socialLinks": [
           {
             "name": "Facebook",
@@ -227,6 +266,11 @@
       "backToTop": "Grįžti į viršų",
       "request_technician": "KVIESTI MEISTRĄ",
       "free_consultation": "KONSULTACIJA"
+    },
+    "prefillTemplates": {
+      "interestedIn": "Domina: {itemName}",
+      "inquiryAbout": "Turiu klausimą dėl: {itemName}",
+      "requestQuote": "Norėčiau gauti pasiūlymą dėl: {itemName}"
     },
     "forms": {
       "required": "Privalomas laukas",
@@ -371,12 +415,46 @@
         "navigationTitle": "Navigacija",
         "servicesTitle": "Mūsų Paslaugos",
         "contactTitle": "Susisiekite su Mumis",
+        "legalTitle": "Teisinė Informacija",
         "copyright": " Langu Remontas. Visos teisės saugomos.",
         "contactInfo": {
           "address": "Langų Remonto g. 123, Vilnius, Lietuva",
           "phone": "+370 123 45678",
-          "email": "kontaktai@languremontas.lt"
+          "email": "kontaktai@languremontas.lt",
+          "telegram": "languremontas",
+          "whatsapp": "37012345678"
         },
+        "workingHours": {
+          "title": "Darbo Laikas",
+          "schedule": "Pr-Pn: 8:00-18:00, Št: 9:00-15:00",
+          "emergency": "24/7 Skubios Pagalbos Paslauga"
+        },
+        "trustBadges": {
+          "certified": "Sertifikuoti Meistrai",
+          "sameDay": "Tos Pačios Dienos Paslauga"
+        },
+        "legal": {
+          "privacyPolicy": "Privatumo Politika",
+          "termsOfService": "Paslaugų Teikimo Sąlygos",
+          "cookiePolicy": "Slapukų Politika"
+        },
+        "business": {
+          "title": "Įmonės Informacija",
+          "companyName": "Langu Remontas UAB",
+          "registrationNumber": "Įmonės kodas: 123456789",
+          "vatNumber": "PVM: LT123456789012",
+          "registeredAddress": "Verslo adresas, Vilnius, Lietuva"
+        },
+        "certifications": [
+          {
+            "name": "ISO 9001",
+            "icon": "Award"
+          },
+          {
+            "name": "Licencijuota",
+            "icon": "ShieldCheck"
+          }
+        ],
         "socialLinks": [
           {
             "name": "Facebook",
@@ -436,9 +514,14 @@
       "getStarted": "Rozpocznij",
       "readMore": "Czytaj więcej",
       "viewAll": "Zobacz wszystkie",
-      "backToTop": "Powrót na górę",
+      "backToTop": "Wróć na górę",
       "request_technician": "WEZWAĆ TECHNIKA",
       "free_consultation": "KONSULTACJA"
+    },
+    "prefillTemplates": {
+      "interestedIn": "Interesuje mnie: {itemName}",
+      "inquiryAbout": "Mam pytanie dotyczące: {itemName}",
+      "requestQuote": "Chciałbym otrzymać wycenę dla: {itemName}"
     },
     "forms": {
       "required": "Pole wymagane",
@@ -583,12 +666,46 @@
         "navigationTitle": "Nawigacja",
         "servicesTitle": "Nasze Usługi",
         "contactTitle": "Skontaktuj się z Nami",
+        "legalTitle": "Informacje Prawne",
         "copyright": " Langu Remontas. Wszelkie prawa zastrzeżone.",
         "contactInfo": {
           "address": "ul. Naprawy Okien 123, Warszawa, Polska",
           "phone": "+48 123 456 789",
-          "email": "kontakt@languremontas.pl"
+          "email": "kontakt@languremontas.pl",
+          "telegram": "languremontas",
+          "whatsapp": "48123456789"
         },
+        "workingHours": {
+          "title": "Godziny Pracy",
+          "schedule": "Pn-Pt: 8:00-18:00, Sb: 9:00-15:00",
+          "emergency": "Usługa Awaryjna 24/7"
+        },
+        "trustBadges": {
+          "certified": "Certyfikowani Technicy",
+          "sameDay": "Usługa w Ten Sam Dzień"
+        },
+        "legal": {
+          "privacyPolicy": "Polityka Prywatności",
+          "termsOfService": "Regulamin Usług",
+          "cookiePolicy": "Polityka Cookies"
+        },
+        "business": {
+          "title": "Informacje o Firmie",
+          "companyName": "Langu Remontas Sp. z o.o.",
+          "registrationNumber": "NIP: 1234567890",
+          "vatNumber": "REGON: 123456789",
+          "registeredAddress": "Adres firmy, Warszawa, Polska"
+        },
+        "certifications": [
+          {
+            "name": "ISO 9001",
+            "icon": "Award"
+          },
+          {
+            "name": "Licencjonowana",
+            "icon": "ShieldCheck"
+          }
+        ],
         "socialLinks": [
           {
             "name": "Facebook",
@@ -647,10 +764,15 @@
       "learnMore": "Дізнатися більше",
       "getStarted": "Почати",
       "readMore": "Читати далі",
-      "viewAll": "Переглянути все",
+      "viewAll": "Переглянути всі",
       "backToTop": "Повернутися до верху",
       "request_technician": "ВИКЛИКАТИ ТЕХНІКА",
       "free_consultation": "КОНСУЛЬТАЦІЯ"
+    },
+    "prefillTemplates": {
+      "interestedIn": "Мене цікавить: {itemName}",
+      "inquiryAbout": "У мене є запитання щодо: {itemName}",
+      "requestQuote": "Я хотів би отримати пропозицію для: {itemName}"
     },
     "forms": {
       "required": "Обов'язкове поле",
@@ -795,12 +917,46 @@
         "navigationTitle": "Навігація",
         "servicesTitle": "Наші Послуги",
         "contactTitle": "Зв'яжіться з Нами",
+        "legalTitle": "Правова Інформація",
         "copyright": " Langu Remontas. Всі права захищені.",
         "contactInfo": {
           "address": "вул. Ремонту Вікон 123, Київ, Україна",
           "phone": "+380 12 345 6789",
-          "email": "kontakt@languremontas.com.ua"
+          "email": "kontakt@languremontas.com.ua",
+          "telegram": "languremontas",
+          "whatsapp": "380123456789"
         },
+        "workingHours": {
+          "title": "Робочі Години",
+          "schedule": "Пн-Пт: 8:00-18:00, Сб: 9:00-15:00",
+          "emergency": "Аварійна Служба 24/7"
+        },
+        "trustBadges": {
+          "certified": "Сертифіковані Техніки",
+          "sameDay": "Послуга в Той Же День"
+        },
+        "legal": {
+          "privacyPolicy": "Політика Конфіденційності",
+          "termsOfService": "Умови Надання Послуг",
+          "cookiePolicy": "Політика Файлів Cookie"
+        },
+        "business": {
+          "title": "Інформація про Компанію",
+          "companyName": "Langu Remontas ТОВ",
+          "registrationNumber": "Код ЄДРПОУ: 12345678",
+          "vatNumber": "ПДВ: UA123456789",
+          "registeredAddress": "Адреса компанії, Київ, Україна"
+        },
+        "certifications": [
+          {
+            "name": "ISO 9001",
+            "icon": "Award"
+          },
+          {
+            "name": "Ліцензована",
+            "icon": "ShieldCheck"
+          }
+        ],
         "socialLinks": [
           {
             "name": "Facebook",

@@ -1,6 +1,6 @@
 import { ComponentRenderer } from '@/components/ComponentRenderer';
 import { isValidLocale, defaultLocale, type Locale } from '@/lib/i18n';
-import { resolvePageBySlug, getLocalizedContent, generatePageMetadata, type PageContent, type CollectionItem } from '@/content/lib/content-resolver';
+import { resolvePageBySlug, getLocalizedContent, generatePageMetadata, getFinalPageComponents, loadSharedContent, getLocalizedSharedContent, type PageContent, type CollectionItem } from '@/content/lib/content-resolver';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
@@ -60,7 +60,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 function isPageContent(content: PageContent | CollectionItem): content is PageContent {
-  return 'pageId' in content && 'components' in content;
+  return 'pageId' in content;
 }
 
 function isCollectionItem(content: PageContent | CollectionItem): content is CollectionItem {
@@ -82,8 +82,30 @@ export default async function DynamicPage({ params }: PageProps) {
   if (isPageContent(content)) {
     // Regular page with components
     const localizedContent = getLocalizedContent(content, locale);
-    const components = content.components.map((component: any) => {
-      const contentData = localizedContent[component.contentKey] || {};
+    
+    // Get final components (page-specific + defaults with overrides)
+    const finalComponents = getFinalPageComponents(content);
+    
+    const components = await Promise.all(finalComponents.map(async (component: any) => {
+      let contentData = localizedContent[component.contentKey] || {};
+      
+      // Handle custom content from overrides
+      if (component.customContent) {
+        const customContent = component.customContent;
+        contentData = customContent[locale] || customContent.en || customContent;
+      }
+      // Handle shared content references (like homepage does)
+      else if (typeof contentData === 'string' && contentData.startsWith('shared:')) {
+        const sharedContentKey = contentData.replace('shared:', '');
+        const sharedContent = await loadSharedContent(`components/${sharedContentKey}`);
+        contentData = getLocalizedSharedContent(sharedContent, locale);
+      }
+      // Handle direct shared content references in contentKey (About page pattern)
+      else if (typeof component.contentKey === 'string' && component.contentKey.startsWith('shared:')) {
+        const sharedContentKey = component.contentKey.replace('shared:', '');
+        const sharedContent = await loadSharedContent(`components/${sharedContentKey}`);
+        contentData = getLocalizedSharedContent(sharedContent, locale);
+      }
       
       switch (component.type) {
         case 'PageHeader':
@@ -119,10 +141,13 @@ export default async function DynamicPage({ params }: PageProps) {
         default:
           return {
             type: component.type,
-            props: contentData
+            props: {
+              translations: contentData,
+              locale: locale
+            }
           };
       }
-    });
+    }));
 
     return <ComponentRenderer components={components} />;
   } 

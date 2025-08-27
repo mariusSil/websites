@@ -21,7 +21,9 @@
     "contact_slug": "contact",
     "home": "Home",
     "services": "Services",
-    "services_slug": "services"
+    "services_slug": "services",
+    "privacy": "Privacy Policy",
+    "privacy_slug": "privacy-policy"
   },
   "lt": {
     "main": [

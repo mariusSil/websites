@@ -1,6 +1,6 @@
 import { ComponentRenderer } from '@/components/ComponentRenderer';
 import { isValidLocale, defaultLocale, type Locale } from '@/lib/i18n';
-import { loadPageContent, getLocalizedContent, loadSharedContent, getLocalizedSharedContent, generateFallbackSEO, getPageSEO } from '@/content/lib/content-resolver';
+import { loadPageContent, getLocalizedContent, loadSharedContent, getLocalizedSharedContent, generateFallbackSEO, getPageSEO, getFinalPageComponents } from '@/content/lib/content-resolver';
 import { Metadata } from 'next';
 
 // Generate static params for supported locales
@@ -72,9 +72,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 export default async function HomePage({ params }: PageProps) {
   const locale: Locale = isValidLocale(params.locale) ? params.locale : defaultLocale;
   
-  // Load page and shared content
+  // Load page content
   const pageContent = await loadPageContent('homepage');
-  const requestTechnicianModalContent = await loadSharedContent('components/requestTechnicianModal');
 
   if (!pageContent) {
     return <div>Page not found</div>;
@@ -82,15 +81,28 @@ export default async function HomePage({ params }: PageProps) {
   
   // Get localized content for the current locale
   const localizedPageContent = getLocalizedContent(pageContent, locale);
-  const localizedModalContent = getLocalizedSharedContent(requestTechnicianModalContent, locale);
 
+  // Get final components (page-specific + defaults with overrides)
+  const finalComponents = getFinalPageComponents(pageContent);
+  
   // Build component props from content with shared content resolution
-  const components = await Promise.all(pageContent.components.map(async (component) => {
+  const components = await Promise.all(finalComponents.map(async (component) => {
     let contentData = localizedPageContent[component.contentKey] || {};
     
+    // Handle custom content from overrides
+    if ((component as any).customContent) {
+      const customContent = (component as any).customContent;
+      contentData = customContent[locale] || customContent.en || customContent;
+    }
     // Handle shared content references
-    if (typeof contentData === 'string' && contentData.startsWith('shared:')) {
+    else if (typeof contentData === 'string' && contentData.startsWith('shared:')) {
       const sharedContentKey = contentData.replace('shared:', '');
+      const sharedContent = await loadSharedContent(`components/${sharedContentKey}`);
+      contentData = getLocalizedSharedContent(sharedContent, locale);
+    }
+    // Handle direct shared content references in contentKey
+    else if (typeof component.contentKey === 'string' && component.contentKey.startsWith('shared:')) {
+      const sharedContentKey = component.contentKey.replace('shared:', '');
       const sharedContent = await loadSharedContent(`components/${sharedContentKey}`);
       contentData = getLocalizedSharedContent(sharedContent, locale);
     }
@@ -100,13 +112,8 @@ export default async function HomePage({ params }: PageProps) {
       locale: locale 
     };
 
-    // Add modal translations to components that need them
-    if (component.type === 'Hero' || component.type === 'FreeDiagnostics' || component.type === 'Features' || component.type === 'Testimonials' || component.type === 'WhyChooseUs') {
-      props.translations = {
-        ...contentData,
-        request_technician_modal: localizedModalContent
-      };
-    }
+    // Components now load their own modal translations when needed
+    props.translations = contentData;
 
     return {
       type: component.type,

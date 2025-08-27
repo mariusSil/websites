@@ -15,7 +15,7 @@ interface RequestTechnicianModalProps {
   isOpen: boolean;
   onClose: () => void;
   locale: Locale;
-  triggerType: 'technician' | 'consultation' | null;
+  triggerType: 'technician' | 'consultation' | 'learnMore' | null;
   prefillMessage?: string;
 }
 

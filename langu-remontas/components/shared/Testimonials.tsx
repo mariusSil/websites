@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import Icon from '@/components/ui/Icon';
-import { CTAButtons } from './CTAButtons';
+import { CTAButtons } from '../common/CTAButtons';
 import { type Locale } from '@/lib/i18n';
 
 interface TestimonialItem {

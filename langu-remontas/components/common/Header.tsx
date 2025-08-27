@@ -2,8 +2,8 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { RequestTechnicianButton } from '@/components/shared/RequestTechnicianButton';
-import { ConsultationButton } from '@/components/shared/ConsultationButton';
+import { RequestTechnicianButton } from '@/components/common/RequestTechnicianButton';
+import { ConsultationButton } from '@/components/common/ConsultationButton';
 import Icon from '@/components/ui/Icon';
 import { type Locale } from '@/lib/i18n';
 
@@ -28,7 +28,6 @@ interface HeaderProps {
       };
       [key: string]: any;
     };
-    request_technician_modal: any;
   };
   logo?: {
     text?: string;

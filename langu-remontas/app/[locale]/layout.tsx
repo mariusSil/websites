@@ -39,12 +39,10 @@ export default async function RootLayout({
   const navigationContent = await loadSharedContent('navigation');
   const commonContent = await loadSharedContent('common');
   const footerContent = await loadSharedContent('footer');
-  const requestTechnicianModalContent = await loadSharedContent('components/requestTechnicianModal');
   
   const localizedNavigation = getLocalizedSharedContent(navigationContent, validLocale);
   const localizedCommon = getLocalizedSharedContent(commonContent, validLocale);
   const localizedFooter = getLocalizedSharedContent(footerContent, validLocale);
-  const localizedModalContent = getLocalizedSharedContent(requestTechnicianModalContent, validLocale);
 
   return (
     <ClientLayout
@@ -53,7 +51,6 @@ export default async function RootLayout({
       localizedNavigation={localizedNavigation}
       localizedCommon={localizedCommon}
       localizedFooter={localizedFooter}
-      localizedModalContent={localizedModalContent}
     >
       {children}
     </ClientLayout>

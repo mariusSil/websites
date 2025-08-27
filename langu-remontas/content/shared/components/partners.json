@@ -10,6 +10,14 @@
       {
         "src": "https://storage.googleapis.com/uxpilot-auth.appspot.com/8f7efd5c4d-99bd65ca305ca7ae0c48.png",
         "alt": "Rehau logo"
+      },
+      {
+        "src": "/images/partners/veka-logo.png",
+        "alt": "Veka logo"
+      },
+      {
+        "src": "/images/partners/siegenia-logo.png",
+        "alt": "Siegenia logo"
       }
     ]
   },
@@ -24,6 +32,14 @@
       {
         "src": "https://storage.googleapis.com/uxpilot-auth.appspot.com/8f7efd5c4d-99bd65ca305ca7ae0c48.png",
         "alt": "Rehau logotipas"
+      },
+      {
+        "src": "/images/partners/veka-logo.png",
+        "alt": "Veka logotipas"
+      },
+      {
+        "src": "/images/partners/siegenia-logo.png",
+        "alt": "Siegenia logotipas"
       }
     ]
   },
@@ -38,6 +54,14 @@
       {
         "src": "https://storage.googleapis.com/uxpilot-auth.appspot.com/8f7efd5c4d-99bd65ca305ca7ae0c48.png",
         "alt": "Logo Rehau"
+      },
+      {
+        "src": "/images/partners/veka-logo.png",
+        "alt": "Logo Veka"
+      },
+      {
+        "src": "/images/partners/siegenia-logo.png",
+        "alt": "Logo Siegenia"
       }
     ]
   },
@@ -52,6 +76,14 @@
       {
         "src": "https://storage.googleapis.com/uxpilot-auth.appspot.com/8f7efd5c4d-99bd65ca305ca7ae0c48.png",
         "alt": "Логотип Rehau"
+      },
+      {
+        "src": "/images/partners/veka-logo.png",
+        "alt": "Логотип Veka"
+      },
+      {
+        "src": "/images/partners/siegenia-logo.png",
+        "alt": "Логотип Siegenia"
       }
     ]
   }

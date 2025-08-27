@@ -1,8 +1,9 @@
 import React from 'react';
 import Image from 'next/image';
-import { RequestTechnicianButton } from './RequestTechnicianButton';
+import { RequestTechnicianButton } from '../common/RequestTechnicianButton';
 import { loadSharedContent, getLocalizedSharedContent } from '@/content/lib/content-resolver';
 import { isValidLocale, type Locale } from '@/lib/i18n';
+import ContentLoader from '../common/ContentLoader';
 
 interface ServiceCard {
   id: string;
@@ -51,14 +52,20 @@ export function ServiceCards({
   locale,
   className = ""
 }: ServiceCardsProps) {
+  // Add validation for translations object
+  if (!translations || typeof translations !== 'object') {
+    console.warn('ServiceCards: Invalid translations object received:', translations);
+    return <ContentLoader locale={locale} componentType="services" message="loading" />;
+  }
+
   const { sectionTitle, sectionSubtitle, services } = translations;
 
   if (!services || services.length === 0) {
-    return null;
+    return <ContentLoader locale={locale} componentType="services" message="unavailable" />;
   }
 
   return (
-    <section className={`py-20 bg-neutral-50 ${className}`}>
+    <section id="services" className={`py-14 bg-neutral-50 ${className}`}>
       <div className="container-custom">
         {/* Section Header */}
         <div className="text-center mb-8 sm:mb-space-component">

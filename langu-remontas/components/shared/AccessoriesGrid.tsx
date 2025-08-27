@@ -1,10 +1,12 @@
 import React from 'react';
 import { Button } from '@/components/ui/Button';
-import { RequestTechnicianButton } from './RequestTechnicianButton';
+import { RequestTechnicianButton } from '../common/RequestTechnicianButton';
 import Icon from '@/components/ui/Icon';
 import Image from 'next/image';
 import { loadSharedContent, getLocalizedSharedContent } from '@/content/lib/content-resolver';
 import { isValidLocale, type Locale } from '@/lib/i18n';
+import { generatePrefillMessageSync } from '@/lib/prefill-utils';
+import ContentLoader from '../common/ContentLoader';
 
 interface AccessoryItem {
   id: string;
@@ -34,6 +36,12 @@ interface ModalTranslations {
   submitButton: string;
 }
 
+interface PrefillTemplates {
+  interestedIn: string;
+  inquiryAbout: string;
+  requestQuote: string;
+}
+
 interface AccessoriesGridProps {
   locale: Locale;
   modalTranslations?: ModalTranslations;
@@ -51,7 +59,8 @@ const AccessoryCard: React.FC<{
   translations: { priceFrom: string };
   locale: Locale;
   modalTranslations: ModalTranslations;
-}> = ({ item, translations, locale, modalTranslations }) => {
+  prefillTemplates?: PrefillTemplates;
+}> = ({ item, translations, locale, modalTranslations, prefillTemplates }) => {
 
   return (
     <div className="bg-white rounded-card border border-neutral-200 overflow-hidden hover:shadow-lg transition-shadow duration-300">
@@ -86,7 +95,7 @@ const AccessoryCard: React.FC<{
             size="sm" 
             className="w-full"
             locale={locale}
-            prefillMessage={`I'm interested in ${item.title} - ${item.description}`}
+            prefillMessage={generatePrefillMessageSync(prefillTemplates, 'interestedIn', item.title)}
             showIcon={true}
           />
         </div>
@@ -102,19 +111,22 @@ export default async function AccessoriesGrid({ locale, modalTranslations }: Acc
 
   // Load content internally
   const content = await loadSharedContent('components/accessoriesgrid');
+  const commonContent = await loadSharedContent('common');
   
   if (!content) {
-    return <div>Content not found</div>;
+    return <ContentLoader locale={locale} componentType="accessories" message="not-found" />;
   }
 
   const localizedContent = getLocalizedSharedContent(content, locale) as AccessoriesContent;
+  const localizedCommon = getLocalizedSharedContent(commonContent, locale);
+  const prefillTemplates = localizedCommon?.prefillTemplates as PrefillTemplates;
 
   if (!localizedContent || !localizedContent.items) {
-    return <div>No accessories content available</div>;
+    return <ContentLoader locale={locale} componentType="accessories" message="unavailable" />;
   }
 
   return (
-    <section className="py-20">
+    <section id="accessories" className="py-14">
       <div className="container-custom">
         {/* Header */}
         <div className="text-center mb-12">
@@ -127,7 +139,7 @@ export default async function AccessoriesGrid({ locale, modalTranslations }: Acc
         </div>
 
         {/* Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {localizedContent.items.map((item) => (
             <AccessoryCard
               key={item.id}
@@ -152,6 +164,7 @@ export default async function AccessoriesGrid({ locale, modalTranslations }: Acc
                 privacyPolicyLink: '',
                 submitButton: ''
               }}
+              prefillTemplates={prefillTemplates}
               locale={locale}
             />
           ))}

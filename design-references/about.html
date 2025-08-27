@@ -1,0 +1,320 @@
+<html><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script> window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    
+    <style>
+        ::-webkit-scrollbar { display: none;}
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+    <script>tailwind.config = {
+  "theme": {
+    "extend": {
+      "colors": {
+        "primary": "#DC2626",
+        "secondary": "#1F2937"
+      },
+      "fontFamily": {
+        "sans": [
+          "Inter",
+          "sans-serif"
+        ]
+      }
+    }
+  }
+};</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"><style>
+  .highlighted-section {
+    outline: 2px solid #3F20FB;
+    background-color: rgba(63, 32, 251, 0.1);
+  }
+
+  .edit-button {
+    position: absolute;
+    z-index: 1000;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  html, body {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  </style></head>
+<body class="bg-white">
+
+<header id="header" class="fixed top-0 w-full bg-white shadow-lg z-50">
+    <div class="container mx-auto px-4">
+        <div class="flex items-center justify-between h-16">
+            <div class="flex items-center space-x-8">
+                <div class="text-xl font-bold text-gray-800">Professional Window &amp; Door Repair Services</div>
+                <nav class="hidden lg:flex items-center space-x-6">
+                    <span class="text-gray-700 hover:text-primary transition-colors cursor-pointer">HOME</span>
+                    <span class="text-primary font-semibold cursor-pointer">ABOUT US</span>
+                    <span class="text-gray-700 hover:text-primary transition-colors cursor-pointer">SERVICES</span>
+                    <span class="text-gray-700 hover:text-primary transition-colors cursor-pointer">ACCESSORIES</span>
+                    <span class="text-gray-700 hover:text-primary transition-colors cursor-pointer">BLOG</span>
+                    <span class="text-gray-700 hover:text-primary transition-colors cursor-pointer">BUSINESS CLIENTS</span>
+                    <span class="text-gray-700 hover:text-primary transition-colors cursor-pointer">CONTACTS</span>
+                </nav>
+            </div>
+            <div class="flex items-center space-x-4">
+                <div class="flex items-center space-x-2">
+                    <i class="fab fa-telegram text-blue-500"></i>
+                    <i class="fab fa-whatsapp text-green-500"></i>
+                    <span class="text-gray-700 font-semibold">+37064445403</span>
+                </div>
+                <button class="bg-primary text-white px-4 py-2 rounded-lg font-semibold hover:bg-red-700 transition-colors">REQUEST A TECHNICIAN</button>
+                <button class="border border-primary text-primary px-4 py-2 rounded-lg font-semibold hover:bg-primary hover:text-white transition-colors">FREE CONSULTATION</button>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main class="pt-16">
+    <section id="about-hero" class="relative h-[500px] bg-gradient-to-r from-gray-900 to-gray-700 flex items-center">
+        <img class="absolute inset-0 w-full h-full object-cover opacity-30" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/4fd55c0734-cf15265bac353682e426.png" alt="professional team of window repair technicians working, modern workshop interior, tools and equipment">
+        <div class="relative container mx-auto px-4">
+            <div class="max-w-3xl">
+                <h1 class="text-5xl font-bold text-white mb-6">About Professional Window &amp; Door Repair</h1>
+                <p class="text-xl text-gray-200 mb-8">Over 15 years of expertise in window and door solutions across Poland</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="company-history" class="py-20">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-gray-900 mb-6">Our Story</h2>
+                    <p class="text-xl text-gray-600">Building trust through quality craftsmanship since 2009</p>
+                </div>
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <img class="w-full h-80 object-cover rounded-lg shadow-lg" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/72193ccad7-2f88b0d6ca955b0727e7.png" alt="company founders working on first window repair project, vintage workshop setting, authentic craftsmanship">
+                    </div>
+                    <div class="space-y-6">
+                        <div class="border-l-4 border-primary pl-6">
+                            <h3 class="text-2xl font-bold text-gray-900 mb-2">2009</h3>
+                            <p class="text-gray-600">Founded by master craftsmen with a vision to provide reliable window and door repair services in Warsaw</p>
+                        </div>
+                        <div class="border-l-4 border-primary pl-6">
+                            <h3 class="text-2xl font-bold text-gray-900 mb-2">2015</h3>
+                            <p class="text-gray-600">Expanded operations to serve Łódź, Kraków, and Katowice, establishing regional service centers</p>
+                        </div>
+                        <div class="border-l-4 border-primary pl-6">
+                            <h3 class="text-2xl font-bold text-gray-900 mb-2">2020</h3>
+                            <p class="text-gray-600">Introduced 24/7 emergency services and advanced diagnostic equipment for precision repairs</p>
+                        </div>
+                        <div class="border-l-4 border-primary pl-6">
+                            <h3 class="text-2xl font-bold text-gray-900 mb-2">2024</h3>
+                            <p class="text-gray-600">Serving over 50,000 satisfied customers with comprehensive warranty programs</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="mission-vision" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-6xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div class="bg-white rounded-lg p-8 shadow-lg">
+                        <div class="bg-primary w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                            <i class="fas fa-bullseye text-white text-2xl"></i>
+                        </div>
+                        <h3 class="text-3xl font-bold text-gray-900 mb-4">Our Mission</h3>
+                        <p class="text-gray-600 text-lg leading-relaxed">To provide exceptional window and door repair services that enhance home comfort, security, and energy efficiency while delivering outstanding customer satisfaction through professional craftsmanship and reliable service.</p>
+                    </div>
+                    <div class="bg-white rounded-lg p-8 shadow-lg">
+                        <div class="bg-primary w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                            <i class="fas fa-eye text-white text-2xl"></i>
+                        </div>
+                        <h3 class="text-3xl font-bold text-gray-900 mb-4">Our Vision</h3>
+                        <p class="text-gray-600 text-lg leading-relaxed">To be Poland's most trusted window and door repair company, recognized for innovation, quality workmanship, and customer-first approach that sets the industry standard for excellence.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="our-team" class="py-20">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-6">Meet Our Skilled Technicians</h2>
+                <p class="text-xl text-gray-600">Expert professionals with years of experience and certified training</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div id="team-member-1" class="text-center">
+                    <div class="relative mb-6">
+                        <img class="w-32 h-32 rounded-full mx-auto object-cover shadow-lg" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="Marek Kowalski">
+                        <div class="absolute bottom-0 right-1/2 transform translate-x-1/2 translate-y-1/2 bg-primary text-white px-3 py-1 rounded-full text-sm font-semibold">15 Years</div>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Marek Kowalski</h3>
+                    <p class="text-primary font-semibold mb-2">Lead Technician</p>
+                    <p class="text-gray-600">Specialist in complex window mechanisms and emergency repairs</p>
+                </div>
+                <div id="team-member-2" class="text-center">
+                    <div class="relative mb-6">
+                        <img class="w-32 h-32 rounded-full mx-auto object-cover shadow-lg" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-3.jpg" alt="Piotr Nowak">
+                        <div class="absolute bottom-0 right-1/2 transform translate-x-1/2 translate-y-1/2 bg-primary text-white px-3 py-1 rounded-full text-sm font-semibold">12 Years</div>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Piotr Nowak</h3>
+                    <p class="text-primary font-semibold mb-2">Glass Specialist</p>
+                    <p class="text-gray-600">Expert in glass replacement and sealing solutions</p>
+                </div>
+                <div id="team-member-3" class="text-center">
+                    <div class="relative mb-6">
+                        <img class="w-32 h-32 rounded-full mx-auto object-cover shadow-lg" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg" alt="Anna Wiśniewska">
+                        <div class="absolute bottom-0 right-1/2 transform translate-x-1/2 translate-y-1/2 bg-primary text-white px-3 py-1 rounded-full text-sm font-semibold">10 Years</div>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Anna Wiśniewska</h3>
+                    <p class="text-primary font-semibold mb-2">Door Systems Expert</p>
+                    <p class="text-gray-600">Certified in security locks and door hardware</p>
+                </div>
+                <div id="team-member-4" class="text-center">
+                    <div class="relative mb-6">
+                        <img class="w-32 h-32 rounded-full mx-auto object-cover shadow-lg" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="Jakub Lewandowski">
+                        <div class="absolute bottom-0 right-1/2 transform translate-x-1/2 translate-y-1/2 bg-primary text-white px-3 py-1 rounded-full text-sm font-semibold">8 Years</div>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Jakub Lewandowski</h3>
+                    <p class="text-primary font-semibold mb-2">Installation Specialist</p>
+                    <p class="text-gray-600">Expert in new installations and accessory upgrades</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="company-values" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-6">Our Core Values</h2>
+                <p class="text-xl text-gray-600">The principles that guide everything we do</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div id="value-quality" class="text-center bg-white p-8 rounded-lg shadow-lg">
+                    <div class="bg-primary w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-award text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Quality Excellence</h3>
+                    <p class="text-gray-600">We never compromise on quality. Every repair is performed to the highest standards with premium materials and meticulous attention to detail.</p>
+                </div>
+                <div id="value-reliability" class="text-center bg-white p-8 rounded-lg shadow-lg">
+                    <div class="bg-primary w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-handshake text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Customer Trust</h3>
+                    <p class="text-gray-600">Building lasting relationships through transparent communication, honest pricing, and reliable service that exceeds expectations.</p>
+                </div>
+                <div id="value-innovation" class="text-center bg-white p-8 rounded-lg shadow-lg">
+                    <div class="bg-primary w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-lightbulb text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Innovation</h3>
+                    <p class="text-gray-600">Continuously improving our techniques and adopting new technologies to provide more efficient and effective solutions.</p>
+                </div>
+                <div id="value-speed" class="text-center bg-white p-8 rounded-lg shadow-lg">
+                    <div class="bg-primary w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-clock text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Fast Response</h3>
+                    <p class="text-gray-600">Understanding urgency of repairs, we provide quick response times and same-day service when possible.</p>
+                </div>
+                <div id="value-expertise" class="text-center bg-white p-8 rounded-lg shadow-lg">
+                    <div class="bg-primary w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-tools text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Professional Expertise</h3>
+                    <p class="text-gray-600">Our certified technicians undergo continuous training to stay current with latest techniques and industry standards.</p>
+                </div>
+                <div id="value-guarantee" class="text-center bg-white p-8 rounded-lg shadow-lg">
+                    <div class="bg-primary w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-shield-alt text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Work Guarantee</h3>
+                    <p class="text-gray-600">We stand behind our work with comprehensive warranties and guarantee customer satisfaction on every project.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="company-stats" class="py-20">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-6">Our Impact in Numbers</h2>
+                <p class="text-xl text-gray-600">Proven track record of excellence across Poland</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div id="stat-customers" class="text-center">
+                    <div class="bg-primary text-white text-4xl font-bold w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">50K+</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Happy Customers</h3>
+                    <p class="text-gray-600">Satisfied clients across major Polish cities</p>
+                </div>
+                <div id="stat-experience" class="text-center">
+                    <div class="bg-primary text-white text-4xl font-bold w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">15+</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Years Experience</h3>
+                    <p class="text-gray-600">Decades of expertise in window &amp; door repair</p>
+                </div>
+                <div id="stat-projects" class="text-center">
+                    <div class="bg-primary text-white text-4xl font-bold w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">100K+</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Projects Completed</h3>
+                    <p class="text-gray-600">Successful repairs and installations</p>
+                </div>
+                <div id="stat-warranty" class="text-center">
+                    <div class="bg-primary text-white text-4xl font-bold w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">99%</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Customer Satisfaction</h3>
+                    <p class="text-gray-600">Consistently high satisfaction ratings</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="cta-about" class="py-20 bg-primary">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl font-bold text-white mb-4">Experience Our Professional Service</h2>
+            <p class="text-xl text-red-100 mb-8">Join thousands of satisfied customers who trust us with their window and door needs</p>
+            <div class="flex justify-center space-x-4">
+                <button class="bg-white text-primary px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition-colors">GET FREE DIAGNOSTICS</button>
+                <button class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-primary transition-colors">REQUEST A TECHNICIAN</button>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer id="footer" class="bg-gray-900 text-white py-16">
+    <div class="container mx-auto px-4">
+        <div class="grid md:grid-cols-4 gap-8">
+            <div>
+                <h3 class="text-xl font-bold mb-4">Professional Window &amp; Door Repair</h3>
+                <p class="text-gray-400 mb-4">Expert repair services with guaranteed quality and fast response times across Poland.</p>
+                <div class="flex space-x-4">
+                    <i class="fab fa-facebook text-blue-500 text-xl"></i>
+                    <i class="fab fa-instagram text-pink-500 text-xl"></i>
+                    <i class="fab fa-telegram text-blue-400 text-xl"></i>
+                    <i class="fab fa-whatsapp text-green-500 text-xl"></i>
+                </div>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4">Quick Links</h4>
+                <ul class="space-y-2 text-gray-400">
+                    <li><span class="hover:text-white transition-colors cursor-pointer">Home</span></li>
+                    <li><span class="hover:text-white transition-colors cursor-pointer">About Us</span></li>
+                    <li><span class="hover:text-white transition-colors cursor-pointer">Services</span></li>
+                    <li><span class="hover:text-white transition-colors cursor-pointer">Accessories</span></li>
+                    <li><span class="hover:text-white transition-colors cursor-pointer">Contact</span></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4">Services</h4>
+                <ul class="space-y-2 text-gray-400">
+                    <li><span class="hover:text-white transition-colors cursor-pointer">Window Repair</span></li>
+                    <li><span class="hover:text-white transition-colors cursor-pointer">Door Repair</span></li>
+                    <li><span class="hover:text-white transition-colors cursor-pointer">Glass Replacement</span></li>
+                    <li></li></ul></div></div></div></footer></body></html>

@@ -30,71 +30,70 @@
       "hero": "shared:hero",
       "freeDiagnostics": "shared:freediagnostics",
       "serviceCards": "shared:servicecards",
+      "accessoriesGrid": "shared:accessoriesgrid",
       "testimonials": "shared:testimonials",
       "whyChooseUs": "shared:whychooseus",
+      "technicianTeam": "shared:technicianteam",
       "partners": "shared:partners",
+      "transformations": "shared:transformations",
+      "propertyTypes": "shared:propertytypes",
       "faq": "shared:faq"
     },
     "lt": {
       "hero": "shared:hero",
       "freeDiagnostics": "shared:freediagnostics",
       "serviceCards": "shared:servicecards",
+      "accessoriesGrid": "shared:accessoriesgrid",
       "testimonials": "shared:testimonials",
       "whyChooseUs": "shared:whychooseus",
+      "technicianTeam": "shared:technicianteam",
       "partners": "shared:partners",
+      "transformations": "shared:transformations",
+      "propertyTypes": "shared:propertytypes",
       "faq": "shared:faq"
     },
     "pl": {
       "hero": "shared:hero",
       "freeDiagnostics": "shared:freediagnostics",
       "serviceCards": "shared:servicecards",
+      "accessoriesGrid": "shared:accessoriesgrid",
       "testimonials": "shared:testimonials",
       "whyChooseUs": "shared:whychooseus",
+      "technicianTeam": "shared:technicianteam",
       "partners": "shared:partners",
+      "transformations": "shared:transformations",
+      "propertyTypes": "shared:propertytypes",
       "faq": "shared:faq"
     },
     "uk": {
       "hero": "shared:hero",
       "freeDiagnostics": "shared:freediagnostics",
       "serviceCards": "shared:servicecards",
+      "accessoriesGrid": "shared:accessoriesgrid",
       "testimonials": "shared:testimonials",
       "whyChooseUs": "shared:whychooseus",
+      "technicianTeam": "shared:technicianteam",
       "partners": "shared:partners",
+      "transformations": "shared:transformations",
+      "propertyTypes": "shared:propertytypes",
       "faq": "shared:faq"
     }
   },
   "components": [
     {
       "type": "Hero",
-      "contentKey": "hero"
+      "contentKey": "hero",
+      "required": true
     },
     {
       "type": "FreeDiagnostics",
-      "contentKey": "freeDiagnostics"
-    },
-    {
-      "type": "ServiceCards",
-      "contentKey": "serviceCards"
-    },
-    {
-      "type": "AccessoriesGrid",
-      "contentKey": "accessoriesGrid"
-    },
-    {
-      "type": "Testimonials",
-      "contentKey": "testimonials"
-    },
-    {
-      "type": "WhyChooseUs",
-      "contentKey": "whyChooseUs"
-    },
-    {
-      "type": "Partners",
-      "contentKey": "partners"
-    },
-    {
-      "type": "Faq",
-      "contentKey": "faq"
+      "contentKey": "freeDiagnostics",
+      "required": true
     }
-  ]
+  ],
+  "componentOverrides": {
+    "WhyChooseUs": {
+      "contentKey": "whyChooseUs"
+    }
+  }
 }

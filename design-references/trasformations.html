@@ -1,0 +1,347 @@
+<html><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script> window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    
+    <style>
+        ::-webkit-scrollbar { display: none;}
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+    <script>tailwind.config = {
+  "theme": {
+    "extend": {
+      "colors": {
+        "primary": "#DC2626",
+        "secondary": "#1F2937"
+      },
+      "fontFamily": {
+        "sans": [
+          "Inter",
+          "sans-serif"
+        ]
+      }
+    }
+  }
+};</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"><style>
+  .highlighted-section {
+    outline: 2px solid #3F20FB;
+    background-color: rgba(63, 32, 251, 0.1);
+  }
+
+  .edit-button {
+    position: absolute;
+    z-index: 1000;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  html, body {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  </style></head>
+<body class="bg-white">
+
+<header id="header" class="fixed top-0 w-full bg-white shadow-lg z-50">
+    <div class="container mx-auto px-4">
+        <div class="flex items-center justify-between h-16">
+            <div class="flex items-center space-x-8">
+                <div class="text-xl font-bold text-gray-800">Professional Window &amp; Door Repair Services</div>
+                <nav class="hidden lg:flex items-center space-x-6">
+                    <span class="text-gray-700 hover:text-primary transition-colors cursor-pointer">HOME</span>
+                    <span class="text-gray-700 hover:text-primary transition-colors cursor-pointer">ABOUT US</span>
+                    <span class="text-gray-700 hover:text-primary transition-colors cursor-pointer">SERVICES</span>
+                    <span class="text-gray-700 hover:text-primary transition-colors cursor-pointer">ACCESSORIES</span>
+                    <span class="text-gray-700 hover:text-primary transition-colors cursor-pointer">BLOG</span>
+                    <span class="text-gray-700 hover:text-primary transition-colors cursor-pointer">BUSINESS CLIENTS</span>
+                    <span class="text-gray-700 hover:text-primary transition-colors cursor-pointer">CONTACTS</span>
+                </nav>
+            </div>
+            <div class="flex items-center space-x-4">
+                <div class="flex items-center space-x-2">
+                    <i class="fab fa-telegram text-blue-500"></i>
+                    <i class="fab fa-whatsapp text-green-500"></i>
+                    <span class="text-gray-700 font-semibold">+37064445403</span>
+                </div>
+                <button class="bg-primary text-white px-4 py-2 rounded-lg font-semibold hover:bg-red-700 transition-colors">REQUEST A TECHNICIAN</button>
+                <button class="border border-primary text-primary px-4 py-2 rounded-lg font-semibold hover:bg-primary hover:text-white transition-colors">FREE CONSULTATION</button>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main class="pt-16">
+    <section id="service-areas-hero" class="relative h-[500px] bg-gradient-to-r from-blue-900 to-gray-800 flex items-center">
+        <img class="absolute inset-0 w-full h-full object-cover opacity-40" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/bbd4c4bb14-77a98703f0dff44358f9.png" alt="modern city skyline with residential and commercial buildings, urban architecture, property types overview">
+        <div class="relative container mx-auto px-4">
+            <div class="max-w-3xl">
+                <h1 class="text-5xl font-bold text-white mb-6">We Serve All Property Types</h1>
+                <p class="text-xl text-gray-200 mb-8">Professional window and door repair services for residential, commercial, industrial, and institutional properties across Poland</p>
+                <div class="flex space-x-4">
+                    <button class="bg-primary text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-red-700 transition-colors">GET FREE QUOTE</button>
+                    <button class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-gray-900 transition-colors">View Service Areas</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="property-types-grid" class="py-20">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Property Types We Serve</h2>
+                <p class="text-xl text-gray-600">Specialized solutions for every type of property</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div id="residential-card" class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <img class="w-full h-48 object-cover" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/0d8a544662-8b5922d5b412b3eeb565.png" alt="modern residential apartment building, home windows and doors, family housing">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-home text-primary text-2xl mr-3"></i>
+                            <h3 class="text-xl font-bold text-gray-900">Residential</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">Apartments, houses, condominiums, and residential complexes</p>
+                        <ul class="text-sm text-gray-500 space-y-1 mb-4">
+                            <li>• Private homes</li>
+                            <li>• Apartment buildings</li>
+                            <li>• Condominiums</li>
+                            <li>• Residential complexes</li>
+                        </ul>
+                        <button class="text-primary font-semibold hover:underline">Learn More →</button>
+                    </div>
+                </div>
+
+                <div id="commercial-card" class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <img class="w-full h-48 object-cover" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/183e1f2976-63b4926aab9f8067746d.png" alt="modern office building, commercial property, business district windows">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-building text-primary text-2xl mr-3"></i>
+                            <h3 class="text-xl font-bold text-gray-900">Commercial</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">Office buildings, retail spaces, restaurants, and business centers</p>
+                        <ul class="text-sm text-gray-500 space-y-1 mb-4">
+                            <li>• Office buildings</li>
+                            <li>• Retail stores</li>
+                            <li>• Restaurants</li>
+                            <li>• Shopping centers</li>
+                        </ul>
+                        <button class="text-primary font-semibold hover:underline">Learn More →</button>
+                    </div>
+                </div>
+
+                <div id="industrial-card" class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <img class="w-full h-48 object-cover" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/8c8614ff02-1526458be854ba0e51ea.png" alt="industrial facility, warehouse building, manufacturing plant windows">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-industry text-primary text-2xl mr-3"></i>
+                            <h3 class="text-xl font-bold text-gray-900">Industrial</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">Warehouses, factories, manufacturing facilities, and storage units</p>
+                        <ul class="text-sm text-gray-500 space-y-1 mb-4">
+                            <li>• Manufacturing plants</li>
+                            <li>• Warehouses</li>
+                            <li>• Storage facilities</li>
+                            <li>• Distribution centers</li>
+                        </ul>
+                        <button class="text-primary font-semibold hover:underline">Learn More →</button>
+                    </div>
+                </div>
+
+                <div id="institutional-card" class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <img class="w-full h-48 object-cover" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/39e181f992-e3c2c18069cde55140c9.png" alt="public institution building, school hospital government building">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-university text-primary text-2xl mr-3"></i>
+                            <h3 class="text-xl font-bold text-gray-900">Institutional</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">Schools, hospitals, government buildings, and public facilities</p>
+                        <ul class="text-sm text-gray-500 space-y-1 mb-4">
+                            <li>• Schools &amp; universities</li>
+                            <li>• Hospitals</li>
+                            <li>• Government buildings</li>
+                            <li>• Public facilities</li>
+                        </ul>
+                        <button class="text-primary font-semibold hover:underline">Learn More →</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="service-locations" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Our Service Coverage Area</h2>
+                <p class="text-xl text-gray-600">Serving major cities and surrounding areas across Poland</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <div id="warsaw-area" class="text-center">
+                    <div class="bg-primary w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-map-marker-alt text-white text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Warsaw</h3>
+                    <p class="text-gray-600 mb-2">&amp; Greater Warsaw Area</p>
+                    <ul class="text-sm text-gray-500 space-y-1">
+                        <li>Praga District</li>
+                        <li>Mokotów</li>
+                        <li>Żoliborz</li>
+                        <li>Wola</li>
+                    </ul>
+                </div>
+                <div id="lodz-area" class="text-center">
+                    <div class="bg-primary w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-map-marker-alt text-white text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Łódź</h3>
+                    <p class="text-gray-600 mb-2">&amp; Łódź Voivodeship</p>
+                    <ul class="text-sm text-gray-500 space-y-1">
+                        <li>Piotrków Trybunalski</li>
+                        <li>Skierniewice</li>
+                        <li>Tomaszów Mazowiecki</li>
+                        <li>Zgierz</li>
+                    </ul>
+                </div>
+                <div id="krakow-area" class="text-center">
+                    <div class="bg-primary w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-map-marker-alt text-white text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Kraków</h3>
+                    <p class="text-gray-600 mb-2">&amp; Lesser Poland</p>
+                    <ul class="text-sm text-gray-500 space-y-1">
+                        <li>Tarnów</li>
+                        <li>Nowy Sącz</li>
+                        <li>Oświęcim</li>
+                        <li>Chrzanów</li>
+                    </ul>
+                </div>
+                <div id="katowice-area" class="text-center">
+                    <div class="bg-primary w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-map-marker-alt text-white text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Katowice</h3>
+                    <p class="text-gray-600 mb-2">&amp; Silesian Region</p>
+                    <ul class="text-sm text-gray-500 space-y-1">
+                        <li>Gliwice</li>
+                        <li>Sosnowiec</li>
+                        <li>Zabrze</li>
+                        <li>Bytom</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="bg-white rounded-lg shadow-lg p-8">
+                <div class="flex items-center justify-center mb-6">
+                    <i class="fas fa-map text-primary text-4xl mr-4"></i>
+                    <h3 class="text-2xl font-bold text-gray-900">Interactive Service Map</h3>
+                </div>
+                <div class="bg-gray-100 rounded-lg h-64 flex items-center justify-center">
+                    <div class="text-center">
+                        <i class="fas fa-map-marked-alt text-gray-400 text-6xl mb-4"></i>
+                        <p class="text-gray-600">Interactive map showing our complete service coverage area</p>
+                        <button class="mt-4 bg-primary text-white px-6 py-2 rounded-lg hover:bg-red-700 transition-colors">View Full Map</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="specialized-services" class="py-20">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Specialized Services by Property Type</h2>
+                <p class="text-xl text-gray-600">Tailored solutions for different property requirements</p>
+            </div>
+            <div class="grid lg:grid-cols-2 gap-12">
+                <div id="residential-services" class="bg-white rounded-lg shadow-lg p-8">
+                    <div class="flex items-center mb-6">
+                        <i class="fas fa-home text-primary text-3xl mr-4"></i>
+                        <h3 class="text-2xl font-bold text-gray-900">Residential Services</h3>
+                    </div>
+                    <ul class="space-y-3 text-gray-600">
+                        <li class="flex items-start"><i class="fas fa-check text-primary mr-3 mt-1"></i>Energy-efficient window upgrades</li>
+                        <li class="flex items-start"><i class="fas fa-check text-primary mr-3 mt-1"></i>Security door enhancements</li>
+                        <li class="flex items-start"><i class="fas fa-check text-primary mr-3 mt-1"></i>Noise reduction solutions</li>
+                        <li class="flex items-start"><i class="fas fa-check text-primary mr-3 mt-1"></i>Child safety features</li>
+                        <li class="flex items-start"><i class="fas fa-check text-primary mr-3 mt-1"></i>Smart home integration</li>
+                    </ul>
+                </div>
+                <div id="commercial-services" class="bg-white rounded-lg shadow-lg p-8">
+                    <div class="flex items-center mb-6">
+                        <i class="fas fa-building text-primary text-3xl mr-4"></i>
+                        <h3 class="text-2xl font-bold text-gray-900">Commercial Services</h3>
+                    </div>
+                    <ul class="space-y-3 text-gray-600">
+                        <li class="flex items-start"><i class="fas fa-check text-primary mr-3 mt-1"></i>Access control systems</li>
+                        <li class="flex items-start"><i class="fas fa-check text-primary mr-3 mt-1"></i>Fire safety compliance</li>
+                        <li class="flex items-start"><i class="fas fa-check text-primary mr-3 mt-1"></i>Automatic door systems</li>
+                        <li class="flex items-start"><i class="fas fa-check text-primary mr-3 mt-1"></i>Emergency exit solutions</li>
+                        <li class="flex items-start"><i class="fas fa-check text-primary mr-3 mt-1"></i>Maintenance contracts</li>
+                    </ul>
+                </div>
+                <div id="industrial-services" class="bg-white rounded-lg shadow-lg p-8">
+                    <div class="flex items-center mb-6">
+                        <i class="fas fa-industry text-primary text-3xl mr-4"></i>
+                        <h3 class="text-2xl font-bold text-gray-900">Industrial Services</h3>
+                    </div>
+                    <ul class="space-y-3 text-gray-600">
+                        <li class="flex items-start"><i class="fas fa-check text-primary mr-3 mt-1"></i>Heavy-duty door systems</li>
+                        <li class="flex items-start"><i class="fas fa-check text-primary mr-3 mt-1"></i>Climate control solutions</li>
+                        <li class="flex items-start"><i class="fas fa-check text-primary mr-3 mt-1"></i>Safety compliance upgrades</li>
+                        <li class="flex items-start"><i class="fas fa-check text-primary mr-3 mt-1"></i>Loading dock doors</li>
+                        <li class="flex items-start"><i class="fas fa-check text-primary mr-3 mt-1"></i>24/7 emergency service</li>
+                    </ul>
+                </div>
+                <div id="institutional-services" class="bg-white rounded-lg shadow-lg p-8">
+                    <div class="flex items-center mb-6">
+                        <i class="fas fa-university text-primary text-3xl mr-4"></i>
+                        <h3 class="text-2xl font-bold text-gray-900">Institutional Services</h3>
+                    </div>
+                    <ul class="space-y-3 text-gray-600">
+                        <li class="flex items-start"><i class="fas fa-check text-primary mr-3 mt-1"></i>ADA compliance solutions</li>
+                        <li class="flex items-start"><i class="fas fa-check text-primary mr-3 mt-1"></i>Security protocols</li>
+                        <li class="flex items-start"><i class="fas fa-check text-primary mr-3 mt-1"></i>Emergency egress systems</li>
+                        <li class="flex items-start"><i class="fas fa-check text-primary mr-3 mt-1"></i>Scheduled maintenance</li>
+                        <li class="flex items-start"><i class="fas fa-check text-primary mr-3 mt-1"></i>Budget-friendly solutions</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="property-cta" class="py-20 bg-primary">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl font-bold text-white mb-4">Ready to Service Your Property?</h2>
+            <p class="text-xl text-red-100 mb-8">Contact us for a customized solution tailored to your property type and location</p>
+            <div class="flex justify-center space-x-4">
+                <button class="bg-white text-primary px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition-colors">GET PROPERTY ASSESSMENT</button>
+                <button class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-primary transition-colors">SCHEDULE CONSULTATION</button>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer id="footer" class="bg-gray-900 text-white py-16">
+    <div class="container mx-auto px-4">
+        <div class="grid md:grid-cols-4 gap-8">
+            <div>
+                <h3 class="text-xl font-bold mb-4">Professional Window &amp; Door Repair</h3>
+                <p class="text-gray-400 mb-4">Expert repair services with guaranteed quality and fast response times across Poland.</p>
+                <div class="flex space-x-4">
+                    <i class="fab fa-facebook text-blue-500 text-xl"></i>
+                    <i class="fab fa-instagram text-pink-500 text-xl"></i>
+                    <i class="fab fa-telegram text-blue-400 text-xl"></i>
+                    <i class="fab fa-whatsapp text-green-500 text-xl"></i>
+                </div>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4">Quick Links</h4>
+                <ul class="space-y-2 text-gray-400">
+                    <li><span class="hover:text-white transition-colors cursor-pointer">Home</span></li>
+                    <li><span class="hover:text-white transition-colors cursor-pointer">About Us</span></li>
+                    <li><span class="hover:text-white transition-colors cursor-pointer">Services</span></li>
+                    <li></li></ul></div></div></div></footer></body></html>

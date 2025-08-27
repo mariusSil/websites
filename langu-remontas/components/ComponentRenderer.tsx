@@ -6,12 +6,15 @@ import { ContactForm } from './ContactForm';
 import CtaBanner from './CtaBanner';
 import Testimonials from './shared/Testimonials';
 import WhyChooseUs from './shared/WhyChooseUs';
-import Partners from './Partners';
+import Partners from './shared/Partners';
 import Faq from './shared/Faq';
 import { ValueProposition } from './shared/ValueProposition';
 import ProcessSteps from './ProcessSteps';
 import { FreeDiagnostics } from './shared/FreeDiagnostics';
 import AccessoriesGrid from './shared/AccessoriesGrid';
+import TechnicianTeam from './shared/TechnicianTeam';
+import Transformations from './shared/Transformations';
+import PropertyTypes from './shared/PropertyTypes';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 
 interface Component {
@@ -30,6 +33,7 @@ function SingleComponentRenderer({ type, props }: { type: string; props: any }) 
     case 'servicecards':
       return <ServiceCards {...props} />
     case 'page-header':
+    case 'pageheader':
       return <PageHeader {...props} />
     case 'content':
       return <Content {...props} />
@@ -53,6 +57,12 @@ function SingleComponentRenderer({ type, props }: { type: string; props: any }) 
       return <FreeDiagnostics {...props} />;
     case 'accessoriesgrid':
       return <AccessoriesGrid {...props} />;
+    case 'technicianteam':
+      return <TechnicianTeam {...props} />;
+    case 'transformations':
+      return <Transformations {...props} />;
+    case 'propertytypes':
+      return <PropertyTypes {...props} />;
     case 'privacypolicy':
       return <PrivacyPolicy {...props} />;
     default:

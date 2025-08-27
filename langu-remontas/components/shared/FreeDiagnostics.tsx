@@ -1,8 +1,8 @@
 'use client';
 
 import React from 'react';
-import { RequestTechnicianButton } from './RequestTechnicianButton';
-import { ConsultationButton } from './ConsultationButton';
+import { RequestTechnicianButton } from '../common/RequestTechnicianButton';
+import { ConsultationButton } from '../common/ConsultationButton';
 import { Button } from '@/components/ui/Button';
 import Icon from '../ui/Icon';
 import { Locale } from '@/lib/i18n';
