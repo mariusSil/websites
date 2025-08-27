@@ -20,7 +20,7 @@ interface PageProps {
 // Generate metadata for homepage
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const locale = isValidLocale(params.locale) ? params.locale : defaultLocale;
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://example.com';
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
   
   // Load shared content for fallback SEO data
   const commonContent = await loadSharedContent('common');

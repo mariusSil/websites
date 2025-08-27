@@ -14,17 +14,20 @@ import AccessoriesGrid from './shared/AccessoriesGrid';
 import TechnicianTeam from './shared/TechnicianTeam';
 import Transformations from './shared/Transformations';
 import PropertyTypes from './shared/PropertyTypes';
+import NewsListing from './pages/news/NewsListing';
 import PrivacyPolicy from './pages/PrivacyPolicy';
-import ServiceHero from './pages/ServiceHero';
-import ServiceDetails from './pages/ServiceDetails';
+import ServiceHero from './pages/service/ServiceHero';
+import ServiceDetails from './pages/service/ServiceDetails';
 import ProcessSteps from './pages/ProcessSteps';
-import ArticleHeader from './pages/ArticleHeader';
-import ArticleContent from './pages/ArticleContent';
-import ProductHeader from './pages/ProductHeader';
-import ProductSpecs from './pages/ProductSpecs';
 import BusinessIntro from './pages/BusinessIntro';
 import CommercialServices from './pages/CommercialServices';
 import LargeCustomers from './pages/LargeCustomers';
+import ContactPageContent from './pages/contact/ContactPageContent';
+import RelatedArticles from './pages/news/RelatedArticles';
+import NewsArticleHero from './pages/news/NewsArticleHero';
+import NewsArticleContent from './pages/news/NewsArticleContent';
+import NewsArticleNavigation from './pages/news/NewsArticleNavigation';
+import ServiceArticle from './pages/services/ServiceArticle';
 
 interface Component {
   type: string;
@@ -66,14 +69,6 @@ function SingleComponentRenderer({ type, props }: { type: string; props: any }) 
       return <ServiceHero {...props} />;
     case 'servicedetails':
       return <ServiceDetails {...props} />;
-    case 'articleheader':
-      return <ArticleHeader {...props} />;
-    case 'articlecontent':
-      return <ArticleContent {...props} />;
-    case 'productheader':
-      return <ProductHeader {...props} />;
-    case 'productspecs':
-      return <ProductSpecs {...props} />;
     case 'freediagnostics':
       return <FreeDiagnostics {...props} />;
     case 'accessoriesgrid':
@@ -84,6 +79,8 @@ function SingleComponentRenderer({ type, props }: { type: string; props: any }) 
       return <Transformations {...props} />;
     case 'propertytypes':
       return <PropertyTypes {...props} />;
+    case 'newslisting':
+      return <NewsListing {...props} />;
     case 'privacypolicy':
       return <PrivacyPolicy {...props} />;
     case 'businessintro':
@@ -92,6 +89,18 @@ function SingleComponentRenderer({ type, props }: { type: string; props: any }) 
       return <CommercialServices {...props} />;
     case 'largecustomers':
       return <LargeCustomers {...props} />;
+    case 'contactpagecontent':
+      return <ContactPageContent {...props} />;
+    case 'relatedarticles':
+      return <RelatedArticles {...props} />;
+    case 'newsarticlehero':
+      return <NewsArticleHero {...props} />;
+    case 'newsarticlecontent':
+      return <NewsArticleContent {...props} />;
+    case 'newsarticlenavigation':
+      return <NewsArticleNavigation {...props} />;
+    case 'servicearticle':
+      return <ServiceArticle {...props} />;
     default:
       console.warn(`Unknown component type: ${type}`)
       return null

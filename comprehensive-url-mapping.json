@@ -1,0 +1,357 @@
+{
+  "mappings": [
+    {
+      "old": "/images/about-hero.jpg",
+      "new": "https://storage.googleapis.com/uxpilot-auth.appspot.com/70b3568b74-2d9df149b9102ab95292.png"
+    },
+    {
+      "old": "/images/avatars/avatar-1.jpg",
+      "new": "https://storage.googleapis.com/uxpilot-auth.appspot.com/12a6c44cf3-fcbe09748e6b2d45f416.png"
+    },
+    {
+      "old": "/images/avatars/avatar-2.jpg",
+      "new": "https://storage.googleapis.com/uxpilot-auth.appspot.com/f5eb646de5-ebbb4355ecccb9a69282.png"
+    },
+    {
+      "old": "/images/avatars/avatar-3.jpg",
+      "new": "https://storage.googleapis.com/uxpilot-auth.appspot.com/12d0f3f353-a6d4b0eef6a0168d1974.png"
+    },
+    {
+      "old": "/images/logo.png",
+      "new": "https://storage.googleapis.com/uxpilot-auth.appspot.com/52cec45fd9-0bb2094feddef88f1bd9.png"
+    },
+    {
+      "old": "/images/og/en-about.jpg",
+      "new": "https://storage.googleapis.com/uxpilot-auth.appspot.com/b7d9ea4f4c-30d25a8a023b2960ba16.png"
+    },
+    {
+      "old": "/images/og/en-accessories.jpg",
+      "new": "https://storage.googleapis.com/uxpilot-auth.appspot.com/b974bc17a2-38c41de1f061104e55fb.png"
+    },
+    {
+      "old": "/images/og/en-business.jpg",
+      "new": "https://storage.googleapis.com/uxpilot-auth.appspot.com/c8c69828a1-d8edbc2ff80d41521467.png"
+    },
+    {
+      "old": "/images/og/en-contact.jpg",
+      "new": "https://storage.googleapis.com/uxpilot-auth.appspot.com/092074e752-1185ce1516e031aa1a73.png"
+    },
+    {
+      "old": "/images/og/en-homepage.jpg",
+      "new": "https://storage.googleapis.com/uxpilot-auth.appspot.com/b6c70e45f0-2c1b36f8da0dcd3867f4.png"
+    },
+    {
+      "old": "/images/og/en-news.jpg",
+      "new": "https://storage.googleapis.com/uxpilot-auth.appspot.com/a06e033362-36b1ff53422ae50d1eba.png"
+    },
+    {
+      "old": "/images/og/en-privacy-policy.jpg",
+      "new": "https://storage.googleapis.com/uxpilot-auth.appspot.com/a5851dd79c-59e36d06b5fd722dce6a.png"
+    },
+    {
+      "old": "/images/og/en-services.jpg",
+      "new": "https://storage.googleapis.com/uxpilot-auth.appspot.com/496c0289a9-c854d7dd73faaf1e44b4.png"
+    },
+    {
+      "old": "/images/og/en-window-repair.jpg",
+      "new": "https://storage.googleapis.com/uxpilot-auth.appspot.com/6a72bd996e-d8d1d6ae365d8fe10a72.png"
+    },
+    {
+      "old": "/images/og/en-winter-tips.jpg",
+      "new": "https://storage.googleapis.com/uxpilot-auth.appspot.com/1219efa6c2-1eebe76d8698624cc69b.png"
+    },
+    {
+      "old": "/images/og/lt-about.jpg",
+      "new": "https://storage.googleapis.com/uxpilot-auth.appspot.com/3a4d7cba09-4bde6cf2e23ae16afc24.png"
+    },
+    {
+      "old": "/images/og/lt-accessories.jpg",
+      "new": "https://storage.googleapis.com/uxpilot-auth.appspot.com/70b3568b74-2d9df149b9102ab95292.png"
+    },
+    {
+      "old": "/images/og/lt-business.jpg",
+      "new": "https://storage.googleapis.com/uxpilot-auth.appspot.com/12a6c44cf3-fcbe09748e6b2d45f416.png"
+    },
+    {
+      "old": "/images/og/lt-contact.jpg",
+      "new": "https://storage.googleapis.com/uxpilot-auth.appspot.com/f5eb646de5-ebbb4355ecccb9a69282.png"
+    },
+    {
+      "old": "/images/og/lt-news.jpg",
+      "new": "https://storage.googleapis.com/uxpilot-auth.appspot.com/12d0f3f353-a6d4b0eef6a0168d1974.png"
+    },
+    {
+      "old": "/images/og/lt-privatumo-politika.jpg",
+      "new": "https://storage.googleapis.com/uxpilot-auth.appspot.com/52cec45fd9-0bb2094feddef88f1bd9.png"
+    },
+    {
+      "old": "/images/og/lt-services.jpg",
+      "new": "https://storage.googleapis.com/uxpilot-auth.appspot.com/b7d9ea4f4c-30d25a8a023b2960ba16.png"
+    },
+    {
+      "old": "/images/og/lt-window-repair.jpg",
+      "new": "https://storage.googleapis.com/uxpilot-auth.appspot.com/b974bc17a2-38c41de1f061104e55fb.png"
+    },
+    {
+      "old": "/images/og/lt-winter-tips.jpg",
+      "new": "https://storage.googleapis.com/uxpilot-auth.appspot.com/c8c69828a1-d8edbc2ff80d41521467.png"
+    },
+    {
+      "old": "/images/og/pl-about.jpg",
+      "new": "https://storage.googleapis.com/uxpilot-auth.appspot.com/092074e752-1185ce1516e031aa1a73.png"
+    },
+    {
+      "old": "/images/og/pl-accessories.jpg",
+      "new": "https://storage.googleapis.com/uxpilot-auth.appspot.com/b6c70e45f0-2c1b36f8da0dcd3867f4.png"
+    },
+    {
+      "old": "/images/og/pl-business.jpg",
+      "new": "https://storage.googleapis.com/uxpilot-auth.appspot.com/a06e033362-36b1ff53422ae50d1eba.png"
+    },
+    {
+      "old": "/images/og/pl-contact.jpg",
+      "new": "https://storage.googleapis.com/uxpilot-auth.appspot.com/a5851dd79c-59e36d06b5fd722dce6a.png"
+    },
+    {
+      "old": "/images/og/pl-news.jpg",
+      "new": "https://storage.googleapis.com/uxpilot-auth.appspot.com/496c0289a9-c854d7dd73faaf1e44b4.png"
+    },
+    {
+      "old": "/images/og/pl-polityka-prywatnosci.jpg",
+      "new": "https://storage.googleapis.com/uxpilot-auth.appspot.com/6a72bd996e-d8d1d6ae365d8fe10a72.png"
+    },
+    {
+      "old": "/images/og/pl-services.jpg",
+      "new": "https://storage.googleapis.com/uxpilot-auth.appspot.com/1219efa6c2-1eebe76d8698624cc69b.png"
+    },
+    {
+      "old": "/images/og/pl-window-repair.jpg",
+      "new": "https://storage.googleapis.com/uxpilot-auth.appspot.com/3a4d7cba09-4bde6cf2e23ae16afc24.png"
+    },
+    {
+      "old": "/images/og/pl-winter-tips.jpg",
+      "new": "https://storage.googleapis.com/uxpilot-auth.appspot.com/70b3568b74-2d9df149b9102ab95292.png"
+    },
+    {
+      "old": "/images/og/uk-about.jpg",
+      "new": "https://storage.googleapis.com/uxpilot-auth.appspot.com/12a6c44cf3-fcbe09748e6b2d45f416.png"
+    },
+    {
+      "old": "/images/og/uk-accessories.jpg",
+      "new": "https://storage.googleapis.com/uxpilot-auth.appspot.com/f5eb646de5-ebbb4355ecccb9a69282.png"
+    },
+    {
+      "old": "/images/og/uk-business.jpg",
+      "new": "https://storage.googleapis.com/uxpilot-auth.appspot.com/12d0f3f353-a6d4b0eef6a0168d1974.png"
+    },
+    {
+      "old": "/images/og/uk-contact.jpg",
+      "new": "https://storage.googleapis.com/uxpilot-auth.appspot.com/52cec45fd9-0bb2094feddef88f1bd9.png"
+    },
+    {
+      "old": "/images/og/uk-news.jpg",
+      "new": "https://storage.googleapis.com/uxpilot-auth.appspot.com/b7d9ea4f4c-30d25a8a023b2960ba16.png"
+    },
+    {
+      "old": "/images/og/uk-polityka-konfidentsiynosti.jpg",
+      "new": "https://storage.googleapis.com/uxpilot-auth.appspot.com/b974bc17a2-38c41de1f061104e55fb.png"
+    },
+    {
+      "old": "/images/og/uk-services.jpg",
+      "new": "https://storage.googleapis.com/uxpilot-auth.appspot.com/c8c69828a1-d8edbc2ff80d41521467.png"
+    },
+    {
+      "old": "/images/og/uk-window-repair.jpg",
+      "new": "https://storage.googleapis.com/uxpilot-auth.appspot.com/092074e752-1185ce1516e031aa1a73.png"
+    },
+    {
+      "old": "/images/og/uk-winter-tips.jpg",
+      "new": "https://storage.googleapis.com/uxpilot-auth.appspot.com/b6c70e45f0-2c1b36f8da0dcd3867f4.png"
+    },
+    {
+      "old": "/images/partners/siegenia-logo.png",
+      "new": "https://storage.googleapis.com/uxpilot-auth.appspot.com/a06e033362-36b1ff53422ae50d1eba.png"
+    },
+    {
+      "old": "/images/partners/veka-logo.png",
+      "new": "https://storage.googleapis.com/uxpilot-auth.appspot.com/a5851dd79c-59e36d06b5fd722dce6a.png"
+    },
+    {
+      "old": "/images/services/emergency-repair-og-lt.jpg",
+      "new": "https://storage.googleapis.com/uxpilot-auth.appspot.com/496c0289a9-c854d7dd73faaf1e44b4.png"
+    },
+    {
+      "old": "/images/services/emergency-repair-og-pl.jpg",
+      "new": "https://storage.googleapis.com/uxpilot-auth.appspot.com/6a72bd996e-d8d1d6ae365d8fe10a72.png"
+    },
+    {
+      "old": "/images/services/emergency-repair-og-uk.jpg",
+      "new": "https://storage.googleapis.com/uxpilot-auth.appspot.com/1219efa6c2-1eebe76d8698624cc69b.png"
+    },
+    {
+      "old": "/images/services/emergency-repair-og.jpg",
+      "new": "https://storage.googleapis.com/uxpilot-auth.appspot.com/3a4d7cba09-4bde6cf2e23ae16afc24.png"
+    },
+    {
+      "old": "/images/services/frame-repair-og-lt.jpg",
+      "new": "https://storage.googleapis.com/uxpilot-auth.appspot.com/70b3568b74-2d9df149b9102ab95292.png"
+    },
+    {
+      "old": "/images/services/frame-repair-og-pl.jpg",
+      "new": "https://storage.googleapis.com/uxpilot-auth.appspot.com/12a6c44cf3-fcbe09748e6b2d45f416.png"
+    },
+    {
+      "old": "/images/services/frame-repair-og-uk.jpg",
+      "new": "https://storage.googleapis.com/uxpilot-auth.appspot.com/f5eb646de5-ebbb4355ecccb9a69282.png"
+    },
+    {
+      "old": "/images/services/frame-repair-og.jpg",
+      "new": "https://storage.googleapis.com/uxpilot-auth.appspot.com/12d0f3f353-a6d4b0eef6a0168d1974.png"
+    },
+    {
+      "old": "/images/services/gasket-replacement-og-lt.jpg",
+      "new": "https://storage.googleapis.com/uxpilot-auth.appspot.com/52cec45fd9-0bb2094feddef88f1bd9.png"
+    },
+    {
+      "old": "/images/services/gasket-replacement-og-pl.jpg",
+      "new": "https://storage.googleapis.com/uxpilot-auth.appspot.com/b7d9ea4f4c-30d25a8a023b2960ba16.png"
+    },
+    {
+      "old": "/images/services/gasket-replacement-og-uk.jpg",
+      "new": "https://storage.googleapis.com/uxpilot-auth.appspot.com/b974bc17a2-38c41de1f061104e55fb.png"
+    },
+    {
+      "old": "/images/services/gasket-replacement-og.jpg",
+      "new": "https://storage.googleapis.com/uxpilot-auth.appspot.com/c8c69828a1-d8edbc2ff80d41521467.png"
+    },
+    {
+      "old": "/images/services/glass-replacement-og-lt.jpg",
+      "new": "https://storage.googleapis.com/uxpilot-auth.appspot.com/092074e752-1185ce1516e031aa1a73.png"
+    },
+    {
+      "old": "/images/services/glass-replacement-og-pl.jpg",
+      "new": "https://storage.googleapis.com/uxpilot-auth.appspot.com/b6c70e45f0-2c1b36f8da0dcd3867f4.png"
+    },
+    {
+      "old": "/images/services/glass-replacement-og-uk.jpg",
+      "new": "https://storage.googleapis.com/uxpilot-auth.appspot.com/a06e033362-36b1ff53422ae50d1eba.png"
+    },
+    {
+      "old": "/images/services/glass-replacement-og.jpg",
+      "new": "https://storage.googleapis.com/uxpilot-auth.appspot.com/a5851dd79c-59e36d06b5fd722dce6a.png"
+    },
+    {
+      "old": "/images/services/installation-service-og-lt.jpg",
+      "new": "https://storage.googleapis.com/uxpilot-auth.appspot.com/496c0289a9-c854d7dd73faaf1e44b4.png"
+    },
+    {
+      "old": "/images/services/installation-service-og-pl.jpg",
+      "new": "https://storage.googleapis.com/uxpilot-auth.appspot.com/6a72bd996e-d8d1d6ae365d8fe10a72.png"
+    },
+    {
+      "old": "/images/services/installation-service-og-uk.jpg",
+      "new": "https://storage.googleapis.com/uxpilot-auth.appspot.com/1219efa6c2-1eebe76d8698624cc69b.png"
+    },
+    {
+      "old": "/images/services/installation-service-og.jpg",
+      "new": "https://storage.googleapis.com/uxpilot-auth.appspot.com/3a4d7cba09-4bde6cf2e23ae16afc24.png"
+    },
+    {
+      "old": "/images/services/insulation-improvement-og-lt.jpg",
+      "new": "https://storage.googleapis.com/uxpilot-auth.appspot.com/70b3568b74-2d9df149b9102ab95292.png"
+    },
+    {
+      "old": "/images/services/insulation-improvement-og-pl.jpg",
+      "new": "https://storage.googleapis.com/uxpilot-auth.appspot.com/12a6c44cf3-fcbe09748e6b2d45f416.png"
+    },
+    {
+      "old": "/images/services/insulation-improvement-og-uk.jpg",
+      "new": "https://storage.googleapis.com/uxpilot-auth.appspot.com/f5eb646de5-ebbb4355ecccb9a69282.png"
+    },
+    {
+      "old": "/images/services/insulation-improvement-og.jpg",
+      "new": "https://storage.googleapis.com/uxpilot-auth.appspot.com/12d0f3f353-a6d4b0eef6a0168d1974.png"
+    },
+    {
+      "old": "/images/services/maintenance-service-og-lt.jpg",
+      "new": "https://storage.googleapis.com/uxpilot-auth.appspot.com/52cec45fd9-0bb2094feddef88f1bd9.png"
+    },
+    {
+      "old": "/images/services/maintenance-service-og-pl.jpg",
+      "new": "https://storage.googleapis.com/uxpilot-auth.appspot.com/b7d9ea4f4c-30d25a8a023b2960ba16.png"
+    },
+    {
+      "old": "/images/services/maintenance-service-og-uk.jpg",
+      "new": "https://storage.googleapis.com/uxpilot-auth.appspot.com/b974bc17a2-38c41de1f061104e55fb.png"
+    },
+    {
+      "old": "/images/services/maintenance-service-og.jpg",
+      "new": "https://storage.googleapis.com/uxpilot-auth.appspot.com/c8c69828a1-d8edbc2ff80d41521467.png"
+    },
+    {
+      "old": "/images/services/mechanism-replacement-og-lt.jpg",
+      "new": "https://storage.googleapis.com/uxpilot-auth.appspot.com/092074e752-1185ce1516e031aa1a73.png"
+    },
+    {
+      "old": "/images/services/mechanism-replacement-og-pl.jpg",
+      "new": "https://storage.googleapis.com/uxpilot-auth.appspot.com/b6c70e45f0-2c1b36f8da0dcd3867f4.png"
+    },
+    {
+      "old": "/images/services/mechanism-replacement-og-uk.jpg",
+      "new": "https://storage.googleapis.com/uxpilot-auth.appspot.com/a06e033362-36b1ff53422ae50d1eba.png"
+    },
+    {
+      "old": "/images/services/mechanism-replacement-og.jpg",
+      "new": "https://storage.googleapis.com/uxpilot-auth.appspot.com/a5851dd79c-59e36d06b5fd722dce6a.png"
+    },
+    {
+      "old": "/images/services/service-1.jpg",
+      "new": "https://storage.googleapis.com/uxpilot-auth.appspot.com/496c0289a9-c854d7dd73faaf1e44b4.png"
+    },
+    {
+      "old": "/images/services/service-2.jpg",
+      "new": "https://storage.googleapis.com/uxpilot-auth.appspot.com/6a72bd996e-d8d1d6ae365d8fe10a72.png"
+    },
+    {
+      "old": "/images/services/service-3.jpg",
+      "new": "https://storage.googleapis.com/uxpilot-auth.appspot.com/1219efa6c2-1eebe76d8698624cc69b.png"
+    },
+    {
+      "old": "/images/services/window-adjustment-og-lt.jpg",
+      "new": "https://storage.googleapis.com/uxpilot-auth.appspot.com/3a4d7cba09-4bde6cf2e23ae16afc24.png"
+    },
+    {
+      "old": "/images/services/window-adjustment-og-pl.jpg",
+      "new": "https://storage.googleapis.com/uxpilot-auth.appspot.com/70b3568b74-2d9df149b9102ab95292.png"
+    },
+    {
+      "old": "/images/services/window-adjustment-og-uk.jpg",
+      "new": "https://storage.googleapis.com/uxpilot-auth.appspot.com/12a6c44cf3-fcbe09748e6b2d45f416.png"
+    },
+    {
+      "old": "/images/services/window-adjustment-og.jpg",
+      "new": "https://storage.googleapis.com/uxpilot-auth.appspot.com/f5eb646de5-ebbb4355ecccb9a69282.png"
+    }
+  ],
+  "googleStorageUrls": [
+    "https://storage.googleapis.com/uxpilot-auth.appspot.com/70b3568b74-2d9df149b9102ab95292.png",
+    "https://storage.googleapis.com/uxpilot-auth.appspot.com/12a6c44cf3-fcbe09748e6b2d45f416.png",
+    "https://storage.googleapis.com/uxpilot-auth.appspot.com/f5eb646de5-ebbb4355ecccb9a69282.png",
+    "https://storage.googleapis.com/uxpilot-auth.appspot.com/12d0f3f353-a6d4b0eef6a0168d1974.png",
+    "https://storage.googleapis.com/uxpilot-auth.appspot.com/52cec45fd9-0bb2094feddef88f1bd9.png",
+    "https://storage.googleapis.com/uxpilot-auth.appspot.com/b7d9ea4f4c-30d25a8a023b2960ba16.png",
+    "https://storage.googleapis.com/uxpilot-auth.appspot.com/b974bc17a2-38c41de1f061104e55fb.png",
+    "https://storage.googleapis.com/uxpilot-auth.appspot.com/c8c69828a1-d8edbc2ff80d41521467.png",
+    "https://storage.googleapis.com/uxpilot-auth.appspot.com/092074e752-1185ce1516e031aa1a73.png",
+    "https://storage.googleapis.com/uxpilot-auth.appspot.com/b6c70e45f0-2c1b36f8da0dcd3867f4.png",
+    "https://storage.googleapis.com/uxpilot-auth.appspot.com/a06e033362-36b1ff53422ae50d1eba.png",
+    "https://storage.googleapis.com/uxpilot-auth.appspot.com/a5851dd79c-59e36d06b5fd722dce6a.png",
+    "https://storage.googleapis.com/uxpilot-auth.appspot.com/496c0289a9-c854d7dd73faaf1e44b4.png",
+    "https://storage.googleapis.com/uxpilot-auth.appspot.com/6a72bd996e-d8d1d6ae365d8fe10a72.png",
+    "https://storage.googleapis.com/uxpilot-auth.appspot.com/1219efa6c2-1eebe76d8698624cc69b.png",
+    "https://storage.googleapis.com/uxpilot-auth.appspot.com/3a4d7cba09-4bde6cf2e23ae16afc24.png"
+  ],
+  "totalMappings": 83,
+  "description": "Comprehensive mapping of all image paths to Google Storage URLs",
+  "created": "2025-08-27T19:24:01.986Z"
+}

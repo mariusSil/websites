@@ -10,6 +10,38 @@ interface CtaBannerProps {
 }
 
 const CtaBanner = ({ content, locale }: CtaBannerProps) => {
+  // Provide fallback content if content is undefined
+  if (!content || !content.title) {
+    const fallbackContent = {
+      en: {
+        title: 'Get Professional Window & Door Services',
+        subtitle: 'Contact our expert team for quality repairs and installations',
+        primaryCta: { label: 'Call Technician', href: '/contact' },
+        secondaryCta: { label: 'Get Quote', href: '/contact' }
+      },
+      lt: {
+        title: 'Gaukite Profesionalias Langų ir Durų Paslaugas',
+        subtitle: 'Susisiekite su mūsų ekspertų komanda dėl kokybišku remonto ir montavimo',
+        primaryCta: { label: 'Kviesti Meistrą', href: '/contact' },
+        secondaryCta: { label: 'Gauti Pasiūlymą', href: '/contact' }
+      },
+      pl: {
+        title: 'Uzyskaj Profesjonalne Usługi Okien i Drzwi',
+        subtitle: 'Skontaktuj się z naszym zespołem ekspertów w sprawie wysokiej jakości napraw i instalacji',
+        primaryCta: { label: 'Wezwać Technika', href: '/contact' },
+        secondaryCta: { label: 'Otrzymaj Wycenę', href: '/contact' }
+      },
+      uk: {
+        title: 'Отримайте Професійні Послуги Вікон та Дверей',
+        subtitle: 'Зв\'яжіться з нашою командою експертів для якісного ремонту та встановлення',
+        primaryCta: { label: 'Викликати Техніка', href: '/contact' },
+        secondaryCta: { label: 'Отримати Пропозицію', href: '/contact' }
+      }
+    };
+
+    const fallback = fallbackContent[locale as keyof typeof fallbackContent] || fallbackContent.en;
+    content = fallback;
+  }
 
   return (
     <div className="bg-gray-100 py-8">

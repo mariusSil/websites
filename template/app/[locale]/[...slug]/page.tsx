@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   // Use centralized metadata generation with fallback support
   const pageId = pageContent?.pageId || 'unknown';
   const seoData = await generatePageMetadata(pageId, locale);
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://example.com';
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
   
   return {
     metadataBase: new URL(baseUrl),

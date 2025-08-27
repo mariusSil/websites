@@ -8,6 +8,7 @@ import { Input } from '@/components/ui/Input'
 import { Textarea } from '@/components/ui/Textarea'
 import { Checkbox } from '@/components/ui/Checkbox'
 import { Label } from '@/components/ui/Label'
+import Icon from '@/components/ui/Icon'
 import { type Locale } from '@/lib/i18n'
 
 interface FormTranslations {
@@ -56,6 +57,7 @@ export function RequestTechnicianModal({
   translations 
 }: RequestTechnicianModalProps) {
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error' | 'rate-limited'>('idle')
 
   // Fallback translations if not provided
   const defaultTranslations: FormTranslations = {
@@ -80,31 +82,53 @@ export function RequestTechnicianModal({
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
+    setSubmitStatus('idle')
     
     try {
       const formData = new FormData(e.target as HTMLFormElement)
       const data = Object.fromEntries(formData.entries())
       
-      // Add trigger type and locale for analytics
+      // Add required fields for API
       const submissionData = {
         ...data,
+        formType: 'technician',
         triggerType,
         locale,
-        timestamp: new Date().toISOString()
+        timestamp: new Date().toISOString(),
+        // Add honeypot field (should be empty)
+        website: ''
       }
       
-      console.log('Form submitted:', submissionData)
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(submissionData)
+      })
       
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000))
+      const result = await response.json()
       
-      alert('Request submitted successfully! Our technician will contact you soon.')
-      onClose()
-      // Reset form
-      ;(e.target as HTMLFormElement).reset()
+      if (result.success) {
+        setSubmitStatus('success')
+        // Reset form after short delay to show success message
+        setTimeout(() => {
+          onClose()
+          ;(e.target as HTMLFormElement).reset()
+          setSubmitStatus('idle')
+        }, 2000)
+      } else {
+        // Handle specific error types
+        if (result.error === 'RATE_LIMITED') {
+          setSubmitStatus('rate-limited')
+        } else {
+          setSubmitStatus('error')
+          console.error('Form submission error:', result.message, result.details)
+        }
+      }
     } catch (error) {
-      console.error('Form submission error:', error)
-      alert('There was an error submitting your request. Please try again.')
+      console.error('Network error:', error)
+      setSubmitStatus('error')
     } finally {
       setIsSubmitting(false)
     }
@@ -117,7 +141,57 @@ export function RequestTechnicianModal({
           <DialogTitle>{finalTranslations.title}</DialogTitle>
         </DialogHeader>
         
+        {/* Status Messages */}
+        {submitStatus === 'success' && (
+          <div className="mb-4 p-4 bg-green-50 border border-green-200 rounded-lg">
+            <div className="flex items-center">
+              <Icon name="Check" className="w-5 h-5 text-green-600 mr-2" />
+              <p className="text-sm text-green-800">
+                {locale === 'lt' ? 'Užklausa sėkmingai išsiųsta! Susisieksime per 2 valandas.' :
+                 locale === 'pl' ? 'Zapytanie wysłane pomyślnie! Skontaktujemy się w ciągu 2 godzin.' :
+                 locale === 'uk' ? 'Запит успішно надіслано! Зв\'яжемося протягом 2 годин.' :
+                 'Request sent successfully! We will contact you within 2 hours.'}
+              </p>
+            </div>
+          </div>
+        )}
+        
+        {submitStatus === 'error' && (
+          <div className="mb-4 p-4 bg-red-50 border border-red-200 rounded-lg">
+            <div className="flex items-center">
+              <Icon name="Info" className="w-5 h-5 text-red-600 mr-2" />
+              <p className="text-sm text-red-800">
+                {locale === 'lt' ? 'Klaida siunčiant užklausą. Bandykite dar kartą arba susisiekite tiesiogiai.' :
+                 locale === 'pl' ? 'Błąd podczas wysyłania zapytania. Spróbuj ponownie lub skontaktuj się bezpośrednio.' :
+                 locale === 'uk' ? 'Помилка надсилання запиту. Спробуйте ще раз або зв\'яжіться безпосередньо.' :
+                 'Error sending request. Please try again or contact us directly.'}
+              </p>
+            </div>
+          </div>
+        )}
+        
+        {submitStatus === 'rate-limited' && (
+          <div className="mb-4 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+            <div className="flex items-center">
+              <Icon name="Clock" className="w-5 h-5 text-yellow-600 mr-2" />
+              <p className="text-sm text-yellow-800">
+                {locale === 'lt' ? 'Per daug užklausų. Palaukite minutę ir bandykite dar kartą.' :
+                 locale === 'pl' ? 'Zbyt wiele zapytań. Poczekaj minutę i spróbuj ponownie.' :
+                 locale === 'uk' ? 'Забагато запитів. Зачекайте хвилину і спробуйте ще раз.' :
+                 'Too many requests. Please wait a minute and try again.'}
+              </p>
+            </div>
+          </div>
+        )}
+        
         <form onSubmit={handleSubmit} className="space-y-4">
+          {/* Honeypot fields - hidden from users but visible to bots */}
+          <div style={{ display: 'none' }}>
+            <Input name="website" placeholder="Website" tabIndex={-1} autoComplete="off" />
+            <Input name="url" placeholder="URL" tabIndex={-1} autoComplete="off" />
+            <Input name="company" placeholder="Company" tabIndex={-1} autoComplete="off" />
+          </div>
+          
           <div>
             <Label htmlFor="name">{finalTranslations.nameLabel}</Label>
             <Input id="name" name="name" placeholder={finalTranslations.namePlaceholder} required />

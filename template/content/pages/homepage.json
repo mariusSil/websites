@@ -13,10 +13,10 @@
         "@type": "WebSite",
         "name": "AI Website Template",
         "description": "Modern website template built with Next.js and AI",
-        "url": "https://example.com",
+        "url": "http://localhost:3000",
         "potentialAction": {
           "@type": "SearchAction",
-          "target": "https://example.com/search?q={search_term_string}",
+          "target": "http://localhost:3000/search?q={search_term_string}",
           "query-input": "required name=search_term_string"
         },
         "publisher": {
@@ -24,7 +24,7 @@
           "name": "AI Website Template Team",
           "logo": {
             "@type": "ImageObject",
-            "url": "https://example.com/images/logo.png"
+            "url": "http://localhost:3000/images/logo.png"
           }
         }
       }

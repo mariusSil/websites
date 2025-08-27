@@ -13,28 +13,28 @@
       "title": "Window Installation Service | From €150 | Professional Installation",
       "description": "Expert window installation service. New construction, replacement windows, custom installations. Professional fitting with lifetime warranty.",
       "keywords": "window installation, new window installation, replacement windows, professional installation, window fitting",
-      "ogImage": "/images/services/installation-service-og.jpg",
+      "ogImage": "https://storage.googleapis.com/uxpilot-auth.appspot.com/3a4d7cba09-4bde6cf2e23ae16afc24.png",
       "ogImageAlt": "Professional window installation service"
     },
     "lt": {
       "title": "Langų montavimo paslauga | Nuo €150 | Profesionalus montavimas",
       "description": "Ekspertų langų montavimo aptarnavimas. Nauja statyba, keičiami langai, individualūs montavimai. Profesionalus pritaikymas su visam gyvenimui garantija.",
       "keywords": "langų montavimas, naujų langų montavimas, keičiami langai, profesionalus montavimas, langų pritaikymas",
-      "ogImage": "/images/services/installation-service-og-lt.jpg",
+      "ogImage": "https://storage.googleapis.com/uxpilot-auth.appspot.com/496c0289a9-c854d7dd73faaf1e44b4.png",
       "ogImageAlt": "Profesionalus langų montavimo aptarnavimas"
     },
     "pl": {
       "title": "Usługa montażu okien | Od €150 | Profesjonalny montaż",
       "description": "Ekspercka usługa montażu okien. Nowe budownictwo, wymiana okien, instalacje niestandardowe. Profesjonalne dopasowanie z dożywotnią gwarancją.",
       "keywords": "montaż okien, montaż nowych okien, wymiana okien, profesjonalny montaż, dopasowanie okien",
-      "ogImage": "/images/services/installation-service-og-pl.jpg",
+      "ogImage": "https://storage.googleapis.com/uxpilot-auth.appspot.com/6a72bd996e-d8d1d6ae365d8fe10a72.png",
       "ogImageAlt": "Profesjonalna usługa montażu okien"
     },
     "uk": {
       "title": "Послуга встановлення вікон | Від €150 | Професійне встановлення",
       "description": "Експертна послуга встановлення вікон. Нове будівництво, заміна вікон, індивідуальні встановлення. Професійне підгонка з довічною гарантією.",
       "keywords": "встановлення вікон, встановлення нових вікон, заміна вікон, професійне встановлення, підгонка вікон",
-      "ogImage": "/images/services/installation-service-og-uk.jpg",
+      "ogImage": "https://storage.googleapis.com/uxpilot-auth.appspot.com/1219efa6c2-1eebe76d8698624cc69b.png",
       "ogImageAlt": "Професійна послуга встановлення вікон"
     }
   },
@@ -221,6 +221,75 @@
             "duration": "15-25 minutės"
           }
         ]
+      },
+      "installationFaq": {
+        "title": "Montavimo paslaugos DUK",
+        "subtitle": "Dažniausi klausimai apie profesionalų langų montavimą",
+        "searchPlaceholder": "Ieškoti montavimo klausimų...",
+        "items": [
+          {
+            "question": "Kiek laiko užtrunka langų montavimas?",
+            "answer": "Standartinis langų montavimas užtrunka 2-4 valandas vienam langui, priklausomai nuo dydžio ir sudėtingumo. Naujos statybos montavimai gali užtrukti ilgiau dėl konstrukcinio integravimo reikalavimų. Pateikiame tikslų laiko įvertinimą per pirminę konsultaciją.",
+            "category": "process",
+            "priority": "high",
+            "showCTA": true
+          },
+          {
+            "question": "Ar reikia leidimų langų montavimui?",
+            "answer": "Dauguma langų keitimų nereikalauja leidimų, bet nauja statyba ir konstrukciniai pakeitimai gali reikalauti statybos leidimų. Mes tvarkome visus leidimų prašymus ir užtikriname atitiktį vietiniams statybos kodeksams kaip mūsų paslaugos dalį.",
+            "category": "technical",
+            "priority": "high",
+            "showCTA": false
+          },
+          {
+            "question": "Kas įtraukta į jūsų montavimo garantiją?",
+            "answer": "Teikiame visam gyvenimui montavimo garantiją, apimančią darbo kokybę, konstrukcinį vientisumą ir oro apsaugą. Tai apima nemokamus remontus bet kokioms su montavimu susijusioms problemoms ir apima tiek medžiagas, tiek darbo jėgą.",
+            "category": "warranty",
+            "priority": "high",
+            "showCTA": true
+          },
+          {
+            "question": "Ar galite montuoti langus žiemą?",
+            "answer": "Taip, montuojame langus visus metus. Naudojame apsaugos priemones vidaus temperatūrai palaikyti montavimo metu ir dirbame efektyviai, kad sumažintume poveikio laiką. Žiemos montavimai planuojami palankių oro sąlygų metu.",
+            "category": "process",
+            "priority": "medium",
+            "showCTA": false
+          },
+          {
+            "question": "Kiek kainuoja profesionalus montavimas?",
+            "answer": "Montavimo kainos prasideda nuo €150 už langą, skiriasi pagal dydį, tipą ir sudėtingumą. Tai apima matavimą, pritaikymą, oro apsaugą ir valymą. Pateikiame detalius pasiūlymus be paslėptų mokesčių.",
+            "category": "pricing",
+            "priority": "high",
+            "showCTA": true
+          },
+          {
+            "question": "Ar tvarkote senų langų šalinimą?",
+            "answer": "Taip, pašaliname ir tinkamai utilizuojame senus langus kaip mūsų montavimo paslaugos dalį. Laikomės aplinkos apsaugos reglamentų stiklo ir rėmų perdirbimui, be papildomų kaštų jums.",
+            "category": "process",
+            "priority": "medium",
+            "showCTA": false
+          },
+          {
+            "question": "Kokio pasiruošimo reikia prieš montavimą?",
+            "answer": "Reikia minimalaus pasiruošimo. Išvalykite sritį aplink langus, nuimkite užuolaidas/žaliuzes ir užtikrinkite prieigą prie montavimo vietos. Mes tvarkome visą apsauginį dengimą ir vietos paruošimą kaip mūsų paslaugos dalį.",
+            "category": "process",
+            "priority": "medium",
+            "showCTA": false
+          },
+          {
+            "question": "Ar galite montuoti individualaus dydžio langus?",
+            "answer": "Absoliučiai. Specializuojamės individualiuose montavimuose unikalių langų dydžių ir architektūrinių ypatybių. Mūsų komanda atlieka tikslų matavimą ir individualų pritaikymą tobulam integravimui su jūsų pastato konstrukcija.",
+            "category": "technical",
+            "priority": "medium",
+            "showCTA": true
+          }
+        ],
+        "cta": {
+          "title": "Pasiruošę profesionaliam montavimui?",
+          "description": "Gaukite nemokamą konsultaciją ir detalų montavimo pasiūlymą",
+          "buttonText": "Planuoti montavimą"
+        },
+        "loadMoreText": "Rodyti daugiau klausimų"
       }
     },
     "pl": {
@@ -313,6 +382,75 @@
             "duration": "15-25 minut"
           }
         ]
+      },
+      "installationFaq": {
+        "title": "FAQ Usługi Montażu",
+        "subtitle": "Najczęściej zadawane pytania o profesjonalny montaż okien",
+        "searchPlaceholder": "Szukaj pytań o montażu...",
+        "items": [
+          {
+            "question": "Ile czasu zajmuje montaż okien?",
+            "answer": "Standardowy montaż okien zajmuje 2-4 godziny na okno, w zależności od rozmiaru i złożoności. Montaże w nowym budownictwie mogą trwać dłużej ze względu na wymagania integracji strukturalnej. Podajemy dokładne szacunki czasu podczas wstępnej konsultacji.",
+            "category": "process",
+            "priority": "high",
+            "showCTA": true
+          },
+          {
+            "question": "Czy potrzebuję pozwoleń na montaż okien?",
+            "answer": "Większość wymian okien nie wymaga pozwoleń, ale nowe budownictwo i zmiany strukturalne mogą wymagać pozwoleń budowlanych. Zajmujemy się wszystkimi wnioskami o pozwolenia i zapewniamy zgodność z lokalnymi kodeksami budowlanymi jako część naszej usługi.",
+            "category": "technical",
+            "priority": "high",
+            "showCTA": false
+          },
+          {
+            "question": "Co obejmuje wasza gwarancja montażu?",
+            "answer": "Zapewniamy dożywotnią gwarancję montażu obejmującą wykonawstwo, integralność strukturalną i uszczelnienie pogodowe. Obejmuje to bezpłatne naprawy wszelkich problemów związanych z montażem i pokrywa zarówno materiały, jak i robociznę.",
+            "category": "warranty",
+            "priority": "high",
+            "showCTA": true
+          },
+          {
+            "question": "Czy można montować okna zimą?",
+            "answer": "Tak, montujemy okna przez cały rok. Używamy środków ochronnych do utrzymania temperatury wewnętrznej podczas montażu i pracujemy wydajnie, aby zminimalizować czas ekspozycji. Montaże zimowe są planowane podczas korzystnych okien pogodowych.",
+            "category": "process",
+            "priority": "medium",
+            "showCTA": false
+          },
+          {
+            "question": "Ile kosztuje profesjonalny montaż?",
+            "answer": "Koszty montażu zaczynają się od €150 za okno, różnią się w zależności od rozmiaru, typu i złożoności. Obejmuje to pomiar, dopasowanie, uszczelnienie pogodowe i sprzątanie. Zapewniamy szczegółowe oferty bez ukrytych opłat.",
+            "category": "pricing",
+            "priority": "high",
+            "showCTA": true
+          },
+          {
+            "question": "Czy zajmujecie się utylizacją starych okien?",
+            "answer": "Tak, usuwamy i właściwie utylizujemy stare okna jako część naszej usługi montażowej. Przestrzegamy przepisów środowiskowych dotyczących recyklingu szkła i ram, bez dodatkowych kosztów dla Ciebie.",
+            "category": "process",
+            "priority": "medium",
+            "showCTA": false
+          },
+          {
+            "question": "Jakie przygotowanie jest potrzebne przed montażem?",
+            "answer": "Wymagane jest minimalne przygotowanie. Oczyść obszar wokół okien, usuń zasłony/żaluzje i zapewnij dostęp do miejsca montażu. Zajmujemy się wszystkimi osłonami ochronnymi i przygotowaniem miejsca jako część naszej usługi.",
+            "category": "process",
+            "priority": "medium",
+            "showCTA": false
+          },
+          {
+            "question": "Czy można montować okna o niestandardowych rozmiarach?",
+            "answer": "Absolutnie. Specjalizujemy się w niestandardowych montażach dla unikalnych rozmiarów okien i cech architektonicznych. Nasz zespół wykonuje precyzyjne pomiary i niestandardowe dopasowanie dla idealnej integracji ze strukturą budynku.",
+            "category": "technical",
+            "priority": "medium",
+            "showCTA": true
+          }
+        ],
+        "cta": {
+          "title": "Gotowy na profesjonalny montaż?",
+          "description": "Uzyskaj bezpłatną konsultację i szczegółową ofertę montażu",
+          "buttonText": "Zaplanuj montaż"
+        },
+        "loadMoreText": "Pokaż więcej pytań"
       }
     },
     "uk": {
@@ -405,6 +543,75 @@
             "duration": "15-25 хвилин"
           }
         ]
+      },
+      "installationFaq": {
+        "title": "FAQ Послуги Встановлення",
+        "subtitle": "Поширені питання про професійне встановлення вікон",
+        "searchPlaceholder": "Пошук питань про встановлення...",
+        "items": [
+          {
+            "question": "Скільки часу займає встановлення вікон?",
+            "answer": "Стандартне встановлення вікон займає 2-4 години на вікно, залежно від розміру та складності. Встановлення в новому будівництві може зайняти більше часу через вимоги структурної інтеграції. Ми надаємо точні оцінки часу під час первинної консультації.",
+            "category": "process",
+            "priority": "high",
+            "showCTA": true
+          },
+          {
+            "question": "Чи потрібні дозволи для встановлення вікон?",
+            "answer": "Більшість замін вікон не вимагають дозволів, але нове будівництво та структурні зміни можуть потребувати будівельних дозволів. Ми обробляємо всі заявки на дозволи та забезпечуємо відповідність місцевим будівельним кодексам як частину нашої послуги.",
+            "category": "technical",
+            "priority": "high",
+            "showCTA": false
+          },
+          {
+            "question": "Що включає ваша гарантія встановлення?",
+            "answer": "Ми надаємо довічну гарантію встановлення, що покриває майстерність, структурну цілісність та захист від погоди. Це включає безкоштовні ремонти для будь-яких проблем, пов'язаних з встановленням, та покриває як матеріали, так і роботу.",
+            "category": "warranty",
+            "priority": "high",
+            "showCTA": true
+          },
+          {
+            "question": "Чи можете ви встановлювати вікна взимку?",
+            "answer": "Так, ми встановлюємо вікна цілий рік. Ми використовуємо захисні заходи для підтримання внутрішньої температури під час встановлення та працюємо ефективно, щоб мінімізувати час впливу. Зимові встановлення плануються під час сприятливих погодних вікон.",
+            "category": "process",
+            "priority": "medium",
+            "showCTA": false
+          },
+          {
+            "question": "Скільки коштує професійне встановлення?",
+            "answer": "Вартість встановлення починається від €150 за вікно, варіюється залежно від розміру, типу та складності. Це включає вимірювання, підгонку, захист від погоди та прибирання. Ми надаємо детальні пропозиції без прихованих комісій.",
+            "category": "pricing",
+            "priority": "high",
+            "showCTA": true
+          },
+          {
+            "question": "Чи займаєтеся ви утилізацією старих вікон?",
+            "answer": "Так, ми видаляємо та належним чином утилізуємо старі вікна як частину нашої послуги встановлення. Ми дотримуємося екологічних норм для переробки скла та рам, без додаткових витрат для вас.",
+            "category": "process",
+            "priority": "medium",
+            "showCTA": false
+          },
+          {
+            "question": "Яка підготовка потрібна перед встановленням?",
+            "answer": "Потрібна мінімальна підготовка. Очистіть область навколо вікон, зніміть штори/жалюзі та забезпечте доступ до місця встановлення. Ми займаємося всіма захисними покриттями та підготовкою місця як частиною нашої послуги.",
+            "category": "process",
+            "priority": "medium",
+            "showCTA": false
+          },
+          {
+            "question": "Чи можете ви встановлювати вікна нестандартних розмірів?",
+            "answer": "Абсолютно. Ми спеціалізуємося на нестандартних встановленнях для унікальних розмірів вікон та архітектурних особливостей. Наша команда виконує точні вимірювання та індивідуальне підгонку для ідеальної інтеграції зі структурою будівлі.",
+            "category": "technical",
+            "priority": "medium",
+            "showCTA": true
+          }
+        ],
+        "cta": {
+          "title": "Готові до професійного встановлення?",
+          "description": "Отримайте безкоштовну консультацію та детальну пропозицію встановлення",
+          "buttonText": "Запланувати встановлення"
+        },
+        "loadMoreText": "Показати більше питань"
       }
     }
   },
@@ -433,7 +640,7 @@
       "contentKey": "shared:installation-testimonials"
     },
     "Faq": {
-      "contentKey": "shared:installation-faq"
+      "contentKey": "installationFaq"
     }
   },
   "publishDate": "2024-02-10",

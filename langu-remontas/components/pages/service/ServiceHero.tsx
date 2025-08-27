@@ -57,7 +57,7 @@ export default function ServiceHero({ translations, locale }: ServiceHeroProps) 
 
           {/* Key Features */}
           {translations.features && translations.features.length > 0 && (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4 mb-10">
               {translations.features.map((feature, index) => (
                 <div key={index} className="flex items-center gap-3 bg-white/70 rounded-lg px-4 py-3">
                   <Icon name="Check" className="w-5 h-5 text-green-600 flex-shrink-0" />
@@ -77,18 +77,6 @@ export default function ServiceHero({ translations, locale }: ServiceHeroProps) 
               layout="horizontal"
             />
           </div>
-
-          {/* Emergency Note */}
-          {translations.emergencyNote && (
-            <div className="bg-red-50 border border-red-200 rounded-lg p-4 max-w-2xl mx-auto">
-              <div className="flex items-start gap-3">
-                <Icon name="Clock" className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" />
-                <p className="text-sm text-red-800">
-                  {translations.emergencyNote}
-                </p>
-              </div>
-            </div>
-          )}
         </div>
       </div>
     </section>

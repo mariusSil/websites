@@ -2,7 +2,7 @@ import { locales } from '@/lib/i18n';
 import { generateAllLocalizedUrls } from '@/content/lib/content-resolver';
 
 export async function GET() {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://example.com';
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
   
   // Get all localized URLs from page configurations
   const localizedUrls = await generateAllLocalizedUrls();

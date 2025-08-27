@@ -6,7 +6,7 @@
       "title": "Business & Commercial Window & Door Services",
       "description": "Professional window and door repair services for businesses, commercial properties, and institutional clients. Bulk services, maintenance contracts, and priority support.",
       "keywords": "commercial window repair, business door service, commercial property maintenance, institutional window repair, bulk repair services",
-      "ogImage": "/images/og/en-business.jpg",
+      "ogImage": "https://storage.googleapis.com/uxpilot-auth.appspot.com/c8c69828a1-d8edbc2ff80d41521467.png",
       "ogImageAlt": "Business & Commercial Window & Door Services",
       "structuredData": {
         "@context": "https://schema.org",
@@ -23,21 +23,21 @@
       "title": "Verslo ir komercinių objektų langų bei durų paslaugos",
       "description": "Profesionalios langų ir durų remonto paslaugos verslui, komerciniams objektams ir institucijoms.",
       "keywords": "komercinių langų remontas, verslo durų servisas, komercinių objektų priežiūra",
-      "ogImage": "/images/og/lt-business.jpg",
+      "ogImage": "https://storage.googleapis.com/uxpilot-auth.appspot.com/12a6c44cf3-fcbe09748e6b2d45f416.png",
       "ogImageAlt": "Verslo ir komercinių objektų paslaugos"
     },
     "pl": {
       "title": "Usługi dla firm i obiektów komercyjnych",
       "description": "Profesjonalne usługi naprawy okien i drzwi dla firm, obiektów komercyjnych i klientów instytucjonalnych.",
       "keywords": "naprawa okien komercyjnych, serwis drzwi biznesowych, konserwacja obiektów komercyjnych",
-      "ogImage": "/images/og/pl-business.jpg",
+      "ogImage": "https://storage.googleapis.com/uxpilot-auth.appspot.com/a06e033362-36b1ff53422ae50d1eba.png",
       "ogImageAlt": "Usługi dla firm i obiektów komercyjnych"
     },
     "uk": {
       "title": "Бізнес та комерційні послуги вікон та дверей",
       "description": "Професійні послуги ремонту вікон та дверей для бізнесу, комерційних об'єктів та інституційних клієнтів. Оптові послуги, контракти на обслуговування та пріоритетна підтримка.",
       "keywords": "ремонт комерційних вікон, сервіс бізнес дверей, обслуговування комерційної нерухомості, ремонт вікон інституцій, оптові послуги ремонту",
-      "ogImage": "/images/og/uk-business.jpg",
+      "ogImage": "https://storage.googleapis.com/uxpilot-auth.appspot.com/12d0f3f353-a6d4b0eef6a0168d1974.png",
       "ogImageAlt": "Бізнес та комерційні послуги вікон та дверей",
       "structuredData": {
         "@context": "https://schema.org",

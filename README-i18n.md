@@ -57,7 +57,7 @@ import { generateSEOMetadata } from '@/lib/i18n';
 
 export async function generateMetadata({ params }: { params: { locale: string } }) {
   const locale = isValidLocale(params.locale) ? params.locale : defaultLocale;
-  return await generateSEOMetadata(locale, 'about', 'https://example.com');
+  return await generateSEOMetadata(locale, 'about', 'http://localhost:3000');
 }
 ```
 

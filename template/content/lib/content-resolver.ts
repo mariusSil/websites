@@ -172,7 +172,7 @@ export async function generatePageMetadata(
   siteName: string;
   structuredData?: any;
 }> {
-  const resolvedBaseUrl = baseUrl || process.env.NEXT_PUBLIC_BASE_URL || 'https://example.com';
+  const resolvedBaseUrl = baseUrl || process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
   
   // Load common content for fallback
   const commonContent = await loadSharedContent('common');
